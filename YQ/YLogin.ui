@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>YLogin</class>
+ <widget class="QMainWindow" name="YLogin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>426</width>
+    <height>337</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>426</width>
+    <height>337</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>426</width>
+    <height>337</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>YLogin</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+background-color:rgb(235,242,249);
+border-bottom-right-radius:4px;
+border-bottom-left-radius:4px;
+}
+QWidget{
+border-bottom-right-radius:4px;
+border-bottom-left-radius:4px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="btn_Login">
+    <property name="geometry">
+     <rect>
+      <x>115</x>
+      <y>292</y>
+      <width>196</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>196</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>196</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btn_Login{       /*设置属性方法：控件名+ #属性值*/
+    border:1px solid rgb(0,163,255);
+    /*设置圆角*/
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius:4px;
+    /*设置背景色*/
+    background:rgb(0,163,255);
+    /*设置字体颜色*/
+    color:rgb(212,242,253);
+};</string>
+    </property>
+    <property name="text">
+     <string>登 录</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_pwd">
+    <property name="geometry">
+     <rect>
+      <x>113</x>
+      <y>263</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox#cb_pwd{
+color:rgb(141,145,149);
+}
+QCheckBox#cb_pwd::indicator{
+width:17px;
+height:17px;
+}
+QCheckBox#cb_pwd::indicator:enabled:unchecked {
+        image: url(&quot;:/login/src/styles/uncheck.png&quot;);
+}
+QCheckBox#cb_pwd::indicator:enabled:checked {
+        image: url(&quot;:/login/src/styles/check.png&quot;);
+}
+QCheckBox#cb_pwd::indicator:unchecked:hover
+{
+    image: url(&quot;:/login/src/styles/hover.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string>记住密码</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_autologin">
+    <property name="geometry">
+     <rect>
+      <x>245</x>
+      <y>263</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox#cb_autologin{
+color:rgb(141,145,149);
+}
+QCheckBox#cb_autologin::indicator{
+width:17px;
+height:17px;
+}
+QCheckBox#cb_autologin::indicator:enabled:unchecked {
+        image: url(&quot;:/login/src/styles/uncheck.png&quot;);
+}
+QCheckBox#cb_autologin::indicator:enabled:checked {
+        image: url(&quot;:/login/src/styles/check.png&quot;);
+}
+QCheckBox#cb_autologin::indicator:unchecked:hover
+{
+    image: url(&quot;:/login/src/styles/hover.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string>自动登录</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_back">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>426</width>
+      <height>179</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#lbl_back{
+image: url(&quot;:/login/src/styles/statedemo.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_reg_num">
+    <property name="geometry">
+     <rect>
+      <x>336</x>
+      <y>207</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#lbl_reg_num{
+color:rgb(39,134,228);
+}</string>
+    </property>
+    <property name="text">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;www.baidu.com&quot;&gt;&lt;span style=&quot; font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);&quot;&gt;注册账号&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_find_password">
+    <property name="geometry">
+     <rect>
+      <x>336</x>
+      <y>237</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#lbl_find_password{
+color:rgb(39,134,228);
+}</string>
+    </property>
+    <property name="text">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;www.baidu.com&quot;&gt;&lt;span style=&quot; font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);&quot;&gt;找回密码&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_Account">
+    <property name="geometry">
+     <rect>
+      <x>113</x>
+      <y>198</y>
+      <width>200</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#lineEdit_Account
+{
+    border:1px solid rgb(209,209,209);
+    border-top-right-radius:4px;
+    border-top-left-radius:4px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:0px;
+}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_Password">
+    <property name="geometry">
+     <rect>
+      <x>113</x>
+      <y>226</y>
+      <width>200</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#lineEdit_Password
+{
+    border:1px solid rgb(209,209,209);
+}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_qrcode">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>302</y>
+      <width>22</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#lbl_qrcode{
+image: url(&quot;:/login/src/styles/qrcode.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_person">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>302</y>
+      <width>28</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#lbl_person{
+image: url(&quot;:/login/src/styles/person.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_avator">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>195</y>
+      <width>86</width>
+      <height>88</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#lbl_avator{
+image: url(&quot;:/login/src/styles/avatar.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
