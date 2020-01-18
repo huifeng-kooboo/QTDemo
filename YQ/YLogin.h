@@ -4,6 +4,12 @@
 #include <QMainWindow>
 #include <QPoint>
 #include <QMouseEvent>
+#include <QMessageBox>
+
+//QJson引用相关库
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class YLogin; }
@@ -16,6 +22,19 @@ class YLogin : public QMainWindow
 public:
     YLogin(QWidget *parent = nullptr);
     ~YLogin();
+
+    void InitSignalAndSlots(); //初始化信号与槽
+    bool BasicInfoCheck();
+    void Init();
+
+    //业务方法
+    bool SendLoginReqToServer(QString send_data); //发送登录请求给服务器
+
+private slots:
+    //相关槽函数存放在这
+    void Slots_CloseWindow();  //关闭窗体
+    void Slots_LoginQQ(); //登录qq
+    void Slots_MinsizeProgress(); //最小化
 
 protected:
     //重写方法 设置去掉标题栏可移动

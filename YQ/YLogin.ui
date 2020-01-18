@@ -82,6 +82,18 @@ border-bottom-left-radius:4px;
     background:rgb(0,163,255);
     /*设置字体颜色*/
     color:rgb(212,242,253);
+}
+QPushButton#btn_Login:hover{       /*设置属性方法：控件名+ #属性值*/
+    border:1px solid rgb(60,195,245);
+    /*设置圆角*/
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius:4px;
+    /*设置背景色*/
+    background:rgb(60,195,245);
+    /*设置字体颜色*/
+    color:rgb(212,242,253);
 };</string>
     </property>
     <property name="text">
@@ -226,7 +238,7 @@ p, li { white-space: pre-wrap; }
     <property name="font">
      <font>
       <family>Consolas</family>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -237,7 +249,12 @@ p, li { white-space: pre-wrap; }
     border-top-left-radius:4px;
     border-bottom-right-radius:0px;
     border-bottom-left-radius:0px;
-}</string>
+}
+QLineEdit#lineEdit_Account:hover
+{
+    border:1px solid rgb(21,131,221);
+}
+</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_Password">
@@ -252,14 +269,19 @@ p, li { white-space: pre-wrap; }
     <property name="font">
      <font>
       <family>Consolas</family>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit#lineEdit_Password
 {
     border:1px solid rgb(209,209,209);
-}</string>
+}
+QLineEdit#lineEdit_Password:hover
+{
+    border:1px solid rgb(21,131,221);
+}
+</string>
     </property>
    </widget>
    <widget class="QLabel" name="lbl_qrcode">
@@ -310,6 +332,72 @@ image: url(&quot;:/login/src/styles/person.png&quot;);
     <property name="styleSheet">
      <string notr="true">QLabel#lbl_avator{
 image: url(&quot;:/login/src/styles/avatar.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_Min">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>0</y>
+      <width>25</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btn_Min{
+image: url(&quot;:/login/src/styles/mim_size.png&quot;);
+}
+QPushButton#btn_Min:hover
+{
+    image: url(&quot;:/login/src/styles/min_hover.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_close">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>5</y>
+      <width>21</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btn_close{
+image: url(&quot;:/login/src/styles/close.png&quot;);
+}
+QPushButton#btn_close:hover
+{
+    image: url(&quot;:/login/src/styles/close_hover.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_drop">
+    <property name="geometry">
+     <rect>
+      <x>345</x>
+      <y>3</y>
+      <width>26</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btn_drop{
+image: url(&quot;:/login/src/styles/dropdown.png&quot;);
+}
+QPushButton#btn_drop:hover
+{
+    image: url(&quot;:/login/src/styles/dropdown_hover.png&quot;);
 }</string>
     </property>
     <property name="text">
