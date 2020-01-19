@@ -11,6 +11,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
+//提示框
+#include <QToolTip>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class YLogin; }
 QT_END_NAMESPACE
@@ -29,6 +32,11 @@ public:
 
     //业务方法
     bool SendLoginReqToServer(QString send_data); //发送登录请求给服务器
+
+    //展示提示框
+    //@param1:pos：点位置
+    //@params:tips_:提示内容
+    void ShowPromptTip(const QPoint & pos,QString tips_);
 
 private slots:
     //相关槽函数存放在这

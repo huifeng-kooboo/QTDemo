@@ -36,6 +36,10 @@ bool YLogin::SendLoginReqToServer(QString send_data)
     return true;
 }
 
+void YLogin::ShowPromptTip(const QPoint & pos,QString tips_)
+{
+    QToolTip::showText(pos,tips_);
+}
 
 //初始化信号与槽接口
 void YLogin::InitSignalAndSlots()
@@ -47,22 +51,22 @@ void YLogin::InitSignalAndSlots()
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
 {
-int dx = e->globalX() - last.x();
-int dy = e->globalY() - last.y();
-last = e->globalPos();
-move(x()+dx, y()+dy);
+    int dx = e->globalX() - last.x();
+    int dy = e->globalY() - last.y();
+    last = e->globalPos();
+    move(x()+dx, y()+dy);
 }
 
 void YLogin::mouseReleaseEvent(QMouseEvent *e)
 {
-int dx = e->globalX() - last.x();
-int dy = e->globalY() - last.y();
-move(x()+dx, y()+dy);
+    int dx = e->globalX() - last.x();
+    int dy = e->globalY() - last.y();
+    move(x()+dx, y()+dy);
 }
 
 void YLogin::mousePressEvent(QMouseEvent *e)
 {
-   last=e->globalPos();
+    last=e->globalPos();
 }
 
 //基础用户名密码检查
@@ -88,7 +92,8 @@ void YLogin::Slots_LoginQQ()
     //匹配失败
     if(!result_)
     {
-      QMessageBox::about(NULL,"ERROR_ACCOUNT","ERROR_ACCOUNT");
+      QPoint cur_pos  = this->mapToGlobal(ui->lineEdit_Account->pos());
+      ShowPromptTip(cur_pos,"账号有误，请重新输入");
       return;
     }
     //2. 判断密码
@@ -96,7 +101,8 @@ void YLogin::Slots_LoginQQ()
     bool result_pwd = Utils::StringJudgePassword(password_);
     if(!result_pwd)
     {
-        QMessageBox::about(NULL,"ERROR_PASSWORD","ERROR_PASSWORD");
+        QPoint cur_pos  = this->mapToGlobal(ui->lineEdit_Password->pos());
+        ShowPromptTip(cur_pos,"密码有误，请重新输入");
         return;
     }
 
@@ -111,5 +117,6 @@ void YLogin::Slots_LoginQQ()
 //最小化窗体
 void YLogin::Slots_MinsizeProgress()
 {
-    setWindowFlags(Qt::Window|Qt::FramelessWindowHint |Qt::WindowSystemMenuHint|Qt::WindowMinimizeButtonHint|Qt::WindowMaximizeButtonHint);
+    //显示最小化
+    this->showMinimized();
 }
