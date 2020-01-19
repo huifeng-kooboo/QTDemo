@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += network    #添加网络库
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,13 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    HttpNet.cpp \
     Utils.cpp \
     main.cpp \
     YLogin.cpp
 
 HEADERS += \
     GlobalData.h \
-    HttpReq.h \
+    HttpNet.h \
     Utils.h \
     YLogin.h
 

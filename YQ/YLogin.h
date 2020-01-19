@@ -14,6 +14,11 @@
 //提示框
 #include <QToolTip>
 
+//网络相关库
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class YLogin; }
 QT_END_NAMESPACE

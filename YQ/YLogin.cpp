@@ -2,6 +2,7 @@
 #include "ui_YLogin.h"
 #include "Utils.h"
 #include "GlobalData.h"
+#include "HttpNet.h"
 
 YLogin::YLogin(QWidget *parent)
     : QMainWindow(parent)
@@ -82,7 +83,7 @@ void YLogin::Slots_CloseWindow()
     this->close();//关闭窗体
 }
 
-//登录窗口
+//登录QQ功能
 void YLogin::Slots_LoginQQ()
 {
     BasicInfoCheck();
@@ -93,7 +94,7 @@ void YLogin::Slots_LoginQQ()
     if(!result_)
     {
       QPoint cur_pos  = this->mapToGlobal(ui->lineEdit_Account->pos());
-      ShowPromptTip(cur_pos,"账号有误，请重新输入");
+      ShowPromptTip(cur_pos,"请您输入账号后再登录");
       return;
     }
     //2. 判断密码
@@ -102,7 +103,7 @@ void YLogin::Slots_LoginQQ()
     if(!result_pwd)
     {
         QPoint cur_pos  = this->mapToGlobal(ui->lineEdit_Password->pos());
-        ShowPromptTip(cur_pos,"密码有误，请重新输入");
+        ShowPromptTip(cur_pos,"请您输入密码后再登录");
         return;
     }
 

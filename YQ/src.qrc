@@ -4,7 +4,6 @@
         <file>styles/hover.png</file>
         <file>styles/uncheck.png</file>
         <file>styles/background.png</file>
-        <file>styles/qrcode.png</file>
         <file>styles/person.png</file>
         <file>styles/avatar.png</file>
         <file>styles/headers.png</file>
@@ -14,5 +13,9 @@
         <file>styles/close_hover.png</file>
         <file>styles/min_hover.png</file>
         <file>styles/dropdown_hover.png</file>
+        <file>styles/add_account.png</file>
+        <file>styles/add_account_hover.png</file>
+        <file>styles/qr_code.png</file>
+        <file>styles/qr_code_hover.png</file>
     </qresource>
 </RCC>

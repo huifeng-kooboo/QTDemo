@@ -34,7 +34,8 @@ border-bottom-left-radius:4px;
 QWidget{
 border-bottom-right-radius:4px;
 border-bottom-left-radius:4px;
-}</string>
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btn_Login">
@@ -284,42 +285,6 @@ QLineEdit#lineEdit_Password:hover
 </string>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_qrcode">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>302</y>
-      <width>22</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#lbl_qrcode{
-image: url(&quot;:/login/src/styles/qrcode.png&quot;);
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lbl_person">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>302</y>
-      <width>28</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#lbl_person{
-image: url(&quot;:/login/src/styles/person.png&quot;);
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QLabel" name="lbl_avator">
     <property name="geometry">
      <rect>
@@ -398,6 +363,48 @@ image: url(&quot;:/login/src/styles/dropdown.png&quot;);
 QPushButton#btn_drop:hover
 {
     image: url(&quot;:/login/src/styles/dropdown_hover.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_addaccount">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>300</y>
+      <width>29</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btn_addaccount{
+image: url(&quot;:/login/src/styles/add_account.png&quot;);
+}
+QPushButton#btn_addaccount:hover{
+image: url(&quot;:/login/src/styles/add_account_hover.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_qrcode">
+    <property name="geometry">
+     <rect>
+      <x>385</x>
+      <y>300</y>
+      <width>29</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btn_qrcode{
+image: url(&quot;:/login/src/styles/qr_code.png&quot;);
+}
+QPushButton#btn_qrcode:hover{
+image: url(&quot;:/login/src/styles/qr_code_hover.png&quot;);
 }</string>
     </property>
     <property name="text">

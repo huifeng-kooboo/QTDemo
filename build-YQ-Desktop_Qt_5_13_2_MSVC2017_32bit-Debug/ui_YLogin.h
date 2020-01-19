@@ -32,12 +32,12 @@ public:
     QLabel *lbl_find_password;
     QLineEdit *lineEdit_Account;
     QLineEdit *lineEdit_Password;
-    QLabel *lbl_qrcode;
-    QLabel *lbl_person;
     QLabel *lbl_avator;
     QPushButton *btn_Min;
     QPushButton *btn_close;
     QPushButton *btn_drop;
+    QPushButton *btn_addaccount;
+    QPushButton *btn_qrcode;
 
     void setupUi(QMainWindow *YLogin)
     {
@@ -54,7 +54,8 @@ public:
 "QWidget{\n"
 "border-bottom-right-radius:4px;\n"
 "border-bottom-left-radius:4px;\n"
-"}"));
+"}\n"
+""));
         centralwidget = new QWidget(YLogin);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         btn_Login = new QPushButton(centralwidget);
@@ -187,18 +188,6 @@ public:
 "    border:1px solid rgb(21,131,221);\n"
 "}\n"
 ""));
-        lbl_qrcode = new QLabel(centralwidget);
-        lbl_qrcode->setObjectName(QString::fromUtf8("lbl_qrcode"));
-        lbl_qrcode->setGeometry(QRect(390, 302, 22, 22));
-        lbl_qrcode->setStyleSheet(QString::fromUtf8("QLabel#lbl_qrcode{\n"
-"image: url(\":/login/src/styles/qrcode.png\");\n"
-"}"));
-        lbl_person = new QLabel(centralwidget);
-        lbl_person->setObjectName(QString::fromUtf8("lbl_person"));
-        lbl_person->setGeometry(QRect(10, 302, 28, 28));
-        lbl_person->setStyleSheet(QString::fromUtf8("QLabel#lbl_person{\n"
-"image: url(\":/login/src/styles/person.png\");\n"
-"}"));
         lbl_avator = new QLabel(centralwidget);
         lbl_avator->setObjectName(QString::fromUtf8("lbl_avator"));
         lbl_avator->setGeometry(QRect(20, 195, 86, 88));
@@ -235,6 +224,24 @@ public:
 "{\n"
 "    image: url(\":/login/src/styles/dropdown_hover.png\");\n"
 "}"));
+        btn_addaccount = new QPushButton(centralwidget);
+        btn_addaccount->setObjectName(QString::fromUtf8("btn_addaccount"));
+        btn_addaccount->setGeometry(QRect(10, 300, 29, 29));
+        btn_addaccount->setStyleSheet(QString::fromUtf8("QPushButton#btn_addaccount{\n"
+"image: url(\":/login/src/styles/add_account.png\");\n"
+"}\n"
+"QPushButton#btn_addaccount:hover{\n"
+"image: url(\":/login/src/styles/add_account_hover.png\");\n"
+"}"));
+        btn_qrcode = new QPushButton(centralwidget);
+        btn_qrcode->setObjectName(QString::fromUtf8("btn_qrcode"));
+        btn_qrcode->setGeometry(QRect(385, 300, 29, 29));
+        btn_qrcode->setStyleSheet(QString::fromUtf8("QPushButton#btn_qrcode{\n"
+"image: url(\":/login/src/styles/qr_code.png\");\n"
+"}\n"
+"QPushButton#btn_qrcode:hover{\n"
+"image: url(\":/login/src/styles/qr_code_hover.png\");\n"
+"}"));
         YLogin->setCentralWidget(centralwidget);
 
         retranslateUi(YLogin);
@@ -259,12 +266,12 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"www.baidu.com\"><span style=\" font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);\">\346\211\276\345\233\236\345\257\206\347\240\201</span></a></p></body></html>", nullptr));
-        lbl_qrcode->setText(QString());
-        lbl_person->setText(QString());
         lbl_avator->setText(QString());
         btn_Min->setText(QString());
         btn_close->setText(QString());
         btn_drop->setText(QString());
+        btn_addaccount->setText(QString());
+        btn_qrcode->setText(QString());
     } // retranslateUi
 
 };
