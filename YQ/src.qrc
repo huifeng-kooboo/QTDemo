@@ -17,5 +17,6 @@
         <file>styles/add_account_hover.png</file>
         <file>styles/qr_code.png</file>
         <file>styles/qr_code_hover.png</file>
+        <file>styles/tim_icon.png</file>
     </qresource>
 </RCC>

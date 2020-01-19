@@ -19,6 +19,11 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
+//系统托盘
+#include <QSystemTrayIcon>
+#include <QMenu>
+#include <QAction>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class YLogin; }
 QT_END_NAMESPACE
@@ -48,6 +53,8 @@ private slots:
     void Slots_CloseWindow();  //关闭窗体
     void Slots_LoginQQ(); //登录qq
     void Slots_MinsizeProgress(); //最小化
+    void Slots_ShowNormal();//正常显示
+    void Slots_TrayMsg(QSystemTrayIcon::ActivationReason reason); //托盘消息触发
 
 protected:
     //重写方法 设置去掉标题栏可移动
@@ -58,5 +65,9 @@ protected:
 private:
     Ui::YLogin *ui;
     QPoint last;
+    QSystemTrayIcon * m_systemTray; //系统托盘
+    QMenu* m_TrayMenu;//实现右键菜单
+    QAction* m_Exit;//退出
+    QAction* m_OpenPanel;//打开面板
 };
 #endif // YLOGIN_H

@@ -3,12 +3,14 @@
 #include "Utils.h"
 #include "GlobalData.h"
 #include "HttpNet.h"
+#include <QTextCodec>
 
 YLogin::YLogin(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::YLogin)
 {
-
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf-8"));
+   // QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF8"));
     ui->setupUi(this);
     Init();
     InitSignalAndSlots();
@@ -16,6 +18,8 @@ YLogin::YLogin(QWidget *parent)
 
 YLogin::~YLogin()
 {
+    delete m_systemTray;
+    delete m_TrayMenu;
     delete ui;
 }
 
@@ -25,6 +29,21 @@ void YLogin::Init()
     ui->lineEdit_Password->setEchoMode(QLineEdit::Password); //设置密码模式
     ui->lineEdit_Account->setPlaceholderText("QQ号码/手机/邮箱");
     ui->lineEdit_Password->setPlaceholderText("密码");
+
+    //缩小在系统托盘测试
+    m_systemTray = new QSystemTrayIcon(this);
+    m_systemTray->setIcon(QIcon(":/login/src/styles/tim_icon.png"));
+    m_systemTray->setToolTip("TIM");
+    //
+    m_TrayMenu = new QMenu(this);
+    m_Exit = new QAction("退出QQ",this);
+    m_OpenPanel = new QAction("打开面板",this);
+    m_TrayMenu->addAction(m_Exit);
+    m_TrayMenu->addAction(m_OpenPanel);
+    m_systemTray->setContextMenu(m_TrayMenu); //添加右键菜单
+    //
+    m_systemTray->show();
+
 }
 
 //业务方法处理
@@ -48,6 +67,9 @@ void YLogin::InitSignalAndSlots()
     connect(ui->btn_close,SIGNAL(clicked()),this,SLOT(Slots_CloseWindow()));
     connect(ui->btn_Login,SIGNAL(clicked()),this,SLOT(Slots_LoginQQ()));
     connect(ui->btn_Min,SIGNAL(clicked()),this,SLOT(Slots_MinsizeProgress()));
+    connect(m_systemTray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(Slots_TrayMsg(QSystemTrayIcon::ActivationReason)));
+    connect(m_Exit, SIGNAL(triggered()), this, SLOT(Slots_CloseWindow()));
+    connect(m_OpenPanel, SIGNAL(triggered()), this, SLOT(Slots_ShowNormal()));
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
@@ -120,4 +142,30 @@ void YLogin::Slots_MinsizeProgress()
 {
     //显示最小化
     this->showMinimized();
+}
+
+void YLogin::Slots_ShowNormal()
+{
+    this->showNormal();
+}
+
+void YLogin::Slots_TrayMsg(QSystemTrayIcon::ActivationReason reason)
+{
+    switch(reason)
+       {
+       //左键点击
+       case QSystemTrayIcon::Trigger:
+        {
+          showNormal();
+          break;
+        }
+       //双击托盘显示窗口
+       case QSystemTrayIcon::DoubleClick:
+       {
+         showNormal();
+         break;
+       }
+       default:
+        break;
+       }
 }
