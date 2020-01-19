@@ -38,14 +38,17 @@ public:
     QPushButton *btn_drop;
     QPushButton *btn_addaccount;
     QPushButton *btn_qrcode;
+    QLabel *lbl_Tips;
+    QPushButton *btn_pull;
+    QLabel *lbl_warning_ico;
 
     void setupUi(QMainWindow *YLogin)
     {
         if (YLogin->objectName().isEmpty())
             YLogin->setObjectName(QString::fromUtf8("YLogin"));
-        YLogin->resize(426, 337);
+        YLogin->resize(426, 366);
         YLogin->setMinimumSize(QSize(426, 337));
-        YLogin->setMaximumSize(QSize(426, 337));
+        YLogin->setMaximumSize(QSize(426, 366));
         YLogin->setStyleSheet(QString::fromUtf8("QMainWindow{\n"
 "background-color:rgb(235,242,249);\n"
 "border-bottom-right-radius:4px;\n"
@@ -242,6 +245,24 @@ public:
 "QPushButton#btn_qrcode:hover{\n"
 "image: url(\":/login/src/styles/qr_code_hover.png\");\n"
 "}"));
+        lbl_Tips = new QLabel(centralwidget);
+        lbl_Tips->setObjectName(QString::fromUtf8("lbl_Tips"));
+        lbl_Tips->setGeometry(QRect(0, 337, 426, 29));
+        lbl_Tips->setStyleSheet(QString::fromUtf8("QLabel#lbl_Tips{\n"
+"background-color:rgb(249,244,212);\n"
+"}"));
+        btn_pull = new QPushButton(centralwidget);
+        btn_pull->setObjectName(QString::fromUtf8("btn_pull"));
+        btn_pull->setGeometry(QRect(402, 342, 21, 18));
+        btn_pull->setStyleSheet(QString::fromUtf8("QPushButton#btn_pull{\n"
+"image: url(\":/login/src/styles/re_sour.png\");\n"
+"}"));
+        lbl_warning_ico = new QLabel(centralwidget);
+        lbl_warning_ico->setObjectName(QString::fromUtf8("lbl_warning_ico"));
+        lbl_warning_ico->setGeometry(QRect(1, 343, 19, 18));
+        lbl_warning_ico->setStyleSheet(QString::fromUtf8("QLabel#lbl_warning_ico{\n"
+"image: url(\":/login/src/styles/warning_ico.png\");\n"
+"}"));
         YLogin->setCentralWidget(centralwidget);
 
         retranslateUi(YLogin);
@@ -272,6 +293,9 @@ public:
         btn_drop->setText(QString());
         btn_addaccount->setText(QString());
         btn_qrcode->setText(QString());
+        lbl_Tips->setText(QCoreApplication::translate("YLogin", "     \346\202\250\345\267\262\347\231\273\345\275\225942840260,\344\270\215\350\203\275\351\207\215\345\244\215\347\231\273\345\275\225\343\200\202", nullptr));
+        btn_pull->setText(QString());
+        lbl_warning_ico->setText(QString());
     } // retranslateUi
 
 };

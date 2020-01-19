@@ -18,5 +18,8 @@
         <file>styles/qr_code.png</file>
         <file>styles/qr_code_hover.png</file>
         <file>styles/tim_icon.png</file>
+        <file>styles/re_sour.png</file>
+        <file>styles/dropdown.png</file>
+        <file>styles/warning_ico.png</file>
     </qresource>
 </RCC>

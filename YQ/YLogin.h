@@ -24,6 +24,9 @@
 #include <QMenu>
 #include <QAction>
 
+//重绘界面
+#include <QPainter>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class YLogin; }
 QT_END_NAMESPACE
@@ -56,12 +59,14 @@ private slots:
     void Slots_MinsizeProgress(); //最小化
     void Slots_ShowNormal();//正常显示
     void Slots_TrayMsg(QSystemTrayIcon::ActivationReason reason); //托盘消息触发
+    void Slots_HideTips();//隐藏提示框
 
 protected:
     //重写方法 设置去掉标题栏可移动
     void mousePressEvent(QMouseEvent *e);
     void mouseMoveEvent(QMouseEvent *e);
     void mouseReleaseEvent(QMouseEvent *e);
+    void paintEvent(QPaintEvent* event);
 
 private:
     Ui::YLogin *ui;

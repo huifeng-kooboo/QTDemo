@@ -181,6 +181,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_src.cpp
 release\qrc_src.cpp: ..\YQ\src.qrc \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\bin\rcc.exe \
+		..\YQ\styles\dropdown.png \
 		..\YQ\styles\background.png \
 		..\YQ\styles\close.png \
 		..\YQ\styles\hover.png \
@@ -198,7 +199,8 @@ release\qrc_src.cpp: ..\YQ\src.qrc \
 		..\YQ\styles\close_hover.png \
 		..\YQ\styles\min_hover.png \
 		..\YQ\styles\uncheck.png \
-		..\YQ\styles\qr_code_hover.png
+		..\YQ\styles\qr_code_hover.png \
+		..\YQ\styles\re_sour.png
 	C:\Qt\Qt5.13.2\5.13.2\msvc2017\bin\rcc.exe -name src ..\YQ\src.qrc -o release\qrc_src.cpp
 
 compiler_moc_predefs_make_all: release\moc_predefs.h
@@ -367,6 +369,10 @@ release\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qaction.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qactiongroup.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QAction \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QPainter \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainter.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtextoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpen.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\bin\moc.exe
 	C:\Qt\Qt5.13.2\5.13.2\msvc2017\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include F:/denis/QTDemo/build-YQ-Desktop_Qt_5_13_2_MSVC2017_32bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.13.2/5.13.2/msvc2017/mkspecs/win32-msvc -IF:/denis/QTDemo/YQ -IC:/Qt/Qt5.13.2/5.13.2/msvc2017/include -IC:/Qt/Qt5.13.2/5.13.2/msvc2017/include/QtWidgets -IC:/Qt/Qt5.13.2/5.13.2/msvc2017/include/QtGui -IC:/Qt/Qt5.13.2/5.13.2/msvc2017/include/QtANGLE -IC:/Qt/Qt5.13.2/5.13.2/msvc2017/include/QtNetwork -IC:/Qt/Qt5.13.2/5.13.2/msvc2017/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\YQ\YLogin.h -o release\moc_YLogin.cpp
@@ -551,7 +557,11 @@ release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmenu.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qaction.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qactiongroup.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QAction
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QAction \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QPainter \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainter.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtextoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpen.h
 
 release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		..\YQ\YLogin.h \
@@ -710,7 +720,11 @@ release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmenu.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qaction.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qactiongroup.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QAction
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QAction \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QPainter \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainter.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtextoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpen.h
 
 release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
@@ -869,6 +883,10 @@ release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qaction.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qactiongroup.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QAction \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QPainter \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainter.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtextoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpen.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QApplication \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qapplication.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcoreapplication.h \
@@ -1034,6 +1052,10 @@ release\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qaction.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qactiongroup.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QAction \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QPainter \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainter.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtextoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpen.h \
 		ui_YLogin.h \
 		..\YQ\Utils.h \
 		..\YQ\GlobalData.h \

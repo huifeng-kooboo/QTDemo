@@ -11,9 +11,13 @@ YLogin::YLogin(QWidget *parent)
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf-8")); //设置编码格式 处理乱码情况
     ui->setupUi(this);
+    ui->lbl_Tips->setVisible(false);
+    ui->btn_pull->setVisible(false);
+    ui->lbl_warning_ico->setVisible(false);
     Init();
     InitTrayMenu();
     InitSignalAndSlots();
+    setAttribute(Qt::WA_TranslucentBackground, true);
 }
 
 YLogin::~YLogin()
@@ -23,15 +27,24 @@ YLogin::~YLogin()
     delete ui;
 }
 
+void YLogin::paintEvent(QPaintEvent* event) {
+    QPainter p(this);
+    //p.setCompositionMode(QPainter::CompositionMode_Clear);
+    p.setBrush(QColor(234, 241, 248));
+    int x = 0;
+    int y = 179;
+    int width = 425;
+    int height =158;
+    p.drawRect(x, y, width, height);
+
+}
+
 void YLogin::Init()
 {
     this->setWindowFlags(Qt::FramelessWindowHint);//去掉标题栏
     ui->lineEdit_Password->setEchoMode(QLineEdit::Password); //设置密码模式
     ui->lineEdit_Account->setPlaceholderText("QQ号码/手机/邮箱");
     ui->lineEdit_Password->setPlaceholderText("密码");
-
-
-
 }
 
 void YLogin::InitTrayMenu()
@@ -76,7 +89,7 @@ void YLogin::InitSignalAndSlots()
     connect(ui->btn_close,SIGNAL(clicked()),this,SLOT(Slots_CloseWindow()));
     connect(ui->btn_Login,SIGNAL(clicked()),this,SLOT(Slots_LoginQQ()));
     connect(ui->btn_Min,SIGNAL(clicked()),this,SLOT(Slots_MinsizeProgress()));
-
+    connect(ui->btn_pull,SIGNAL(clicked()),this,SLOT(Slots_HideTips()));
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
@@ -115,6 +128,9 @@ void YLogin::Slots_CloseWindow()
 //登录QQ功能
 void YLogin::Slots_LoginQQ()
 {
+    ui->lbl_Tips->setVisible(true);
+    ui->btn_pull->setVisible(true);
+    ui->lbl_warning_ico->setVisible(true);
     BasicInfoCheck();
     //1.判断用户名
     QString account_ = ui->lineEdit_Account->text(); //获取账号信息
@@ -176,4 +192,11 @@ void YLogin::Slots_TrayMsg(QSystemTrayIcon::ActivationReason reason)
        default:
         break;
        }
+}
+
+void YLogin::Slots_HideTips()
+{
+    ui->lbl_Tips->setVisible(false);
+    ui->btn_pull->setVisible(false);
+    ui->lbl_warning_ico->setVisible(false);
 }
