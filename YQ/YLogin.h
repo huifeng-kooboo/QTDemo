@@ -46,6 +46,7 @@ public:
 
     //业务方法
     bool SendLoginReqToServer(QString send_data); //发送登录请求给服务器
+    void ShowRepeatLoginTip(QString tip_);    //显示重复登录提示
 
     //展示提示框
     //@param1:pos：点位置

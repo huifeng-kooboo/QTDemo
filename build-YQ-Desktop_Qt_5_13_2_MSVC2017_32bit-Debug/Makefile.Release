@@ -184,6 +184,7 @@ release\qrc_src.cpp: ..\YQ\src.qrc \
 		..\YQ\styles\dropdown.png \
 		..\YQ\styles\background.png \
 		..\YQ\styles\close.png \
+		..\YQ\styles\warning_ico.png \
 		..\YQ\styles\hover.png \
 		..\YQ\styles\add_account_hover.png \
 		..\YQ\styles\person.png \

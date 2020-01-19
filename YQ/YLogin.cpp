@@ -78,6 +78,14 @@ bool YLogin::SendLoginReqToServer(QString send_data)
     return true;
 }
 
+void YLogin::ShowRepeatLoginTip(QString tip_)
+{
+    ui->lbl_Tips->setText(GET_REPEAT_LOGIN_STR( tip_));
+    ui->lbl_Tips->setVisible(true);
+    ui->btn_pull->setVisible(true);
+    ui->lbl_warning_ico->setVisible(true);
+}
+
 void YLogin::ShowPromptTip(const QPoint & pos,QString tips_)
 {
     QToolTip::showText(pos,tips_);
@@ -90,6 +98,7 @@ void YLogin::InitSignalAndSlots()
     connect(ui->btn_Login,SIGNAL(clicked()),this,SLOT(Slots_LoginQQ()));
     connect(ui->btn_Min,SIGNAL(clicked()),this,SLOT(Slots_MinsizeProgress()));
     connect(ui->btn_pull,SIGNAL(clicked()),this,SLOT(Slots_HideTips()));
+    connect(ui->lineEdit_Account,SIGNAL(textChanged( const QString)),this,SLOT(Slots_HideTips()));
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
@@ -128,12 +137,11 @@ void YLogin::Slots_CloseWindow()
 //登录QQ功能
 void YLogin::Slots_LoginQQ()
 {
-    ui->lbl_Tips->setVisible(true);
-    ui->btn_pull->setVisible(true);
-    ui->lbl_warning_ico->setVisible(true);
+
     BasicInfoCheck();
     //1.判断用户名
     QString account_ = ui->lineEdit_Account->text(); //获取账号信息
+    ShowRepeatLoginTip(account_);
     bool result_ = Utils::StringJudgeAccount(account_); //判断账号是否符合要求
     //匹配失败
     if(!result_)
