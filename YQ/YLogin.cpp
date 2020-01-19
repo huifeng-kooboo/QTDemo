@@ -9,10 +9,10 @@ YLogin::YLogin(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::YLogin)
 {
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf-8"));
-   // QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF8"));
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf-8")); //设置编码格式 处理乱码情况
     ui->setupUi(this);
     Init();
+    InitTrayMenu();
     InitSignalAndSlots();
 }
 
@@ -30,20 +30,29 @@ void YLogin::Init()
     ui->lineEdit_Account->setPlaceholderText("QQ号码/手机/邮箱");
     ui->lineEdit_Password->setPlaceholderText("密码");
 
-    //缩小在系统托盘测试
+
+
+}
+
+void YLogin::InitTrayMenu()
+{
     m_systemTray = new QSystemTrayIcon(this);
     m_systemTray->setIcon(QIcon(":/login/src/styles/tim_icon.png"));
     m_systemTray->setToolTip("TIM");
     //
     m_TrayMenu = new QMenu(this);
-    m_Exit = new QAction("退出QQ",this);
-    m_OpenPanel = new QAction("打开面板",this);
+    m_Exit = new QAction("  退出QQ",this);
+    m_OpenPanel = new QAction("  打开面板",this);
+    m_systemTray->setContextMenu(m_TrayMenu); //添加右键菜单
     m_TrayMenu->addAction(m_Exit);
     m_TrayMenu->addAction(m_OpenPanel);
-    m_systemTray->setContextMenu(m_TrayMenu); //添加右键菜单
-    //
-    m_systemTray->show();
+    m_TrayMenu->setWindowFlag(Qt::NoDropShadowWindowHint);//去除阴影
+    m_TrayMenu->setStyleSheet("QMenu{ width:226px;background-color:rgb(255,255,255);color:rgb(123,123,123);font-size:13px;}QMenu::item{color:rgb(123,123,123);background-color:rgb(255,255,255);width:224px; height:40px;padding-left:20px;border:1px solid rgb(243,243,243);}QMenu::item:selected{background-color:rgb(230,233,237);}");
 
+    m_systemTray->show();
+    connect(m_systemTray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(Slots_TrayMsg(QSystemTrayIcon::ActivationReason)));
+    connect(m_Exit, SIGNAL(triggered()), this, SLOT(Slots_CloseWindow()));
+    connect(m_OpenPanel, SIGNAL(triggered()), this, SLOT(Slots_ShowNormal()));
 }
 
 //业务方法处理
@@ -67,9 +76,7 @@ void YLogin::InitSignalAndSlots()
     connect(ui->btn_close,SIGNAL(clicked()),this,SLOT(Slots_CloseWindow()));
     connect(ui->btn_Login,SIGNAL(clicked()),this,SLOT(Slots_LoginQQ()));
     connect(ui->btn_Min,SIGNAL(clicked()),this,SLOT(Slots_MinsizeProgress()));
-    connect(m_systemTray,SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(Slots_TrayMsg(QSystemTrayIcon::ActivationReason)));
-    connect(m_Exit, SIGNAL(triggered()), this, SLOT(Slots_CloseWindow()));
-    connect(m_OpenPanel, SIGNAL(triggered()), this, SLOT(Slots_ShowNormal()));
+
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
@@ -146,6 +153,7 @@ void YLogin::Slots_MinsizeProgress()
 
 void YLogin::Slots_ShowNormal()
 {
+    setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
     this->showNormal();
 }
 

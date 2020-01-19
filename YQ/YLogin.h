@@ -38,6 +38,7 @@ public:
 
     void InitSignalAndSlots(); //初始化信号与槽
     bool BasicInfoCheck();
+    void InitTrayMenu();//初始化托盘功能
     void Init();
 
     //业务方法
@@ -66,7 +67,7 @@ private:
     Ui::YLogin *ui;
     QPoint last;
     QSystemTrayIcon * m_systemTray; //系统托盘
-    QMenu* m_TrayMenu;//实现右键菜单
+    QMenu* m_TrayMenu;//托盘右键菜单
     QAction* m_Exit;//退出
     QAction* m_OpenPanel;//打开面板
 };
