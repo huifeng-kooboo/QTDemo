@@ -43,3 +43,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     src.qrc
+RC_FILE += app.rc

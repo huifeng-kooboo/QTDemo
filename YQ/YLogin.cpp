@@ -44,8 +44,8 @@ void YLogin::InitTrayMenu()
     m_Exit = new QAction("  退出QQ",this);
     m_OpenPanel = new QAction("  打开面板",this);
     m_systemTray->setContextMenu(m_TrayMenu); //添加右键菜单
-    m_TrayMenu->addAction(m_Exit);
     m_TrayMenu->addAction(m_OpenPanel);
+    m_TrayMenu->addAction(m_Exit);
     m_TrayMenu->setWindowFlag(Qt::NoDropShadowWindowHint);//去除阴影
     m_TrayMenu->setStyleSheet("QMenu{ width:226px;background-color:rgb(255,255,255);color:rgb(123,123,123);font-size:13px;}QMenu::item{color:rgb(123,123,123);background-color:rgb(255,255,255);width:224px; height:40px;padding-left:20px;border:1px solid rgb(243,243,243);}QMenu::item:selected{background-color:rgb(230,233,237);}");
 

@@ -19,13 +19,13 @@ CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStri
 INCPATH       = -I..\YQ -I. -IC:\Qt\Qt5.13.2\5.13.2\msvc2017\include -IC:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets -IC:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui -IC:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtANGLE -IC:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork -IC:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore -Idebug -I. -I/include -IC:\Qt\Qt5.13.2\5.13.2\msvc2017\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Widgetsd.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Guid.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Networkd.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Cored.lib  C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\qtmaind.lib /LIBPATH:C:\opensslx86\lib /LIBPATH:C:\Utils\my_sql\mysql-5.7.25-win32\lib /LIBPATH:C:\Utils\postgresqlx86\pgsql\lib shell32.lib 
+LIBS          = C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Widgetsd.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Guid.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Networkd.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Cored.lib debug\app.res  C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\qtmaind.lib /LIBPATH:C:\opensslx86\lib /LIBPATH:C:\Utils\my_sql\mysql-5.7.25-win32\lib /LIBPATH:C:\Utils\postgresqlx86\pgsql\lib shell32.lib 
 QMAKE         = C:\Qt\Qt5.13.2\5.13.2\msvc2017\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = debug\app.res
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -140,11 +140,14 @@ DESTDIR_TARGET = debug\TIM.exe
 first: all
 all: Makefile.Debug  debug\TIM.exe
 
-debug\TIM.exe: C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Widgetsd.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Guid.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Networkd.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Cored.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\qtmaind.lib ui_YLogin.h $(OBJECTS) 
+debug\TIM.exe: C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Widgetsd.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Guid.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Networkd.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\Qt5Cored.lib C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\qtmaind.lib ui_YLogin.h $(OBJECTS) debug\app.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
 debug\HttpNet.obj debug\Utils.obj debug\main.obj debug\YLogin.obj debug\qrc_src.obj debug\moc_YLogin.obj
 $(LIBS)
 <<
+
+debug\app.res: ..\YQ\app.rc
+	rc /NOLOGO -D_DEBUG $(DEFINES) -fo debug\app.res ..\YQ\app.rc
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Debug ..\YQ\YQ.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -157,6 +160,7 @@ dist:
 clean: compiler_clean 
 	-$(DEL_FILE) debug\HttpNet.obj debug\Utils.obj debug\main.obj debug\YLogin.obj debug\qrc_src.obj debug\moc_YLogin.obj
 	-$(DEL_FILE) debug\TIM.vc.pdb debug\TIM.ilk debug\TIM.idb
+	-$(DEL_FILE) debug\app.res
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash debug\TIM.pdb
@@ -1032,28 +1036,6 @@ debug\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qactiongroup.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QAction \
 		ui_YLogin.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QApplication \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qapplication.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcoreapplication.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qeventloop.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qguiapplication.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qinputmethod.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QCheckBox \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qcheckbox.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QLabel \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qlabel.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qframe.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QLineEdit \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qlineedit.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtextcursor.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtextformat.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpen.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtextoption.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QPushButton \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qpushbutton.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QWidget \
 		..\YQ\Utils.h \
 		..\YQ\GlobalData.h \
 		..\YQ\HttpNet.h \
