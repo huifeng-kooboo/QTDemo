@@ -41,6 +41,7 @@ public:
     QLabel *lbl_Tips;
     QPushButton *btn_pull;
     QLabel *lbl_warning_ico;
+    QWidget *widget_qrcode;
 
     void setupUi(QMainWindow *YLogin)
     {
@@ -263,6 +264,9 @@ public:
         lbl_warning_ico->setStyleSheet(QString::fromUtf8("QLabel#lbl_warning_ico{\n"
 "image: url(\":/login/src/styles/warning_ico.png\");\n"
 "}"));
+        widget_qrcode = new QWidget(centralwidget);
+        widget_qrcode->setObjectName(QString::fromUtf8("widget_qrcode"));
+        widget_qrcode->setGeometry(QRect(0, 30, 426, 307));
         YLogin->setCentralWidget(centralwidget);
 
         retranslateUi(YLogin);

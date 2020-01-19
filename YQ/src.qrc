@@ -21,5 +21,6 @@
         <file>styles/re_sour.png</file>
         <file>styles/dropdown.png</file>
         <file>styles/warning_ico.png</file>
+        <file>styles/tim_qrcode.png</file>
     </qresource>
 </RCC>

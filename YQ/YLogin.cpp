@@ -11,6 +11,7 @@ YLogin::YLogin(QWidget *parent)
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf-8")); //设置编码格式 处理乱码情况
     ui->setupUi(this);
+    ui->widget_qrcode->setVisible(false);
     ui->lbl_Tips->setVisible(false);
     ui->btn_pull->setVisible(false);
     ui->lbl_warning_ico->setVisible(false);
@@ -24,6 +25,7 @@ YLogin::~YLogin()
 {
     delete m_systemTray;
     delete m_TrayMenu;
+    delete m_btn_return;
     delete ui;
 }
 
@@ -99,6 +101,7 @@ void YLogin::InitSignalAndSlots()
     connect(ui->btn_Min,SIGNAL(clicked()),this,SLOT(Slots_MinsizeProgress()));
     connect(ui->btn_pull,SIGNAL(clicked()),this,SLOT(Slots_HideTips()));
     connect(ui->lineEdit_Account,SIGNAL(textChanged( const QString)),this,SLOT(Slots_HideTips()));
+    connect(ui->btn_qrcode,SIGNAL(clicked()),this,SLOT(Slots_ShowLoginQrcodePage()));
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
@@ -207,4 +210,35 @@ void YLogin::Slots_HideTips()
     ui->lbl_Tips->setVisible(false);
     ui->btn_pull->setVisible(false);
     ui->lbl_warning_ico->setVisible(false);
+}
+
+void YLogin::Slots_ShowLoginPage()
+{
+    ui->widget_qrcode->setVisible(false);
+}
+
+void YLogin::Slots_ShowLoginQrcodePage()
+{
+    ui->widget_qrcode->setStyleSheet("background-color:rgb(235,242,249)");
+
+    //1.添加返回按钮
+    m_btn_return = new QPushButton(ui->widget_qrcode);
+    //60,195,245
+    m_btn_return->setStyleSheet("QPushButton{width:194px;height:31px;border-radius:4px;background-color:rgb(0,163,255);color:rgb(255,255,255);} QPushButton:hover{background-color:rgb(60,195,245)}");
+    m_btn_return->setGeometry(116,260,194,31);
+    m_btn_return->setText("返回");
+    //绑定
+    connect(m_btn_return,SIGNAL(clicked()),this,SLOT(Slots_ShowLoginPage()));
+    m_btn_return->show();
+
+    //2.添加二维码
+    m_qrcode_ = new QLabel(ui->widget_qrcode);
+    m_qrcode_->setText("");
+    m_qrcode_->setGeometry(155,102,127,127);
+    m_qrcode_->setStyleSheet("image: url(':/login/src/styles/tim_qrcode.png');");
+    m_qrcode_->show();
+
+    //3.添加上方字段
+
+    ui->widget_qrcode->setVisible(true);
 }

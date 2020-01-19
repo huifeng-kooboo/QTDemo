@@ -465,6 +465,16 @@ image: url(&quot;:/login/src/styles/warning_ico.png&quot;);
      <string/>
     </property>
    </widget>
+   <widget class="QWidget" name="widget_qrcode" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>426</width>
+      <height>307</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

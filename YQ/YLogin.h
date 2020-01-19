@@ -61,6 +61,8 @@ private slots:
     void Slots_ShowNormal();//正常显示
     void Slots_TrayMsg(QSystemTrayIcon::ActivationReason reason); //托盘消息触发
     void Slots_HideTips();//隐藏提示框
+    void Slots_ShowLoginQrcodePage();//显示登录二维码页面
+    void Slots_ShowLoginPage(); //显示登录界面
 
 protected:
     //重写方法 设置去掉标题栏可移动
@@ -76,5 +78,8 @@ private:
     QMenu* m_TrayMenu;//托盘右键菜单
     QAction* m_Exit;//退出
     QAction* m_OpenPanel;//打开面板
+    //二维码框相关
+    QPushButton * m_btn_return;//返回到原先界面
+    QLabel * m_qrcode_; //二维码展示框
 };
 #endif // YLOGIN_H
