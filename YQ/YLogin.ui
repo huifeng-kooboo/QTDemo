@@ -475,6 +475,49 @@ image: url(&quot;:/login/src/styles/warning_ico.png&quot;);
      </rect>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_choose">
+    <property name="geometry">
+     <rect>
+      <x>288</x>
+      <y>203</y>
+      <width>19</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btn_choose{
+  image: url(&quot;:/login/src/styles/choose.png&quot;);
+}
+QPushButton#btn_choose:hover{
+  image: url(&quot;:/login/src/styles/choose_hover.png&quot;);
+}
+QPushButton#btn_choose:pressed{
+  image: url(&quot;:/login/src/styles/choose_on.png&quot;);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>btn_Login</zorder>
+   <zorder>cb_pwd</zorder>
+   <zorder>cb_autologin</zorder>
+   <zorder>lbl_back</zorder>
+   <zorder>lbl_reg_num</zorder>
+   <zorder>lbl_find_password</zorder>
+   <zorder>lineEdit_Account</zorder>
+   <zorder>lineEdit_Password</zorder>
+   <zorder>lbl_avator</zorder>
+   <zorder>btn_Min</zorder>
+   <zorder>btn_close</zorder>
+   <zorder>btn_drop</zorder>
+   <zorder>btn_addaccount</zorder>
+   <zorder>btn_qrcode</zorder>
+   <zorder>lbl_Tips</zorder>
+   <zorder>btn_pull</zorder>
+   <zorder>lbl_warning_ico</zorder>
+   <zorder>btn_choose</zorder>
+   <zorder>widget_qrcode</zorder>
   </widget>
  </widget>
  <resources/>

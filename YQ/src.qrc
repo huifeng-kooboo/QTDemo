@@ -22,5 +22,8 @@
         <file>styles/dropdown.png</file>
         <file>styles/warning_ico.png</file>
         <file>styles/tim_qrcode.png</file>
+        <file>styles/choose.png</file>
+        <file>styles/choose_hover.png</file>
+        <file>styles/choose_on.png</file>
     </qresource>
 </RCC>

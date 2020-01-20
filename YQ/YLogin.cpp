@@ -29,16 +29,15 @@ YLogin::~YLogin()
     delete ui;
 }
 
+//重绘界面
 void YLogin::paintEvent(QPaintEvent* event) {
     QPainter p(this);
-    //p.setCompositionMode(QPainter::CompositionMode_Clear);
     p.setBrush(QColor(234, 241, 248));
     int x = 0;
     int y = 179;
     int width = 425;
     int height =158;
     p.drawRect(x, y, width, height);
-
 }
 
 void YLogin::Init()
@@ -91,6 +90,11 @@ void YLogin::ShowRepeatLoginTip(QString tip_)
 void YLogin::ShowPromptTip(const QPoint & pos,QString tips_)
 {
     QToolTip::showText(pos,tips_);
+}
+
+bool YLogin::GetLocalUsersAccount()
+{
+    return false;
 }
 
 //初始化信号与槽接口

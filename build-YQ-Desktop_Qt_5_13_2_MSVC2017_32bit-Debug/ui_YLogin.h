@@ -42,6 +42,7 @@ public:
     QPushButton *btn_pull;
     QLabel *lbl_warning_ico;
     QWidget *widget_qrcode;
+    QPushButton *btn_choose;
 
     void setupUi(QMainWindow *YLogin)
     {
@@ -267,7 +268,38 @@ public:
         widget_qrcode = new QWidget(centralwidget);
         widget_qrcode->setObjectName(QString::fromUtf8("widget_qrcode"));
         widget_qrcode->setGeometry(QRect(0, 30, 426, 307));
+        btn_choose = new QPushButton(centralwidget);
+        btn_choose->setObjectName(QString::fromUtf8("btn_choose"));
+        btn_choose->setGeometry(QRect(288, 203, 19, 19));
+        btn_choose->setStyleSheet(QString::fromUtf8("QPushButton#btn_choose{\n"
+"  image: url(\":/login/src/styles/choose.png\");\n"
+"}\n"
+"QPushButton#btn_choose:hover{\n"
+"  image: url(\":/login/src/styles/choose_hover.png\");\n"
+"}\n"
+"QPushButton#btn_choose:pressed{\n"
+"  image: url(\":/login/src/styles/choose_on.png\");\n"
+"}"));
         YLogin->setCentralWidget(centralwidget);
+        btn_Login->raise();
+        cb_pwd->raise();
+        cb_autologin->raise();
+        lbl_back->raise();
+        lbl_reg_num->raise();
+        lbl_find_password->raise();
+        lineEdit_Account->raise();
+        lineEdit_Password->raise();
+        lbl_avator->raise();
+        btn_Min->raise();
+        btn_close->raise();
+        btn_drop->raise();
+        btn_addaccount->raise();
+        btn_qrcode->raise();
+        lbl_Tips->raise();
+        btn_pull->raise();
+        lbl_warning_ico->raise();
+        btn_choose->raise();
+        widget_qrcode->raise();
 
         retranslateUi(YLogin);
 
@@ -300,6 +332,7 @@ public:
         lbl_Tips->setText(QCoreApplication::translate("YLogin", "     \346\202\250\345\267\262\347\231\273\345\275\225942840260,\344\270\215\350\203\275\351\207\215\345\244\215\347\231\273\345\275\225\343\200\202", nullptr));
         btn_pull->setText(QString());
         lbl_warning_ico->setText(QString());
+        btn_choose->setText(QString());
     } // retranslateUi
 
 };

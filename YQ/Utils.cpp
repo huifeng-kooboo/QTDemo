@@ -45,3 +45,19 @@ QString Utils::QJsonObjectToQString(QJsonObject& json_object)
    return QString(QJsonDocument(json_object).toJson(QJsonDocument::Compact));
 }
 
+bool Utils::IsFileExist(QString filename)
+{
+    //1.判断文件名
+    if(filename.size()<1)
+    {
+        return false;
+    }
+    //2.判断文件是否存在
+    QFileInfo fileInfo(filename);
+    if(fileInfo.isFile())
+    {
+        return true;
+    }
+    return false;
+}
+

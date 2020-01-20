@@ -1,5 +1,6 @@
 #ifndef YLOGIN_H
 #define YLOGIN_H
+#include <QFileInfo>
 
 #include <QMainWindow>
 #include <QPoint>
@@ -36,6 +37,11 @@ class YLogin : public QMainWindow
     Q_OBJECT
 
 public:
+    enum LOGIN_STATE{
+        ONLINE = 2, //在线
+        LEAVELINE, //离线
+    };
+
     YLogin(QWidget *parent = nullptr);
     ~YLogin();
 
@@ -47,6 +53,8 @@ public:
     //业务方法
     bool SendLoginReqToServer(QString send_data); //发送登录请求给服务器
     void ShowRepeatLoginTip(QString tip_);    //显示重复登录提示
+    bool GetLocalUsersAccount();  // 获取本地用户账号显示在框中
+
 
     //展示提示框
     //@param1:pos：点位置
@@ -81,5 +89,9 @@ private:
     //二维码框相关
     QPushButton * m_btn_return;//返回到原先界面
     QLabel * m_qrcode_; //二维码展示框
+
+    //登录账号
+    QString m_LoginAccount; //登录账号
+    LOGIN_STATE m_LoginState; //用户登录状态
 };
 #endif // YLOGIN_H
