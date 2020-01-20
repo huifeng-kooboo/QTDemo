@@ -15,6 +15,12 @@
 //提示框
 #include <QToolTip>
 
+//QTableView相关
+#include <QTableView>
+#include <QStandardItem>
+#include <QStandardItemModel>
+#include <QHeaderView>
+
 //网络相关库
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
@@ -32,15 +38,26 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class YLogin; }
 QT_END_NAMESPACE
 
+//用户登录状态
+enum LOGIN_STATE{
+    ONLINE = 2, //在线
+    LEAVELINE, //离线
+};
+
+//用户信息结构体
+typedef struct{
+    QString user_account;//用户账号
+    QString user_name; //用户名
+    LOGIN_STATE user_state; //用户登录状态
+} UserInfo;
+
+
 class YLogin : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    enum LOGIN_STATE{
-        ONLINE = 2, //在线
-        LEAVELINE, //离线
-    };
+
 
     YLogin(QWidget *parent = nullptr);
     ~YLogin();
@@ -71,6 +88,7 @@ private slots:
     void Slots_HideTips();//隐藏提示框
     void Slots_ShowLoginQrcodePage();//显示登录二维码页面
     void Slots_ShowLoginPage(); //显示登录界面
+    void Slots_ShowUserTableView();
 
 protected:
     //重写方法 设置去掉标题栏可移动
@@ -90,8 +108,11 @@ private:
     QPushButton * m_btn_return;//返回到原先界面
     QLabel * m_qrcode_; //二维码展示框
 
+    //点击显示账号功能
+    QTableView * m_AccountView; //点击显示或者哪个好
+    QStandardItemModel* m_AccountItemModel;
+
     //登录账号
-    QString m_LoginAccount; //登录账号
-    LOGIN_STATE m_LoginState; //用户登录状态
+    UserInfo m_login_user; //用户信息
 };
 #endif // YLOGIN_H

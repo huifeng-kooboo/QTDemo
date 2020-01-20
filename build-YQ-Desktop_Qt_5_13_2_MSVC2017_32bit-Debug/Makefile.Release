@@ -185,6 +185,8 @@ release\qrc_src.cpp: ..\YQ\src.qrc \
 		..\YQ\styles\background.png \
 		..\YQ\styles\close.png \
 		..\YQ\styles\warning_ico.png \
+		..\YQ\styles\choose_on.png \
+		..\YQ\styles\choose_hover.png \
 		..\YQ\styles\hover.png \
 		..\YQ\styles\add_account_hover.png \
 		..\YQ\styles\person.png \
@@ -195,6 +197,8 @@ release\qrc_src.cpp: ..\YQ\src.qrc \
 		..\YQ\styles\statedemo.png \
 		..\YQ\styles\add_account.png \
 		..\YQ\styles\qr_code.png \
+		..\YQ\styles\tim_qrcode.png \
+		..\YQ\styles\choose.png \
 		..\YQ\styles\mim_size.png \
 		..\YQ\styles\dropdown_hover.png \
 		..\YQ\styles\close_hover.png \
@@ -214,10 +218,11 @@ compiler_moc_header_make_all: release\moc_YLogin.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) release\moc_YLogin.cpp
 release\moc_YLogin.cpp: ..\YQ\YLogin.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\QFileInfo \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qglobal.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig.h \
@@ -239,15 +244,10 @@ release\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmutex.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnumeric.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qversiontagging.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnamespace.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qchar.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qbytearray.h \
@@ -274,6 +274,17 @@ release\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmargins.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpaintdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qrect.h \
@@ -287,7 +298,6 @@ release\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpolygon.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qregion.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qdatastream.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qline.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtransform.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainterpath.h \
@@ -295,8 +305,6 @@ release\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixelformat.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixmap.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer_impl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfont.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfontmetrics.h \
@@ -314,8 +322,6 @@ release\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontiguouscache.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabwidget.h \
@@ -334,6 +340,26 @@ release\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qframe.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyleoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvalidator.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qregularexpression.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyle.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabbar.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qrubberband.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \
@@ -403,10 +429,11 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		..\YQ\YLogin.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\QFileInfo \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qglobal.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig.h \
@@ -428,15 +455,10 @@ release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmutex.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnumeric.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qversiontagging.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnamespace.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qchar.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qbytearray.h \
@@ -463,6 +485,17 @@ release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmargins.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpaintdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qrect.h \
@@ -476,7 +509,6 @@ release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpolygon.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qregion.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qdatastream.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qline.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtransform.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainterpath.h \
@@ -484,8 +516,6 @@ release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixelformat.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixmap.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer_impl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfont.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfontmetrics.h \
@@ -503,8 +533,6 @@ release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontiguouscache.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabwidget.h \
@@ -523,6 +551,26 @@ release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qframe.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyleoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvalidator.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qregularexpression.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyle.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabbar.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qrubberband.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \
@@ -566,10 +614,11 @@ release\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 
 release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		..\YQ\YLogin.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\QFileInfo \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qglobal.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig.h \
@@ -591,15 +640,10 @@ release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmutex.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnumeric.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qversiontagging.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnamespace.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qchar.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qbytearray.h \
@@ -626,6 +670,17 @@ release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmargins.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpaintdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qrect.h \
@@ -639,7 +694,6 @@ release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpolygon.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qregion.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qdatastream.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qline.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtransform.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainterpath.h \
@@ -647,8 +701,6 @@ release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixelformat.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixmap.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer_impl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfont.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfontmetrics.h \
@@ -666,8 +718,6 @@ release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontiguouscache.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabwidget.h \
@@ -686,6 +736,26 @@ release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qframe.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyleoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvalidator.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qregularexpression.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyle.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabbar.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qrubberband.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \
@@ -728,10 +798,11 @@ release\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpen.h
 
 release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\QFileInfo \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qglobal.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig.h \
@@ -753,15 +824,10 @@ release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmutex.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnumeric.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qversiontagging.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnamespace.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qchar.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qbytearray.h \
@@ -788,6 +854,17 @@ release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmargins.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpaintdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qrect.h \
@@ -801,7 +878,6 @@ release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpolygon.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qregion.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qdatastream.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qline.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtransform.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainterpath.h \
@@ -809,8 +885,6 @@ release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixelformat.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixmap.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer_impl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfont.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfontmetrics.h \
@@ -828,8 +902,6 @@ release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontiguouscache.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabwidget.h \
@@ -848,6 +920,26 @@ release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qframe.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyleoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvalidator.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qregularexpression.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyle.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabbar.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qrubberband.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \
@@ -897,10 +989,11 @@ release\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qinputmethod.h
 
 release\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\QFileInfo \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfileinfo.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qglobal.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qconfig.h \
@@ -922,15 +1015,10 @@ release\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmutex.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnumeric.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qversiontagging.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qnamespace.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qchar.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qbytearray.h \
@@ -957,6 +1045,17 @@ release\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QMainWindow \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qmainwindow.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qwindowdefs_win.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qmargins.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpaintdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qrect.h \
@@ -970,7 +1069,6 @@ release\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpolygon.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qregion.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qdatastream.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qiodevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qline.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtransform.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpainterpath.h \
@@ -978,8 +1076,6 @@ release\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixelformat.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qpixmap.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qshareddata.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qhash.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qsharedpointer_impl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfont.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qfontmetrics.h \
@@ -997,8 +1093,6 @@ release\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qcontiguouscache.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurl.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfile.h \
-		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabwidget.h \
@@ -1017,6 +1111,26 @@ release\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qframe.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyleoption.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qvalidator.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qregularexpression.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractslider.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qstyle.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtabbar.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qrubberband.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \

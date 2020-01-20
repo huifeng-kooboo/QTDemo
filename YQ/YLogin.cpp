@@ -23,9 +23,11 @@ YLogin::YLogin(QWidget *parent)
 
 YLogin::~YLogin()
 {
+    //释放相关内存
     delete m_systemTray;
     delete m_TrayMenu;
     delete m_btn_return;
+    delete m_AccountView;
     delete ui;
 }
 
@@ -42,6 +44,14 @@ void YLogin::paintEvent(QPaintEvent* event) {
 
 void YLogin::Init()
 {
+    //1.初始化登录用户信息结构体
+    m_login_user.user_name = "";
+    m_login_user.user_account = "";
+    m_login_user.user_state = LEAVELINE; //默认为离线状态
+    //2.
+    m_AccountView = nullptr; //初始化设置空
+    m_AccountItemModel = nullptr;
+
     this->setWindowFlags(Qt::FramelessWindowHint);//去掉标题栏
     ui->lineEdit_Password->setEchoMode(QLineEdit::Password); //设置密码模式
     ui->lineEdit_Account->setPlaceholderText("QQ号码/手机/邮箱");
@@ -106,6 +116,7 @@ void YLogin::InitSignalAndSlots()
     connect(ui->btn_pull,SIGNAL(clicked()),this,SLOT(Slots_HideTips()));
     connect(ui->lineEdit_Account,SIGNAL(textChanged( const QString)),this,SLOT(Slots_HideTips()));
     connect(ui->btn_qrcode,SIGNAL(clicked()),this,SLOT(Slots_ShowLoginQrcodePage()));
+    connect(ui->btn_choose,SIGNAL(clicked()),this,SLOT(Slots_ShowUserTableView()));
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
@@ -245,4 +256,35 @@ void YLogin::Slots_ShowLoginQrcodePage()
     //3.添加上方字段
 
     ui->widget_qrcode->setVisible(true);
+}
+
+void YLogin::Slots_ShowUserTableView()
+{
+    //判断是否为空
+    if(m_AccountView == nullptr)
+    {
+        m_AccountView = new QTableView(this);
+    }
+    if( m_AccountItemModel == nullptr)
+    {
+        m_AccountItemModel = new QStandardItemModel();
+    }
+    m_AccountItemModel->setItem(0, 0, new QStandardItem("demo"));
+    m_AccountItemModel->setItem(0, 1, new QStandardItem("children"));
+    m_AccountItemModel->setItem(0, 2, new QStandardItem("twice"));
+    m_AccountView->setModel(m_AccountItemModel);
+    //QLabel
+    //设置相关元素
+    // 设置位置
+    // 去掉行头和列头
+    m_AccountView->horizontalHeader()->setVisible(false);
+    m_AccountView->verticalHeader()->setVisible(false);
+    m_AccountView->setGeometry(113,226,200,100);
+    m_AccountView->setShowGrid(false); //设置不显示网格~ 好评
+    //设置样式
+  //  m_AccountView->setStyleSheet("QTableView{border:none}");
+    m_AccountView->show();
+    //m_AccountView->setVisible(false);//隐藏
+    //
+    //m_AccountView->setcol
 }
