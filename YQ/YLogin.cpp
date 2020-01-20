@@ -269,22 +269,34 @@ void YLogin::Slots_ShowUserTableView()
     {
         m_AccountItemModel = new QStandardItemModel();
     }
-    m_AccountItemModel->setItem(0, 0, new QStandardItem("demo"));
-    m_AccountItemModel->setItem(0, 1, new QStandardItem("children"));
-    m_AccountItemModel->setItem(0, 2, new QStandardItem("twice"));
+    //QLabel * dd = new QLabel("dd");
+    //添加三个空的控件 //用于存放 头像 、 账号信息、 按钮
+    m_AccountItemModel->setItem(0, 0, new QStandardItem(""));
+    m_AccountItemModel->setItem(0, 1, new QStandardItem(""));
+    m_AccountItemModel->setItem(0, 2, new QStandardItem(""));
     m_AccountView->setModel(m_AccountItemModel);
+    //
+    m_AccountView->verticalHeader()->setDefaultSectionSize(50);
+    QLabel * avator_ = new QLabel("dd");
+   // avator_->setProperty("objectName","avator_");
+    avator_->setStyleSheet("QLabel:{color:red;width:44px;height:44px;}");
+   //  QPushButton* nw = new QPushButton("Basic"); //添加控件
+    m_AccountView->setIndexWidget(m_AccountItemModel->index(0,0),avator_);
+    avator_->show();
+    //nw->show();
     //QLabel
     //设置相关元素
     // 设置位置
+
     // 去掉行头和列头
     m_AccountView->horizontalHeader()->setVisible(false);
     m_AccountView->verticalHeader()->setVisible(false);
-    m_AccountView->setGeometry(113,226,200,100);
-    m_AccountView->setShowGrid(false); //设置不显示网格~ 好评
+    m_AccountView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); //关闭滚动条
+
+    //设置TableView大小
+    m_AccountView->setGeometry(113,226,200,50);
+    m_AccountView->setShowGrid(false); //设置不显示网格~
     //设置样式
   //  m_AccountView->setStyleSheet("QTableView{border:none}");
     m_AccountView->show();
-    //m_AccountView->setVisible(false);//隐藏
-    //
-    //m_AccountView->setcol
 }

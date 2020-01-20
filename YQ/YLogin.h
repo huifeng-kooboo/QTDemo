@@ -14,6 +14,7 @@
 
 //提示框
 #include <QToolTip>
+#include <QPushButton>
 
 //QTableView相关
 #include <QTableView>

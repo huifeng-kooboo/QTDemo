@@ -182,6 +182,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_src.cpp
 debug\qrc_src.cpp: ..\YQ\src.qrc \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\bin\rcc.exe \
+		..\YQ\styles\small_close_hover.png \
 		..\YQ\styles\dropdown.png \
 		..\YQ\styles\background.png \
 		..\YQ\styles\close.png \
@@ -191,6 +192,8 @@ debug\qrc_src.cpp: ..\YQ\src.qrc \
 		..\YQ\styles\hover.png \
 		..\YQ\styles\add_account_hover.png \
 		..\YQ\styles\person.png \
+		..\YQ\styles\small_avator.png \
+		..\YQ\styles\small_close.png \
 		..\YQ\styles\headers.png \
 		..\YQ\styles\avatar.png \
 		..\YQ\styles\check.png \
@@ -341,6 +344,9 @@ debug\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QPushButton \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qpushbutton.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractbutton.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
@@ -361,6 +367,8 @@ debug\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QHeaderView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qheaderview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \
@@ -552,6 +560,9 @@ debug\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QPushButton \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qpushbutton.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractbutton.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
@@ -572,6 +583,8 @@ debug\HttpNet.obj: ..\YQ\HttpNet.cpp ..\YQ\HttpNet.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QHeaderView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qheaderview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \
@@ -737,6 +750,9 @@ debug\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QPushButton \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qpushbutton.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractbutton.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
@@ -757,6 +773,8 @@ debug\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QHeaderView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qheaderview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \
@@ -921,6 +939,9 @@ debug\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QPushButton \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qpushbutton.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractbutton.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
@@ -941,6 +962,8 @@ debug\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QHeaderView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qheaderview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \
@@ -1112,6 +1135,9 @@ debug\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtCore\qjsonarray.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QToolTip \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtooltip.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QPushButton \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qpushbutton.h \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractbutton.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QTableView \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qtableview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
@@ -1132,6 +1158,8 @@ debug\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItem \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\qstandarditemmodel.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtGui\QStandardItemModel \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\QHeaderView \
+		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtWidgets\qheaderview.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\QNetworkAccessManager \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qnetworkaccessmanager.h \
 		C:\Qt\Qt5.13.2\5.13.2\msvc2017\include\QtNetwork\qtnetworkglobal.h \

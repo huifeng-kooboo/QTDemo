@@ -25,5 +25,8 @@
         <file>styles/choose.png</file>
         <file>styles/choose_hover.png</file>
         <file>styles/choose_on.png</file>
+        <file>styles/small_avator.png</file>
+        <file>styles/small_close.png</file>
+        <file>styles/small_close_hover.png</file>
     </qresource>
 </RCC>
