@@ -48,9 +48,15 @@ void YLogin::Init()
     m_login_user.user_name = "";
     m_login_user.user_account = "";
     m_login_user.user_state = LEAVELINE; //默认为离线状态
-    //2.
+
+    //初始化显示账号状态
+    m_show_state = 0;
+    m_show_init = 0;
+
+    //2. 初始化相关指针
     m_AccountView = nullptr; //初始化设置空
     m_AccountItemModel = nullptr;
+    m_DeleteAccount = nullptr;
 
     this->setWindowFlags(Qt::FramelessWindowHint);//去掉标题栏
     ui->lineEdit_Password->setEchoMode(QLineEdit::Password); //设置密码模式
@@ -238,8 +244,9 @@ void YLogin::Slots_ShowLoginQrcodePage()
 
     //1.添加返回按钮
     m_btn_return = new QPushButton(ui->widget_qrcode);
+    m_btn_return->setProperty("objectName","m_btn_return");
     //60,195,245
-    m_btn_return->setStyleSheet("QPushButton{width:194px;height:31px;border-radius:4px;background-color:rgb(0,163,255);color:rgb(255,255,255);} QPushButton:hover{background-color:rgb(60,195,245)}");
+    m_btn_return->setStyleSheet("QPushButton#m_btn_return{width:194px;height:31px;border-radius:4px;background-color:rgb(0,163,255);color:rgb(255,255,255);} QPushButton#m_btn_return:hover{background-color:rgb(60,195,245)}");
     m_btn_return->setGeometry(116,260,194,31);
     m_btn_return->setText("返回");
     //绑定
@@ -260,10 +267,20 @@ void YLogin::Slots_ShowLoginQrcodePage()
 
 void YLogin::Slots_ShowUserTableView()
 {
+    if(m_show_state == 0)
+    {
+      if(m_show_init == 1)
+      {
+         //只要显示就够了
+          m_AccountView->show();
+          m_AccountView->setVisible(true);
+          return;
+      }
     //判断是否为空
     if(m_AccountView == nullptr)
     {
         m_AccountView = new QTableView(this);
+        m_AccountView->setProperty("objectName","m_AccountView");
     }
     if( m_AccountItemModel == nullptr)
     {
@@ -276,12 +293,30 @@ void YLogin::Slots_ShowUserTableView()
     m_AccountItemModel->setItem(0, 2, new QStandardItem(""));
     m_AccountView->setModel(m_AccountItemModel);
     //
-    m_AccountView->verticalHeader()->setDefaultSectionSize(50);
-    QLabel * avator_ = new QLabel("dd");
-   // avator_->setProperty("objectName","avator_");
-    avator_->setStyleSheet("QLabel:{color:red;width:44px;height:44px;}");
-   //  QPushButton* nw = new QPushButton("Basic"); //添加控件
+    m_AccountView->verticalHeader()->setDefaultSectionSize(44);
+    //1.放置头像
+    QLabel * avator_ = new QLabel("");
+    avator_->setProperty("objectName","avator_");
+    avator_->setStyleSheet("QLabel#avator_{border:0px;width:44px;height:44px;background-image:url(':/login/src/styles/small_avator.png');}");
+    m_AccountView->horizontalHeader()->setDefaultSectionSize(44);
     m_AccountView->setIndexWidget(m_AccountItemModel->index(0,0),avator_);
+    m_AccountView->setStyleSheet("QTableView#m_AccountView::item{background-color:rgb(60,150,214)}");
+    m_AccountView->setStyleSheet("QTableView#m_AccountView{border:1px solid rgb(255,255,255);background-color:rgb(60,150,214)}");
+    //2.放置账号信息
+    QLabel * user_tag = new QLabel(" 942840260");
+    user_tag->setProperty("objectName","user_tag");
+    user_tag->setStyleSheet("QLabel#user_tag{color:rgb(255,255,255)}");
+    m_AccountView->setColumnWidth(1,126);
+    m_AccountView->setIndexWidget(m_AccountItemModel->index(0,1),user_tag);
+
+    //3.放置删除小号按钮
+    m_DeleteAccount = new QPushButton();
+    m_DeleteAccount->setProperty("objectName","btn_deleteAccount");
+    m_DeleteAccount->setStyleSheet("QPushButton#btn_deleteAccount{width:16px;height:16px;background-color:rgb(60,150,214);image:url(':/login/src/styles/small_close.png');}QPushButton#btn_deleteAccount::hover{background-color:rgb(60,150,214);width:16px;height:16px;image:url(':/login/src/styles/small_close_hover.png');}");
+    m_DeleteAccount->setText("");
+    m_AccountView->setColumnWidth(2,30);
+    //绑定槽函数
+    m_AccountView->setIndexWidget(m_AccountItemModel->index(0,2),m_DeleteAccount);
     avator_->show();
     //nw->show();
     //QLabel
@@ -289,14 +324,23 @@ void YLogin::Slots_ShowUserTableView()
     // 设置位置
 
     // 去掉行头和列头
+    //m_AccountView->setItemDelegateForColumn(0,)
     m_AccountView->horizontalHeader()->setVisible(false);
     m_AccountView->verticalHeader()->setVisible(false);
     m_AccountView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); //关闭滚动条
 
     //设置TableView大小
-    m_AccountView->setGeometry(113,226,200,50);
+    m_AccountView->setGeometry(113,226,200,45);
     m_AccountView->setShowGrid(false); //设置不显示网格~
     //设置样式
   //  m_AccountView->setStyleSheet("QTableView{border:none}");
     m_AccountView->show();
+    m_show_state = 1;
+    m_show_init = 0;
+    }
+    else{
+        m_show_state = 0;
+        m_AccountView->hide();
+        m_AccountView->setVisible(false); //不显示
+    }
 }

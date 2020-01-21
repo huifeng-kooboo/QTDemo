@@ -110,8 +110,11 @@ private:
     QLabel * m_qrcode_; //二维码展示框
 
     //点击显示账号功能
+    int m_show_state; //显示账号状态 0:当前未显示 1：当前显示
+    int m_show_init ;// 判断是否初始化
     QTableView * m_AccountView; //点击显示或者哪个好
     QStandardItemModel* m_AccountItemModel;
+    QPushButton * m_DeleteAccount;
 
     //登录账号
     UserInfo m_login_user; //用户信息
