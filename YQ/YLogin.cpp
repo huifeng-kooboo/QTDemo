@@ -128,6 +128,7 @@ void YLogin::InitSignalAndSlots()
     connect(ui->btn_choose,SIGNAL(clicked()),this,SLOT(Slots_ShowUserTableView()));
     //绑定忘记密码
     connect(ui->lbl_reg_num,SIGNAL(linkActivated(QString)), this, SLOT(Slots_OpenLink(QString)));
+    connect(ui->lbl_find_password,SIGNAL(linkActivated(QString)), this, SLOT(Slots_OpenLink(QString)));
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
