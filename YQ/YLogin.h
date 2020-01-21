@@ -124,5 +124,5 @@ private:
 
     //登录账号
     UserInfo m_login_user; //用户信息
-};
+ };
 #endif // YLOGIN_H

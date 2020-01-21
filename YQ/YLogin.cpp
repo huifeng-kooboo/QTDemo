@@ -2,7 +2,6 @@
 #include "ui_YLogin.h"
 #include "Utils.h"
 #include "GlobalData.h"
-#include "HttpNet.h"
 #include <QTextCodec>
 
 YLogin::YLogin(QWidget *parent)
@@ -24,10 +23,16 @@ YLogin::YLogin(QWidget *parent)
 YLogin::~YLogin()
 {
     //释放相关内存
+    //防止内存泄漏
     delete m_systemTray;
     delete m_TrayMenu;
     delete m_btn_return;
     delete m_AccountView;
+    delete m_AccountItemModel;
+    delete m_DeleteAccount;
+    delete m_OpenPanel;
+    delete m_Exit;
+    delete m_qrcode_;
     delete ui;
 }
 
