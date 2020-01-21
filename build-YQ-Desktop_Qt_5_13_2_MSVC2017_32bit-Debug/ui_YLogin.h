@@ -317,12 +317,12 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"www.baidu.com\"><span style=\" font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);\">\346\263\250\345\206\214\350\264\246\345\217\267</span></a></p></body></html>", nullptr));
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://ssl.zc.qq.com/v3/index-chs.html?from=client&pt_clientver=5603&pt_src=1&client=tim&regkey=BB34C9BBAD7BBCF07E173530946BE6CA6CEF76644089CF504228E47311FAF670&ADUIN=0&ADSESSION=0&ADTAG=CLIENT.QQ.5603_NewAccount_Btn.0&ADPUBNO=26933\"><span style=\" font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);\">\346\263\250\345\206\214\350\264\246\345\217\267</span></a></p></body></html>", nullptr));
         lbl_find_password->setText(QCoreApplication::translate("YLogin", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"www.baidu.com\"><span style=\" font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);\">\346\211\276\345\233\236\345\257\206\347\240\201</span></a></p></body></html>", nullptr));
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://aq.qq.com/v2/uv_aq/html/reset_pwd/pc_reset_pwd_input_account.html?v=3.0\"><span style=\" font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);\">\346\211\276\345\233\236\345\257\206\347\240\201</span></a></p></body></html>", nullptr));
         lbl_avator->setText(QString());
         btn_Min->setText(QString());
         btn_close->setText(QString());

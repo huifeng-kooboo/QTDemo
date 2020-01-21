@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_YLogin_t {
-    QByteArrayData data[13];
-    char stringdata0[219];
+    QByteArrayData data[15];
+    char stringdata0[243];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,14 +44,17 @@ QT_MOC_LITERAL(8, 127, 6), // "reason"
 QT_MOC_LITERAL(9, 134, 14), // "Slots_HideTips"
 QT_MOC_LITERAL(10, 149, 25), // "Slots_ShowLoginQrcodePage"
 QT_MOC_LITERAL(11, 175, 19), // "Slots_ShowLoginPage"
-QT_MOC_LITERAL(12, 195, 23) // "Slots_ShowUserTableView"
+QT_MOC_LITERAL(12, 195, 23), // "Slots_ShowUserTableView"
+QT_MOC_LITERAL(13, 219, 14), // "Slots_OpenLink"
+QT_MOC_LITERAL(14, 234, 8) // "str_link"
 
     },
     "YLogin\0Slots_CloseWindow\0\0Slots_LoginQQ\0"
     "Slots_MinsizeProgress\0Slots_ShowNormal\0"
     "Slots_TrayMsg\0QSystemTrayIcon::ActivationReason\0"
     "reason\0Slots_HideTips\0Slots_ShowLoginQrcodePage\0"
-    "Slots_ShowLoginPage\0Slots_ShowUserTableView"
+    "Slots_ShowLoginPage\0Slots_ShowUserTableView\0"
+    "Slots_OpenLink\0str_link"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,7 +64,7 @@ static const uint qt_meta_data_YLogin[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -69,15 +72,16 @@ static const uint qt_meta_data_YLogin[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x08 /* Private */,
-       3,    0,   60,    2, 0x08 /* Private */,
-       4,    0,   61,    2, 0x08 /* Private */,
-       5,    0,   62,    2, 0x08 /* Private */,
-       6,    1,   63,    2, 0x08 /* Private */,
-       9,    0,   66,    2, 0x08 /* Private */,
-      10,    0,   67,    2, 0x08 /* Private */,
-      11,    0,   68,    2, 0x08 /* Private */,
-      12,    0,   69,    2, 0x08 /* Private */,
+       1,    0,   64,    2, 0x08 /* Private */,
+       3,    0,   65,    2, 0x08 /* Private */,
+       4,    0,   66,    2, 0x08 /* Private */,
+       5,    0,   67,    2, 0x08 /* Private */,
+       6,    1,   68,    2, 0x08 /* Private */,
+       9,    0,   71,    2, 0x08 /* Private */,
+      10,    0,   72,    2, 0x08 /* Private */,
+      11,    0,   73,    2, 0x08 /* Private */,
+      12,    0,   74,    2, 0x08 /* Private */,
+      13,    1,   75,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -89,6 +93,7 @@ static const uint qt_meta_data_YLogin[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   14,
 
        0        // eod
 };
@@ -108,6 +113,7 @@ void YLogin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 6: _t->Slots_ShowLoginQrcodePage(); break;
         case 7: _t->Slots_ShowLoginPage(); break;
         case 8: _t->Slots_ShowUserTableView(); break;
+        case 9: _t->Slots_OpenLink((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -142,13 +148,13 @@ int YLogin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

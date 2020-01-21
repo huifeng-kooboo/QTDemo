@@ -62,6 +62,9 @@ void YLogin::Init()
     ui->lineEdit_Password->setEchoMode(QLineEdit::Password); //设置密码模式
     ui->lineEdit_Account->setPlaceholderText("QQ号码/手机/邮箱");
     ui->lineEdit_Password->setPlaceholderText("密码");
+    // 添加注册事件
+    //ui->lbl_reg_num->installEventFilter(this);
+    //ui->lbl_find_password->installEventFilter(this);
 }
 
 void YLogin::InitTrayMenu()
@@ -123,6 +126,8 @@ void YLogin::InitSignalAndSlots()
     connect(ui->lineEdit_Account,SIGNAL(textChanged( const QString)),this,SLOT(Slots_HideTips()));
     connect(ui->btn_qrcode,SIGNAL(clicked()),this,SLOT(Slots_ShowLoginQrcodePage()));
     connect(ui->btn_choose,SIGNAL(clicked()),this,SLOT(Slots_ShowUserTableView()));
+    //绑定忘记密码
+    connect(ui->lbl_reg_num,SIGNAL(linkActivated(QString)), this, SLOT(Slots_OpenLink(QString)));
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
@@ -142,13 +147,37 @@ void YLogin::mouseReleaseEvent(QMouseEvent *e)
 
 void YLogin::mousePressEvent(QMouseEvent *e)
 {
-    last=e->globalPos();
+    last =e->globalPos();
+    //进行隐藏
+    if(m_AccountView!=nullptr)
+    {
+        m_AccountView->setVisible(false);
+    }
+}
+
+//重写事件过滤方法
+bool YLogin::eventFilter(QObject* watched,QEvent * event)
+{
+    //注册账号点击
+    if(watched == ui->lbl_reg_num &&event->type() == QEvent::MouseButtonPress)
+    {
+        QMessageBox::about(nullptr,"测试","测试");
+      //默认浏览器的打开
+    }
+    return true;
 }
 
 //基础用户名密码检查
 bool YLogin::BasicInfoCheck()
 {
     return false;
+}
+
+//打开注册/忘记密码链接
+void YLogin::Slots_OpenLink(QString str_link)
+{
+    //使用默认浏览器打开指定链接
+    QDesktopServices::openUrl(str_link);
 }
 
 //槽函数实现
@@ -240,6 +269,13 @@ void YLogin::Slots_ShowLoginPage()
 
 void YLogin::Slots_ShowLoginQrcodePage()
 {
+    //判断是否重复登录提示框去掉
+    if(ui->lbl_Tips->isVisible())
+    {
+        ui->lbl_Tips->setVisible(false);
+        ui->btn_pull->setVisible(false);
+        ui->lbl_warning_ico->setVisible(false);
+    }
     ui->widget_qrcode->setStyleSheet("background-color:rgb(235,242,249)");
 
     //1.添加返回按钮

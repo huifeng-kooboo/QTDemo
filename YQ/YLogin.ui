@@ -202,7 +202,7 @@ color:rgb(39,134,228);
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;www.baidu.com&quot;&gt;&lt;span style=&quot; font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);&quot;&gt;注册账号&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://ssl.zc.qq.com/v3/index-chs.html?from=client&amp;pt_clientver=5603&amp;pt_src=1&amp;client=tim&amp;regkey=BB34C9BBAD7BBCF07E173530946BE6CA6CEF76644089CF504228E47311FAF670&amp;ADUIN=0&amp;ADSESSION=0&amp;ADTAG=CLIENT.QQ.5603_NewAccount_Btn.0&amp;ADPUBNO=26933&quot;&gt;&lt;span style=&quot; font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);&quot;&gt;注册账号&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="lbl_find_password">
@@ -224,7 +224,7 @@ color:rgb(39,134,228);
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;www.baidu.com&quot;&gt;&lt;span style=&quot; font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);&quot;&gt;找回密码&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://aq.qq.com/v2/uv_aq/html/reset_pwd/pc_reset_pwd_input_account.html?v=3.0&quot;&gt;&lt;span style=&quot; font-family:'SimSun';text-decoration:none; color:rgb(39,134,228);&quot;&gt;找回密码&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_Account">

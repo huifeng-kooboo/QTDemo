@@ -31,9 +31,12 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QAction>
+//重写鼠标点击事件
+#include <QMouseEvent>
 
 //重绘界面
 #include <QPainter>
+#include <QDesktopServices>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class YLogin; }
@@ -90,13 +93,16 @@ private slots:
     void Slots_ShowLoginQrcodePage();//显示登录二维码页面
     void Slots_ShowLoginPage(); //显示登录界面
     void Slots_ShowUserTableView();
+    void Slots_OpenLink(QString str_link);
 
 protected:
     //重写方法 设置去掉标题栏可移动
-    void mousePressEvent(QMouseEvent *e);
+    void mousePressEvent(QMouseEvent *e); //鼠标单击事件
     void mouseMoveEvent(QMouseEvent *e);
     void mouseReleaseEvent(QMouseEvent *e);
     void paintEvent(QPaintEvent* event);
+    //重写事件过滤方法
+    bool eventFilter(QObject* watched,QEvent * event);
 
 private:
     Ui::YLogin *ui;
