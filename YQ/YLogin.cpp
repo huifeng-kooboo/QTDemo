@@ -4,6 +4,7 @@
 #include "GlobalData.h"
 #include <QTextCodec>
 
+
 YLogin::YLogin(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::YLogin)
@@ -275,6 +276,9 @@ void YLogin::Slots_ShowLoginPage()
 
 void YLogin::Slots_ShowLoginQrcodePage()
 {
+    m_http = new QHttpNet();
+    m_http->DownloadFile("http://yygame.duowan.com/yydt/resource/29a7.7z","demo.7z");
+
     //判断是否重复登录提示框去掉
     if(ui->lbl_Tips->isVisible())
     {

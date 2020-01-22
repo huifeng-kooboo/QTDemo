@@ -19,12 +19,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    QHttpNet.cpp \
     Utils.cpp \
     main.cpp \
     YLogin.cpp
 
 HEADERS += \
     GlobalData.h \
+    QHttpNet.h \
     Utils.h \
     YLogin.h
 

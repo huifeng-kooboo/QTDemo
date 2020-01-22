@@ -38,6 +38,8 @@
 #include <QPainter>
 #include <QDesktopServices>
 
+#include "QHttpNet.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class YLogin; }
 QT_END_NAMESPACE
@@ -124,5 +126,7 @@ private:
 
     //登录账号
     UserInfo m_login_user; //用户信息
+
+    QHttpNet* m_http;
  };
 #endif // YLOGIN_H
