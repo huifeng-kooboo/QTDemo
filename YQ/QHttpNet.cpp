@@ -5,6 +5,9 @@ QHttpNet::QHttpNet()
 {
     m_manager = new QNetworkAccessManager(this); //初始化
     m_reply = nullptr;
+    m_cur_download_size = 0;
+    m_all_download_size = 0;
+    m_progress_value = 0;
 }
 
 QHttpNet::~QHttpNet()
@@ -41,7 +44,8 @@ bool QHttpNet::DownloadFile(QString url_, QString file_name)
 //显示下载进度
 void QHttpNet::Slots_ShowProgress(qint64 cur_size,qint64 all_size)
 {
-
+    m_cur_download_size = cur_size;
+    m_all_download_size = all_size;
 }
 
 void QHttpNet::getUrl(QString url_)
@@ -75,4 +79,10 @@ void QHttpNet::Slots_DownloadFinish()
     m_file->flush();
     m_file->close();
     m_file = nullptr;
+}
+
+int  QHttpNet::GetCurrentProgress()
+{
+    m_progress_value = int((double(m_cur_download_size)/double(m_all_download_size))*100);
+    return m_progress_value; //获取当前进度
 }
