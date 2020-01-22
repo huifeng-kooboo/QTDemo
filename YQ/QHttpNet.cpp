@@ -86,3 +86,13 @@ int  QHttpNet::GetCurrentProgress()
     m_progress_value = int((double(m_cur_download_size)/double(m_all_download_size))*100);
     return m_progress_value; //获取当前进度
 }
+
+bool QHttpNet::PostData(QString url_, QString datas)
+{
+
+}
+
+bool QHttpNet::GetData(QString url_, QString datas)
+{
+
+}

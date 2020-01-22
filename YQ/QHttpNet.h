@@ -13,6 +13,8 @@ public:
     QHttpNet();
     ~QHttpNet();
     void getUrl(QString url_);
+    bool PostData(QString url_,QString datas); //使用Post发送数据
+    bool GetData(QString url_,QString datas); //使用get发送数据
     bool DownloadFile(QString url_,QString file_name); //下载文件
     bool CreateDownloadFile(QString filename); //创建下载的文件名，用于写入
     int  GetCurrentProgress(); //获取当前的下载进度0-100
