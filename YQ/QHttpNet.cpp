@@ -34,7 +34,7 @@ bool QHttpNet::DownloadFile(QString url_, QString file_name)
     m_reply = m_manager->get(QNetworkRequest(download_url));
     connect(m_reply,SIGNAL(readyRead()),this,SLOT(Slots_WriteFile()));//数据写入
     connect(m_reply,SIGNAL(finished()),this,SLOT(Slots_DownloadFinish()));//下载完成
-    connect(m_reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(Slots_ShowProgress(qint64,qint64)));
+    connect(m_reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(Slots_ShowProgress(qint64,qint64))); //获取下载进度
     return true;
 }
 
@@ -71,6 +71,8 @@ void QHttpNet::Slots_Reply()
 
 void QHttpNet::Slots_DownloadFinish()
 {
-    //下载完成
-
+    //下载完成:清空下载
+    m_file->flush();
+    m_file->close();
+    m_file = nullptr;
 }
