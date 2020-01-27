@@ -37,6 +37,7 @@ private slots:
     virtual void Slots_WriteFile();//写入文件
     virtual void Slots_ShowProgress(qint64 data_1,qint64 data_2); //显示进度
     virtual void Slots_DownloadFinish(); //下载完成
+    virtual void Slots_PostRequestFinished(QNetworkReply* reply_);
 
 private:
     QNetworkAccessManager *m_manager;

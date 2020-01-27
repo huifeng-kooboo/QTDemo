@@ -81,6 +81,12 @@ void QHttpNet::Slots_DownloadFinish()
     m_file = nullptr;
 }
 
+//Post请求完成响应
+void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply_)
+{
+
+}
+
 int  QHttpNet::GetCurrentProgress()
 {
     m_progress_value = int((double(m_cur_download_size)/double(m_all_download_size))*100);
@@ -89,11 +95,20 @@ int  QHttpNet::GetCurrentProgress()
 
 bool QHttpNet::PostData(QString url_, QString datas)
 {
+    QNetworkRequest req;
+    req.setUrl(url_); //设置URL访问
+    QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_PostRequestFinished(QNetworkReply*)));
+    m_manager->post(req,datas.toUtf8()); //发送post请求
     return true;
 }
 
 bool QHttpNet::GetData(QString url_, QString datas)
 {
+    if(!m_manager)
+    {
+        m_manager = new QNetworkAccessManager();
+    }
+   // m_manager->get();
     return true;
 
 }
