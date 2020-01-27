@@ -364,10 +364,6 @@ void YLogin::Slots_ShowUserTableView()
     //绑定槽函数
     m_AccountView->setIndexWidget(m_AccountItemModel->index(0,2),m_DeleteAccount);
     avator_->show();
-    //nw->show();
-    //QLabel
-    //设置相关元素
-    // 设置位置
 
     // 去掉行头和列头
     //m_AccountView->setItemDelegateForColumn(0,)

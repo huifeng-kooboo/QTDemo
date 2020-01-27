@@ -63,10 +63,12 @@ bool Utils::IsFileExist(QString filename)
 
 QString Utils::GetFileMd5(QString& file_name)
 {
-    //1.判断该文件是否存在
-
-    //2.获取文件MD5值
-
-    //3.进行判断
-    return "";
+    //获取文件md5码
+    QFile file(file_name);
+    file.open(QFile::ReadOnly);
+    QByteArray fileMsg = file.readAll();
+    QByteArray md5_val = QCryptographicHash::hash(fileMsg , QCryptographicHash::Md5).toHex();
+    file.close();
+    QString md5_str = md5_val;
+    return md5_str;
 }
