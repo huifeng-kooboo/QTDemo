@@ -61,3 +61,12 @@ bool Utils::IsFileExist(QString filename)
     return false;
 }
 
+QString Utils::GetFileMd5(QString& file_name)
+{
+    //1.判断该文件是否存在
+
+    //2.获取文件MD5值
+
+    //3.进行判断
+    return "";
+}

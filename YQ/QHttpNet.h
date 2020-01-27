@@ -7,6 +7,19 @@
 #include <QMessageBox>
 #include <QFile>
 
+enum FILE_STATE{
+  FILE_NONE, //未下载
+  FILE_DOWNLOADING, //文件正在下载
+  FILE_FINISHED, //文件下载完成
+  FILE_DOWNLOAD_ERROR, //文件下载出错
+};
+
+typedef struct{
+    QString file_name; //文件名
+    int file_size; //文件大小
+    QString file_md5; //文件md5值，用于验证文件是否下载正确
+} FILE_INFO;
+
 class QHttpNet:public QObject{
     Q_OBJECT
 public:
@@ -30,6 +43,9 @@ private:
     QNetworkReply *m_reply; //响应
     QFile * m_file; //用于保存文件
     QString m_filename; //用于创建文件,进行写入操作
+    QVector<QString> m_vec_download_url;  //设置下载的链接集合 //用于执行下载进程，实现可以下载多个文件的功能
+    QVector<QString> m_vec_file_name; //需要下载的文件名集合;
+    FILE_INFO m_file_info; //下载的文件信息
     int  m_cur_download_size; //当前下载大小
     int  m_all_download_size; //总的下载大小
     int  m_progress_value; //下载进度

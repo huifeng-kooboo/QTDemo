@@ -62,7 +62,7 @@ void QHttpNet::Slots_WriteFile()
 {
    if(m_file)
    {
-      m_file->write(m_reply->readAll());
+      m_file->write(m_reply->readAll()); // 写入读取的数据
    }
 }
 
@@ -89,10 +89,11 @@ int  QHttpNet::GetCurrentProgress()
 
 bool QHttpNet::PostData(QString url_, QString datas)
 {
-
+    return true;
 }
 
 bool QHttpNet::GetData(QString url_, QString datas)
 {
+    return true;
 
 }

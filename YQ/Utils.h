@@ -12,6 +12,7 @@ bool isPureNums(QString num_); // 判断是否为纯数字
 QString QJsonObjectToQString(QJsonObject& json_object); //QJsonObject转QString
 
 //2.文件处理部分
-bool IsFileExist(QString filename);
 
+QString GetFileMd5(QString &file_name);
+bool IsFileExist(QString filename);
 }

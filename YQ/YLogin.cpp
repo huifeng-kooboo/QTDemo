@@ -18,7 +18,7 @@ YLogin::YLogin(QWidget *parent)
     Init();
     InitTrayMenu();
     InitSignalAndSlots();
-    setAttribute(Qt::WA_TranslucentBackground, true);
+    setAttribute(Qt::WA_TranslucentBackground, true); //不绘制界面 通过QPainter重绘
 }
 
 YLogin::~YLogin()
