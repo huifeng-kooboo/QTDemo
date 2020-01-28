@@ -267,6 +267,11 @@ void YLogin::Slots_HideTips()
     ui->lbl_Tips->setVisible(false);
     ui->btn_pull->setVisible(false);
     ui->lbl_warning_ico->setVisible(false);
+    //隐藏下拉框菜单显示
+    if(m_AccountView)
+    {
+        m_AccountView->setVisible(false);
+    }
 }
 
 void YLogin::Slots_ShowLoginPage()

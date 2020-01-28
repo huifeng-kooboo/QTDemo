@@ -14,6 +14,11 @@ enum FILE_STATE{
   FILE_DOWNLOAD_ERROR, //文件下载出错
 };
 
+enum SLOTS_STATE{
+  SLOTS_CONNECTED = 3, //已经连接
+  SLOTS_UNCONNECTED, //未连接槽函数
+};
+
 typedef struct{
     QString file_name; //文件名
     int file_size; //文件大小

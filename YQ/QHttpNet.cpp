@@ -97,6 +97,7 @@ bool QHttpNet::PostData(QString url_, QString datas)
 {
     QNetworkRequest req;
     req.setUrl(url_); //设置URL访问
+    // 绑定多个槽函数
     QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_PostRequestFinished(QNetworkReply*)));
     m_manager->post(req,datas.toUtf8()); //发送post请求
     return true;
