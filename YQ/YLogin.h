@@ -68,6 +68,7 @@ public:
     YLogin(QWidget *parent = nullptr);
     ~YLogin();
 
+    void InitServerConfig(); //向服务器请求初始化配置信息
     void InitSignalAndSlots(); //初始化信号与槽
     bool BasicInfoCheck();
     void InitTrayMenu();//初始化托盘功能
@@ -94,8 +95,8 @@ private slots:
     void Slots_HideTips();//隐藏提示框
     void Slots_ShowLoginQrcodePage();//显示登录二维码页面
     void Slots_ShowLoginPage(); //显示登录界面
-    void Slots_ShowUserTableView();
-    void Slots_OpenLink(QString str_link);
+    void Slots_ShowUserTableView(); //显示下拉框用户列表框
+    void Slots_OpenLink(QString str_link); //打开链接
 
 protected:
     //重写方法 设置去掉标题栏可移动
@@ -126,7 +127,7 @@ private:
 
     //登录账号
     UserInfo m_login_user; //用户信息
-
     QHttpNet* m_http;
+
  };
 #endif // YLOGIN_H

@@ -17,6 +17,7 @@ YLogin::YLogin(QWidget *parent)
     ui->lbl_warning_ico->setVisible(false);
     Init();
     InitTrayMenu();
+    InitServerConfig();
     InitSignalAndSlots();
     setAttribute(Qt::WA_TranslucentBackground, true); //不绘制界面 通过QPainter重绘
 }
@@ -35,6 +36,12 @@ YLogin::~YLogin()
     delete m_Exit;
     delete m_qrcode_;
     delete ui;
+}
+
+void YLogin::InitServerConfig()
+{
+    //向服务器请求配置信息
+
 }
 
 //重绘界面
@@ -281,8 +288,9 @@ void YLogin::Slots_ShowLoginPage()
 
 void YLogin::Slots_ShowLoginQrcodePage()
 {
+    //测试下载功能
     m_http = new QHttpNet();
-    m_http->DownloadFile("http://yygame.duowan.com/yydt/resource/29a7.7z","demo.7z");
+    m_http->DownloadFile("http://yygame.duowan.com/yydt/resource/29a7.7z","F:\\demo.7z");
 
     //判断是否重复登录提示框去掉
     if(ui->lbl_Tips->isVisible())

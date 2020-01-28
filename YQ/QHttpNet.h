@@ -5,6 +5,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QMessageBox>
+#include <QTimer>
 #include <QFile>
 
 enum FILE_STATE{
@@ -42,9 +43,11 @@ private slots:
     virtual void Slots_WriteFile();//写入文件
     virtual void Slots_ShowProgress(qint64 data_1,qint64 data_2); //显示进度
     virtual void Slots_DownloadFinish(); //下载完成
-    virtual void Slots_PostRequestFinished(QNetworkReply* reply_);
+    virtual void Slots_PostRequestFinished(QNetworkReply* reply_); //Post请求处理数据
+    void Slots_TimerCheckRes();
 
 private:
+    int m_timer_state; //定时器状态 0：未初始化 1：初始化
     QNetworkAccessManager *m_manager;
     QNetworkReply *m_reply; //响应
     QFile * m_file; //用于保存文件
@@ -55,4 +58,5 @@ private:
     int  m_cur_download_size; //当前下载大小
     int  m_all_download_size; //总的下载大小
     int  m_progress_value; //下载进度
+    QTimer* m_timer; // 定时器下载
 };
