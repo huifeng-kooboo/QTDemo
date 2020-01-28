@@ -33,10 +33,14 @@ public:
     ~QHttpNet();
     void getUrl(QString url_);
     bool PostData(QString url_,QString datas); //使用Post发送数据
-    bool GetData(QString url_,QString datas); //使用get发送数据
+    bool GetData(QString url_); //使用get发送数据
     bool DownloadFile(QString url_,QString file_name); //下载文件
     bool CreateDownloadFile(QString filename); //创建下载的文件名，用于写入
     int  GetCurrentProgress(); //获取当前的下载进度0-100
+
+//自定义信号方法声明
+//signals:
+   // void Signals_DownloadFinished(); //下载完成信号
 
 private slots:
     virtual void Slots_Reply();    //设置为可继承重载
@@ -44,7 +48,8 @@ private slots:
     virtual void Slots_ShowProgress(qint64 data_1,qint64 data_2); //显示进度
     virtual void Slots_DownloadFinish(); //下载完成
     virtual void Slots_PostRequestFinished(QNetworkReply* reply_); //Post请求处理数据
-    void Slots_TimerCheckRes();
+    virtual void Slots_GetRequestFinished(QNetworkReply* reply_);
+    void Slots_TimerCheckRes(); // 定时检查资源
 
 private:
     int m_timer_state; //定时器状态 0：未初始化 1：初始化

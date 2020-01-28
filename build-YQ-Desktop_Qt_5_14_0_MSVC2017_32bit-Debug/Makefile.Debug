@@ -362,6 +362,9 @@ debug\moc_QHttpNet.cpp: ..\YQ\QHttpNet.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qbasictimer.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QFile \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\bin\moc.exe
@@ -560,6 +563,9 @@ debug\moc_YLogin.cpp: ..\YQ\YLogin.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtGui\qdesktopservices.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qstandardpaths.h \
 		..\YQ\QHttpNet.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qbasictimer.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QFile \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\bin\moc.exe
@@ -724,6 +730,9 @@ debug\QHttpNet.obj: ..\YQ\QHttpNet.cpp ..\YQ\QHttpNet.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qfiledevice.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtGui\qvector2d.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qbasictimer.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QFile
 
 debug\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
@@ -920,6 +929,9 @@ debug\Utils.obj: ..\YQ\Utils.cpp ..\YQ\Utils.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtGui\qdesktopservices.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qstandardpaths.h \
 		..\YQ\QHttpNet.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qbasictimer.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QFile
 
 debug\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
@@ -1115,6 +1127,9 @@ debug\main.obj: ..\YQ\main.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtGui\qdesktopservices.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qstandardpaths.h \
 		..\YQ\QHttpNet.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qbasictimer.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QFile \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtWidgets\QApplication \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtWidgets\qapplication.h \
@@ -1317,6 +1332,9 @@ debug\YLogin.obj: ..\YQ\YLogin.cpp ..\YQ\YLogin.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtGui\qdesktopservices.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qstandardpaths.h \
 		..\YQ\QHttpNet.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QTimer \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\qbasictimer.h \
 		C:\Qt\Qt5.14.0\5.14.0\msvc2017\include\QtCore\QFile \
 		ui_YLogin.h \
 		..\YQ\Utils.h \

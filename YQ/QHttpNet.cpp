@@ -45,14 +45,6 @@ bool QHttpNet::DownloadFile(QString url_, QString file_name)
     //添加到url_和file_name到集合中
     m_vec_download_url.append(url_); //添加到下载集合中
     m_vec_file_name.append(file_name); //添加到用户名集合中
-
-    //
-//    CreateDownloadFile(file_name);
-//    QUrl download_url = QUrl(url_);
-//    m_reply = m_manager->get(QNetworkRequest(download_url));
-//    connect(m_reply,SIGNAL(readyRead()),this,SLOT(Slots_WriteFile()));//数据写入
-//    connect(m_reply,SIGNAL(finished()),this,SLOT(Slots_DownloadFinish()));//下载完成
-//    connect(m_reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(Slots_ShowProgress(qint64,qint64))); //获取下载进度
     return true;
 }
 
@@ -87,7 +79,7 @@ void QHttpNet::Slots_TimerCheckRes()
         return;
     }
 
-    //  后续启动定时器操作
+    //  后续启动定时器操作 则不需要添加信号功能
     int need_count = m_vec_download_url.size();
     if(need_count<1)
     {
@@ -151,6 +143,13 @@ void QHttpNet::Slots_DownloadFinish()
 //Post请求完成响应
 void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply_)
 {
+    QByteArray qba =reply_->readAll();
+    QString str_ = qba;//QString //获取转换的数据
+}
+
+// 处理get请求
+void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply_)
+{
 
 }
 
@@ -165,18 +164,17 @@ bool QHttpNet::PostData(QString url_, QString datas)
     QNetworkRequest req;
     req.setUrl(url_); //设置URL访问
     // 绑定多个槽函数
-    QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_PostRequestFinished(QNetworkReply*)));
+    QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_PostRequestFinished(QNetworkReply*))); // 绑定结束的信号与槽
     m_manager->post(req,datas.toUtf8()); //发送post请求
     return true;
 }
 
-bool QHttpNet::GetData(QString url_, QString datas)
+bool QHttpNet::GetData(QString url_)
 {
-    if(!m_manager)
-    {
-        m_manager = new QNetworkAccessManager();
-    }
-   // m_manager->get();
+    QNetworkRequest req;
+    req.setUrl(url_); //设置URL访问
+    // 绑定多个槽函数
+    QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_GetRequestFinished(QNetworkReply*))); // 绑定结束的信号与槽
+    m_manager->get(req); //发送get请求
     return true;
-
 }

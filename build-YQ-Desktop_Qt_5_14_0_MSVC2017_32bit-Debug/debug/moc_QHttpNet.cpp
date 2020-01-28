@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_QHttpNet_t {
-    QByteArrayData data[12];
-    char stringdata0[160];
+    QByteArrayData data[13];
+    char stringdata0[185];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,13 +43,15 @@ QT_MOC_LITERAL(7, 71, 20), // "Slots_DownloadFinish"
 QT_MOC_LITERAL(8, 92, 25), // "Slots_PostRequestFinished"
 QT_MOC_LITERAL(9, 118, 14), // "QNetworkReply*"
 QT_MOC_LITERAL(10, 133, 6), // "reply_"
-QT_MOC_LITERAL(11, 140, 19) // "Slots_TimerCheckRes"
+QT_MOC_LITERAL(11, 140, 24), // "Slots_GetRequestFinished"
+QT_MOC_LITERAL(12, 165, 19) // "Slots_TimerCheckRes"
 
     },
     "QHttpNet\0Slots_Reply\0\0Slots_WriteFile\0"
     "Slots_ShowProgress\0data_1\0data_2\0"
     "Slots_DownloadFinish\0Slots_PostRequestFinished\0"
-    "QNetworkReply*\0reply_\0Slots_TimerCheckRes"
+    "QNetworkReply*\0reply_\0Slots_GetRequestFinished\0"
+    "Slots_TimerCheckRes"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +61,7 @@ static const uint qt_meta_data_QHttpNet[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,18 +69,20 @@ static const uint qt_meta_data_QHttpNet[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x08 /* Private */,
-       3,    0,   45,    2, 0x08 /* Private */,
-       4,    2,   46,    2, 0x08 /* Private */,
-       7,    0,   51,    2, 0x08 /* Private */,
-       8,    1,   52,    2, 0x08 /* Private */,
-      11,    0,   55,    2, 0x08 /* Private */,
+       1,    0,   49,    2, 0x08 /* Private */,
+       3,    0,   50,    2, 0x08 /* Private */,
+       4,    2,   51,    2, 0x08 /* Private */,
+       7,    0,   56,    2, 0x08 /* Private */,
+       8,    1,   57,    2, 0x08 /* Private */,
+      11,    1,   60,    2, 0x08 /* Private */,
+      12,    0,   63,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::LongLong, QMetaType::LongLong,    5,    6,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 9,   10,
     QMetaType::Void, 0x80000000 | 9,   10,
     QMetaType::Void,
 
@@ -96,13 +100,21 @@ void QHttpNet::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 2: _t->Slots_ShowProgress((*reinterpret_cast< qint64(*)>(_a[1])),(*reinterpret_cast< qint64(*)>(_a[2]))); break;
         case 3: _t->Slots_DownloadFinish(); break;
         case 4: _t->Slots_PostRequestFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 5: _t->Slots_TimerCheckRes(); break;
+        case 5: _t->Slots_GetRequestFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 6: _t->Slots_TimerCheckRes(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
         case 4:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QNetworkReply* >(); break;
+            }
+            break;
+        case 5:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -142,13 +154,13 @@ int QHttpNet::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }
