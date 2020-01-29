@@ -543,6 +543,7 @@ qrc_src.cpp: ../YQ/src.qrc \
 		../YQ/styles/choose_hover.png \
 		../YQ/styles/single_account_hover.png \
 		../YQ/styles/hover.png \
+		../YQ/styles/add_qqaccount_hover.png \
 		../YQ/styles/add_account_hover.png \
 		../YQ/styles/person.png \
 		../YQ/styles/small_avator.png \
@@ -559,7 +560,6 @@ qrc_src.cpp: ../YQ/src.qrc \
 		../YQ/styles/choose.png \
 		../YQ/styles/mim_size.png \
 		../YQ/styles/dropdown_hover.png \
-		../YQ/styles/add_qq.png \
 		../YQ/styles/close_hover.png \
 		../YQ/styles/min_hover.png \
 		../YQ/styles/uncheck.png \

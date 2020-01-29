@@ -168,8 +168,7 @@ void YLogin::Slots_ShowAddQQAccount()
     m_btn_AddAccount->setText("");
     m_btn_AddAccount->setGeometry(143,50,118,33);
     m_btn_AddAccount->setProperty("objectName","m_btn_AddAccount");
-   // m_btn_AddAccount->setIcon(QIcon(":/login/src/styles/add_qqaccount.png"));
-    m_btn_AddAccount->setStyleSheet(" image:url(':/login/src/styles/add_qqaccount.png');");
+    m_btn_AddAccount->setStyleSheet("QPushButton#m_btn_AddAccount{image:url(':/login/src/styles/add_qqaccount.png');}QPushButton#m_btn_AddAccount::hover{image:url(':/login/src/styles/add_qqaccount_hover.png');}");
     m_btn_AddAccount->setToolTip("添加待登录QQ账号");
     connect(m_btn_AddAccount,SIGNAL(clicked()),this,SLOT(Slots_AddQQAccount()));
 
