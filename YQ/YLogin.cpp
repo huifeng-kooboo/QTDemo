@@ -113,9 +113,6 @@ void YLogin::InitTrayMenu()
 //发送登录数据给服务器
 bool YLogin::SendLoginReqToServer(QString send_data)
 {
-    //验证是否数据异常
-    //QMessageBox::about(NULL,send_data,send_data);
-    //发送
     return true;
 }
 
@@ -193,7 +190,7 @@ void YLogin::Slots_ShowAddQQAccount()
     m_btn_loginQQ->setText("登 录");
     m_btn_loginQQ->setGeometry(110,115,197,31);
     m_btn_loginQQ->setProperty("objectName","m_btn_loginQQ");
-    m_btn_loginQQ->setStyleSheet("color:rgb(212,242,253);background-color:rgb(0,163,255);border:1px solid rgb(203,209,215);border-radius:1px;");
+    m_btn_loginQQ->setStyleSheet("QPushButton#m_btn_loginQQ{color:rgb(212,242,253);background-color:rgb(0,163,255);border:1px solid rgb(203,209,215);border-radius:1px;}QPushButton#m_btn_loginQQ::hover{background-color:rgb(60,195,245);}");
     connect(m_btn_loginQQ,SIGNAL(clicked()),this,SLOT(Slots_Login()));
 
     m_widget_register_account->setGeometry(0,179,426,157);
