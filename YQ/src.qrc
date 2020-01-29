@@ -28,5 +28,9 @@
         <file>styles/small_avator.png</file>
         <file>styles/small_close.png</file>
         <file>styles/small_close_hover.png</file>
+        <file>styles/single_account.png</file>
+        <file>styles/single_account_hover.png</file>
+        <file>styles/add_qq.png</file>
+        <file>styles/add_qqaccount.png</file>
     </qresource>
 </RCC>

@@ -76,6 +76,7 @@ void YLogin::Init()
     ui->lineEdit_Password->setEchoMode(QLineEdit::Password); //设置密码模式
     ui->lineEdit_Account->setPlaceholderText("QQ号码/手机/邮箱");
     ui->lineEdit_Password->setPlaceholderText("密码");
+    ui->btn_addaccount->setToolTip("多账号登录");
     //测试下载功能
     m_http = new QHttpNet(); //初始化
     //按钮
@@ -164,10 +165,12 @@ void YLogin::Slots_ShowAddQQAccount()
     {
         m_btn_AddAccount = new QPushButton(m_widget_register_account);
     }
-    m_btn_AddAccount->setText("添加QQ账号");
-    m_btn_AddAccount->setGeometry(100,50,90,40);
+    m_btn_AddAccount->setText("");
+    m_btn_AddAccount->setGeometry(143,50,118,33);
     m_btn_AddAccount->setProperty("objectName","m_btn_AddAccount");
-    m_btn_AddAccount->setStyleSheet("background-color:rgb(244,244,244);border:1px solid rgb(203,209,215);");
+   // m_btn_AddAccount->setIcon(QIcon(":/login/src/styles/add_qqaccount.png"));
+    m_btn_AddAccount->setStyleSheet(" image:url(':/login/src/styles/add_qqaccount.png');");
+    m_btn_AddAccount->setToolTip("添加待登录QQ账号");
     connect(m_btn_AddAccount,SIGNAL(clicked()),this,SLOT(Slots_AddQQAccount()));
 
     // 单账号登录按钮
@@ -175,10 +178,11 @@ void YLogin::Slots_ShowAddQQAccount()
     {
         m_btn_SingleLogin = new QPushButton(m_widget_register_account);
     }
-    m_btn_SingleLogin->setText("单账号登录");
-    m_btn_SingleLogin->setGeometry(30,100,90,40);
+    m_btn_SingleLogin->setText("");
+    m_btn_SingleLogin->setGeometry(7,120,29,29);
     m_btn_SingleLogin->setProperty("objectName","m_btn_SingleLogin");
-    m_btn_SingleLogin->setStyleSheet("background-color:rgb(244,244,244);border:1px solid rgb(203,209,215);");
+    m_btn_SingleLogin->setStyleSheet("QPushButton#m_btn_SingleLogin{background-color:rgb(244,244,244);background-image:url(':/login/src/styles/single_account.png');}QPushButton#m_btn_SingleLogin::hover{background-image:url(':/login/src/styles/single_account_hover.png');}");//此处需要修改样式
+    m_btn_SingleLogin->setToolTip("单账号登录");
     connect(m_btn_SingleLogin,SIGNAL(clicked()),this,SLOT(Slots_SingleLogin()));
 
     // 登录按钮控件
@@ -186,10 +190,10 @@ void YLogin::Slots_ShowAddQQAccount()
     {
         m_btn_loginQQ = new QPushButton(m_widget_register_account);
     }
-    m_btn_loginQQ->setText("登录");
-    m_btn_loginQQ->setGeometry(150,100,90,40);
+    m_btn_loginQQ->setText("登 录");
+    m_btn_loginQQ->setGeometry(110,115,197,31);
     m_btn_loginQQ->setProperty("objectName","m_btn_loginQQ");
-    m_btn_loginQQ->setStyleSheet("background-color:rgb(244,244,244);border:1px solid rgb(203,209,215);");
+    m_btn_loginQQ->setStyleSheet("color:rgb(212,242,253);background-color:rgb(0,163,255);border:1px solid rgb(203,209,215);border-radius:1px;");
     connect(m_btn_loginQQ,SIGNAL(clicked()),this,SLOT(Slots_Login()));
 
     m_widget_register_account->setGeometry(0,179,426,157);
@@ -199,7 +203,8 @@ void YLogin::Slots_ShowAddQQAccount()
 
 void YLogin::Slots_Login()
 {
-
+    //登录功能 -- 添加账号界面中使用
+    //根据cookie 进行登录
 }
 
 void YLogin::Slots_SingleLogin()

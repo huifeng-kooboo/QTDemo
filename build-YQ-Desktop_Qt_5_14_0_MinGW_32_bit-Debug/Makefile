@@ -539,12 +539,15 @@ qrc_src.cpp: ../YQ/src.qrc \
 		../YQ/styles/close.png \
 		../YQ/styles/warning_ico.png \
 		../YQ/styles/choose_on.png \
+		../YQ/styles/add_qqaccount.png \
 		../YQ/styles/choose_hover.png \
+		../YQ/styles/single_account_hover.png \
 		../YQ/styles/hover.png \
 		../YQ/styles/add_account_hover.png \
 		../YQ/styles/person.png \
 		../YQ/styles/small_avator.png \
 		../YQ/styles/small_close.png \
+		../YQ/styles/single_account.png \
 		../YQ/styles/headers.png \
 		../YQ/styles/avatar.png \
 		../YQ/styles/check.png \
@@ -556,6 +559,7 @@ qrc_src.cpp: ../YQ/src.qrc \
 		../YQ/styles/choose.png \
 		../YQ/styles/mim_size.png \
 		../YQ/styles/dropdown_hover.png \
+		../YQ/styles/add_qq.png \
 		../YQ/styles/close_hover.png \
 		../YQ/styles/min_hover.png \
 		../YQ/styles/uncheck.png \
@@ -1686,6 +1690,22 @@ YLogin.o: ../YQ/YLogin.cpp ../YQ/YLogin.h \
 		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/qbasictimer.h \
 		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/QFile \
 		ui_YLogin.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QApplication \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qapplication.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/qeventloop.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtGui/qguiapplication.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtGui/qinputmethod.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QCheckBox \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qcheckbox.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QLabel \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qlabel.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtWidgets/QWidget \
 		../YQ/Utils.h \
 		../YQ/GlobalData.h \
 		C:/Qt/Qt5.14.0/5.14.0/mingw73_32/include/QtCore/QTextCodec \
