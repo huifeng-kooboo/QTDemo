@@ -133,7 +133,7 @@ private:
     UserInfo m_login_user; //用户信息
     QHttpNet* m_http;
 
-    //添加账号窗体
+    //添加账号界面
     QWidget * m_widget_register_account; //添加登录账号窗体
     QPushButton * m_btn_AddAccount; //添加账号按钮
     QPushButton * m_btn_SingleLogin; //单账号登录按钮

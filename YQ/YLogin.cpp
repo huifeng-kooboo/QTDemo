@@ -77,6 +77,7 @@ void YLogin::Init()
     ui->lineEdit_Account->setPlaceholderText("QQ号码/手机/邮箱");
     ui->lineEdit_Password->setPlaceholderText("密码");
     ui->btn_addaccount->setToolTip("多账号登录");
+    ui->btn_qrcode->setToolTip("二维码登录");
     //测试下载功能
     m_http = new QHttpNet(); //初始化
     //按钮
