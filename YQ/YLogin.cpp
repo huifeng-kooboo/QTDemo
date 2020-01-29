@@ -82,6 +82,8 @@ void YLogin::Init()
     m_btn_AddAccount = nullptr; //设为空按钮
     //
     m_widget_register_account = nullptr;
+    m_btn_SingleLogin = nullptr;
+    m_btn_loginQQ = nullptr;
 }
 
 void YLogin::InitTrayMenu()
@@ -157,21 +159,57 @@ void YLogin::Slots_ShowAddQQAccount()
         m_widget_register_account = new QWidget(this);
     }
     m_widget_register_account->setStyleSheet("background-color:rgb(235,242,249);"); //背景色
-    // 按钮
-    m_btn_AddAccount = new QPushButton(m_widget_register_account);
+    //
+    if(!m_btn_AddAccount)
+    {
+        m_btn_AddAccount = new QPushButton(m_widget_register_account);
+    }
     m_btn_AddAccount->setText("添加QQ账号");
     m_btn_AddAccount->setGeometry(100,50,90,40);
     m_btn_AddAccount->setProperty("objectName","m_btn_AddAccount");
     m_btn_AddAccount->setStyleSheet("background-color:rgb(244,244,244);border:1px solid rgb(203,209,215);");
     connect(m_btn_AddAccount,SIGNAL(clicked()),this,SLOT(Slots_AddQQAccount()));
+
+    // 单账号登录按钮
+    if(!m_btn_SingleLogin)
+    {
+        m_btn_SingleLogin = new QPushButton(m_widget_register_account);
+    }
+    m_btn_SingleLogin->setText("单账号登录");
+    m_btn_SingleLogin->setGeometry(30,100,90,40);
+    m_btn_SingleLogin->setProperty("objectName","m_btn_SingleLogin");
+    m_btn_SingleLogin->setStyleSheet("background-color:rgb(244,244,244);border:1px solid rgb(203,209,215);");
+    connect(m_btn_SingleLogin,SIGNAL(clicked()),this,SLOT(Slots_SingleLogin()));
+
+    // 登录按钮控件
+    if(!m_btn_loginQQ)
+    {
+        m_btn_loginQQ = new QPushButton(m_widget_register_account);
+    }
+    m_btn_loginQQ->setText("登录");
+    m_btn_loginQQ->setGeometry(150,100,90,40);
+    m_btn_loginQQ->setProperty("objectName","m_btn_loginQQ");
+    m_btn_loginQQ->setStyleSheet("background-color:rgb(244,244,244);border:1px solid rgb(203,209,215);");
+    connect(m_btn_loginQQ,SIGNAL(clicked()),this,SLOT(Slots_Login()));
+
     m_widget_register_account->setGeometry(0,179,426,157);
     m_widget_register_account->setVisible(true);
     m_widget_register_account->show();
 }
 
+void YLogin::Slots_Login()
+{
+
+}
+
+void YLogin::Slots_SingleLogin()
+{
+    m_widget_register_account->setVisible(false);
+}
+
 void YLogin::Slots_AddQQAccount()
 {
-    QMessageBox::about(NULL,"TEST","TEST");
+   // QMessageBox::about(NULL,"TEST","TEST");
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
