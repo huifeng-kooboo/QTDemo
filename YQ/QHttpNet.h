@@ -26,21 +26,22 @@ typedef struct{
     QString file_md5; //文件md5值，用于验证文件是否下载正确
 } FILE_INFO;
 
+class QNetworkReply;
+class QNetworkRequest;
+class QNetworkAccessManager;
 class QHttpNet:public QObject{
     Q_OBJECT
 public:
     QHttpNet();
     ~QHttpNet();
+
+    //
     void getUrl(QString url_);
     bool PostData(QString url_,QString datas); //使用Post发送数据
     bool GetData(QString url_); //使用get发送数据
     bool DownloadFile(QString url_,QString file_name); //下载文件
     bool CreateDownloadFile(QString filename); //创建下载的文件名，用于写入
     int  GetCurrentProgress(); //获取当前的下载进度0-100
-
-//自定义信号方法声明
-//signals:
-   // void Signals_DownloadFinished(); //下载完成信号
 
 private slots:
     virtual void Slots_Reply();    //设置为可继承重载

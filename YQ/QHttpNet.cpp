@@ -124,9 +124,11 @@ void QHttpNet::Slots_WriteFile()
 
 void QHttpNet::Slots_Reply()
 {
-    m_file->flush();
-    m_file->close();
-    m_file = nullptr;
+    QString demo = m_reply->readAll();
+    QMessageBox::about(NULL,demo,demo);
+    //m_file->flush();
+    //m_file->close();
+    //m_file = nullptr;
 }
 
 void QHttpNet::Slots_DownloadFinish()
@@ -140,7 +142,7 @@ void QHttpNet::Slots_DownloadFinish()
 
 }
 
-//Post请求完成响应
+//处理Post请求完成响应
 void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply_)
 {
     QByteArray qba =reply_->readAll();
@@ -148,9 +150,25 @@ void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply_)
 }
 
 // 处理get请求
-void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply_)
+void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
 {
+    // 获取http状态码
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute); // 获取Http协议请求
+    if(statusCode.isValid())
+        qDebug() << "status code=" << statusCode.toInt();
 
+    QVariant reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+    if(reason.isValid())
+        qDebug() << "reason=" << reason.toString();
+
+    QNetworkReply::NetworkError err = reply->error();
+    if(err != QNetworkReply::NoError) {
+        qDebug() << "Failed: " << reply->errorString();
+    }
+    else {
+        // 获取返回内容
+        qDebug() << reply->readAll();
+    }
 }
 
 int  QHttpNet::GetCurrentProgress()
@@ -159,6 +177,7 @@ int  QHttpNet::GetCurrentProgress()
     return m_progress_value; //获取当前进度
 }
 
+//测试Post功能
 bool QHttpNet::PostData(QString url_, QString datas)
 {
     QNetworkRequest req;
@@ -169,12 +188,14 @@ bool QHttpNet::PostData(QString url_, QString datas)
     return true;
 }
 
+//测试Get功能
 bool QHttpNet::GetData(QString url_)
 {
-    QNetworkRequest req;
-    req.setUrl(url_); //设置URL访问
-    // 绑定多个槽函数
-    QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_GetRequestFinished(QNetworkReply*))); // 绑定结束的信号与槽
-    m_manager->get(req); //发送get请求
+    QNetworkRequest request;
+    QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_GetRequestFinished(QNetworkReply*)));
+    Q_ASSERT(connRet);
+
+    request.setUrl(QUrl(url_));
+    m_reply = m_manager->get(request);
     return true;
 }

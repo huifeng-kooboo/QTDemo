@@ -1,5 +1,6 @@
 #include "Utils.h"
 
+// 判断是否未纯数字
 bool Utils::isPureNums(QString num_)
 {
         QByteArray ba = num_.toLocal8Bit();  //分开写是为了防止乱码

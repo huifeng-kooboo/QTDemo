@@ -97,6 +97,7 @@ private slots:
     void Slots_ShowLoginPage(); //显示登录界面
     void Slots_ShowUserTableView(); //显示下拉框用户列表框
     void Slots_OpenLink(QString str_link); //打开链接
+    void Slots_ShowAddQQAccount(); //添加QQ账号界面
 
 protected:
     //重写方法 设置去掉标题栏可移动
@@ -128,6 +129,10 @@ private:
     //登录账号
     UserInfo m_login_user; //用户信息
     QHttpNet* m_http;
+
+    //添加账号窗体
+    QWidget * m_widget_register_account; //添加登录账号窗体
+    QPushButton * m_btn_AddAccount; //添加账号按钮
 
  };
 #endif // YLOGIN_H

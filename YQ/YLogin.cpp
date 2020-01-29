@@ -15,6 +15,7 @@ YLogin::YLogin(QWidget *parent)
     ui->lbl_Tips->setVisible(false);
     ui->btn_pull->setVisible(false);
     ui->lbl_warning_ico->setVisible(false);
+
     Init();
     InitTrayMenu();
     InitServerConfig();
@@ -75,9 +76,10 @@ void YLogin::Init()
     ui->lineEdit_Password->setEchoMode(QLineEdit::Password); //设置密码模式
     ui->lineEdit_Account->setPlaceholderText("QQ号码/手机/邮箱");
     ui->lineEdit_Password->setPlaceholderText("密码");
-    // 添加注册事件
-    //ui->lbl_reg_num->installEventFilter(this);
-    //ui->lbl_find_password->installEventFilter(this);
+    //测试下载功能
+    m_http = new QHttpNet(); //初始化
+    //按钮
+    m_btn_AddAccount = nullptr; //设为空按钮
 }
 
 void YLogin::InitTrayMenu()
@@ -142,6 +144,13 @@ void YLogin::InitSignalAndSlots()
     //绑定忘记密码
     connect(ui->lbl_reg_num,SIGNAL(linkActivated(QString)), this, SLOT(Slots_OpenLink(QString)));
     connect(ui->lbl_find_password,SIGNAL(linkActivated(QString)), this, SLOT(Slots_OpenLink(QString)));
+    connect(ui->btn_addaccount,SIGNAL(clicked()),this,SLOT(Slots_ShowAddQQAccount()));
+}
+
+// 显示QQ添加账号界面
+void YLogin::Slots_ShowAddQQAccount()
+{
+    QMessageBox::about(NULL,"","");
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
@@ -288,11 +297,10 @@ void YLogin::Slots_ShowLoginPage()
 
 void YLogin::Slots_ShowLoginQrcodePage()
 {
-    //测试下载功能
-    m_http = new QHttpNet();
-    m_http->DownloadFile("http://yygame.duowan.com/yydt/resource/29a7.7z","F:\\demo.7z");
+    // 设置Get请求
+    m_http->GetData(TEST_GET_URL);
 
-    //判断是否重复登录提示框去掉
+    // 判断是否重复登录提示框去掉
     if(ui->lbl_Tips->isVisible())
     {
         ui->lbl_Tips->setVisible(false);
@@ -345,7 +353,7 @@ void YLogin::Slots_ShowUserTableView()
     {
         m_AccountItemModel = new QStandardItemModel();
     }
-    //QLabel * dd = new QLabel("dd");
+
     //添加三个空的控件 //用于存放 头像 、 账号信息、 按钮
     m_AccountItemModel->setItem(0, 0, new QStandardItem(""));
     m_AccountItemModel->setItem(0, 1, new QStandardItem(""));
@@ -379,7 +387,6 @@ void YLogin::Slots_ShowUserTableView()
     avator_->show();
 
     // 去掉行头和列头
-    //m_AccountView->setItemDelegateForColumn(0,)
     m_AccountView->horizontalHeader()->setVisible(false);
     m_AccountView->verticalHeader()->setVisible(false);
     m_AccountView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); //关闭滚动条
@@ -388,7 +395,6 @@ void YLogin::Slots_ShowUserTableView()
     m_AccountView->setGeometry(113,226,200,45);
     m_AccountView->setShowGrid(false); //设置不显示网格~
     //设置样式
-  //  m_AccountView->setStyleSheet("QTableView{border:none}");
     m_AccountView->show();
     m_show_state = 1;
     m_show_init = 0;

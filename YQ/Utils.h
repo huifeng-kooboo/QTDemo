@@ -14,4 +14,6 @@ QString QJsonObjectToQString(QJsonObject& json_object); //QJsonObject转QString
 //2.文件处理部分
 QString GetFileMd5(QString &file_name); //获取文件md5值
 bool IsFileExist(QString filename);//判断是否文件存在
+
+//3.
 }
