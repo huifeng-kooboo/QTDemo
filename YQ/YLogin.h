@@ -98,6 +98,7 @@ private slots:
     void Slots_ShowUserTableView(); //显示下拉框用户列表框
     void Slots_OpenLink(QString str_link); //打开链接
     void Slots_ShowAddQQAccount(); //添加QQ账号界面
+    void Slots_AddQQAccount();//添加QQ账号
 
 protected:
     //重写方法 设置去掉标题栏可移动

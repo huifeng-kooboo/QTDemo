@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_YLogin_t {
-    QByteArrayData data[16];
-    char stringdata0[266];
+    QByteArrayData data[17];
+    char stringdata0[285];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -47,7 +47,8 @@ QT_MOC_LITERAL(11, 175, 19), // "Slots_ShowLoginPage"
 QT_MOC_LITERAL(12, 195, 23), // "Slots_ShowUserTableView"
 QT_MOC_LITERAL(13, 219, 14), // "Slots_OpenLink"
 QT_MOC_LITERAL(14, 234, 8), // "str_link"
-QT_MOC_LITERAL(15, 243, 22) // "Slots_ShowAddQQAccount"
+QT_MOC_LITERAL(15, 243, 22), // "Slots_ShowAddQQAccount"
+QT_MOC_LITERAL(16, 266, 18) // "Slots_AddQQAccount"
 
     },
     "YLogin\0Slots_CloseWindow\0\0Slots_LoginQQ\0"
@@ -55,7 +56,8 @@ QT_MOC_LITERAL(15, 243, 22) // "Slots_ShowAddQQAccount"
     "Slots_TrayMsg\0QSystemTrayIcon::ActivationReason\0"
     "reason\0Slots_HideTips\0Slots_ShowLoginQrcodePage\0"
     "Slots_ShowLoginPage\0Slots_ShowUserTableView\0"
-    "Slots_OpenLink\0str_link\0Slots_ShowAddQQAccount"
+    "Slots_OpenLink\0str_link\0Slots_ShowAddQQAccount\0"
+    "Slots_AddQQAccount"
 };
 #undef QT_MOC_LITERAL
 
@@ -65,7 +67,7 @@ static const uint qt_meta_data_YLogin[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -73,17 +75,18 @@ static const uint qt_meta_data_YLogin[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   69,    2, 0x08 /* Private */,
-       3,    0,   70,    2, 0x08 /* Private */,
-       4,    0,   71,    2, 0x08 /* Private */,
-       5,    0,   72,    2, 0x08 /* Private */,
-       6,    1,   73,    2, 0x08 /* Private */,
-       9,    0,   76,    2, 0x08 /* Private */,
-      10,    0,   77,    2, 0x08 /* Private */,
-      11,    0,   78,    2, 0x08 /* Private */,
-      12,    0,   79,    2, 0x08 /* Private */,
-      13,    1,   80,    2, 0x08 /* Private */,
-      15,    0,   83,    2, 0x08 /* Private */,
+       1,    0,   74,    2, 0x08 /* Private */,
+       3,    0,   75,    2, 0x08 /* Private */,
+       4,    0,   76,    2, 0x08 /* Private */,
+       5,    0,   77,    2, 0x08 /* Private */,
+       6,    1,   78,    2, 0x08 /* Private */,
+       9,    0,   81,    2, 0x08 /* Private */,
+      10,    0,   82,    2, 0x08 /* Private */,
+      11,    0,   83,    2, 0x08 /* Private */,
+      12,    0,   84,    2, 0x08 /* Private */,
+      13,    1,   85,    2, 0x08 /* Private */,
+      15,    0,   88,    2, 0x08 /* Private */,
+      16,    0,   89,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -96,6 +99,7 @@ static const uint qt_meta_data_YLogin[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   14,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -118,6 +122,7 @@ void YLogin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 8: _t->Slots_ShowUserTableView(); break;
         case 9: _t->Slots_OpenLink((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 10: _t->Slots_ShowAddQQAccount(); break;
+        case 11: _t->Slots_AddQQAccount(); break;
         default: ;
         }
     }
@@ -152,13 +157,13 @@ int YLogin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

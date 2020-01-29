@@ -80,6 +80,8 @@ void YLogin::Init()
     m_http = new QHttpNet(); //初始化
     //按钮
     m_btn_AddAccount = nullptr; //设为空按钮
+    //
+    m_widget_register_account = nullptr;
 }
 
 void YLogin::InitTrayMenu()
@@ -150,7 +152,26 @@ void YLogin::InitSignalAndSlots()
 // 显示QQ添加账号界面
 void YLogin::Slots_ShowAddQQAccount()
 {
-    QMessageBox::about(NULL,"","");
+    if(!m_widget_register_account)
+    {
+        m_widget_register_account = new QWidget(this);
+    }
+    m_widget_register_account->setStyleSheet("background-color:rgb(235,242,249);"); //背景色
+    // 按钮
+    m_btn_AddAccount = new QPushButton(m_widget_register_account);
+    m_btn_AddAccount->setText("添加QQ账号");
+    m_btn_AddAccount->setGeometry(100,50,90,40);
+    m_btn_AddAccount->setProperty("objectName","m_btn_AddAccount");
+    m_btn_AddAccount->setStyleSheet("background-color:rgb(244,244,244);border:1px solid rgb(203,209,215);");
+    connect(m_btn_AddAccount,SIGNAL(clicked()),this,SLOT(Slots_AddQQAccount()));
+    m_widget_register_account->setGeometry(0,179,426,157);
+    m_widget_register_account->setVisible(true);
+    m_widget_register_account->show();
+}
+
+void YLogin::Slots_AddQQAccount()
+{
+    QMessageBox::about(NULL,"TEST","TEST");
 }
 
 void YLogin::mouseMoveEvent(QMouseEvent *e)
