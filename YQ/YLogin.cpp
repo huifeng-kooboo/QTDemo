@@ -36,6 +36,10 @@ YLogin::~YLogin()
     delete m_OpenPanel;
     delete m_Exit;
     delete m_qrcode_;
+    delete m_btn_AddAccount;
+    delete m_btn_loginQQ;
+    delete m_btn_SingleLogin;
+    delete m_widget_register_account;
     delete ui;
 }
 
