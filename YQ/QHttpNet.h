@@ -20,6 +20,20 @@ enum SLOTS_STATE{
   SLOTS_UNCONNECTED, //未连接槽函数
 };
 
+//请求类型,用于处理服务端返回数据
+enum Request_Type{
+    USER_LOGIN = 100, //用户登录
+    USER_REGISTER, //用户注册
+    USER_DEEPIN,
+};
+
+// 状态码
+enum StatusCode{
+    HTTP_ERROR = 0, //访问失败
+    HTTP_OK = 200, //正常获取请求
+    HTTP_NOT_FOUND = 404, //没有找到地址
+};
+
 typedef struct{
     QString file_name; //文件名
     int file_size; //文件大小

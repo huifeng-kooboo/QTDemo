@@ -152,10 +152,26 @@ void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply_)
 // 处理get请求
 void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
 {
-    // 获取http状态码
+    //1.获取http状态码
     QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute); // 获取Http协议请求
-    if(statusCode.isValid())
-        qDebug() << "status code=" << statusCode.toInt();
+    QVariant str_ResourceType = reply->attribute(QNetworkRequest::ResourceTypeAttribute);
+    qDebug() << str_ResourceType.toUrl();
+    int status_code = statusCode.toInt(); //获取状态码
+
+    switch(status_code){
+    case HTTP_ERROR:
+        qDebug() << "通信失败";
+        return; //返回 不进行处理
+        break;
+    case HTTP_OK:
+        qDebug() << "通信正常";
+        break;
+    case HTTP_NOT_FOUND:
+        qDebug() << "Http 404错误";
+        break;
+    default:
+        break;
+    };
 
     QVariant reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
     if(reason.isValid())
