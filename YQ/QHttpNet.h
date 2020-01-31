@@ -5,6 +5,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QNetworkCookie>
+#include <QVariant>
 #include <QMessageBox>
 #include <QTimer>
 #include <QFile>
@@ -36,6 +38,11 @@ enum StatusCode{
     HTTP_NOT_FOUND = 404, //没有找到地址
 };
 
+enum RequestType{
+  RES_LOGIN=100, //用户登录
+  RES_REGISTER,  //用户注册
+};
+
 class QHttpNet:public QObject{
 
     Q_OBJECT
@@ -44,6 +51,7 @@ public:
     ~QHttpNet();
 
     //
+    void SetCookie(QString cookies_str);
     void getUrl(QString url_);
     bool PostData(QString url_,QString datas); //使用Post发送数据
     bool GetData(QString url_); //使用get发送数据
@@ -61,6 +69,7 @@ private slots:
     void Slots_TimerCheckRes(); // 定时检查资源
 
 private:
+    QList<QNetworkCookie> * m_list_cookie;//设置cookie
     int m_timer_state; //定时器状态 0：未初始化 1：初始化
     QNetworkAccessManager *m_manager;
     QNetworkReply *m_reply; //响应
@@ -73,4 +82,5 @@ private:
     int  m_all_download_size; //总的下载大小
     int  m_progress_value; //下载进度
     QTimer* m_timer; // 定时器下载
+    QNetworkRequest m_request;
 };

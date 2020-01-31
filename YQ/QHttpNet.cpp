@@ -9,6 +9,7 @@ QHttpNet::QHttpNet()
     m_all_download_size = 0;
     m_progress_value = 0;
     m_timer_state = 0;
+    m_list_cookie = nullptr;
 }
 
 QHttpNet::~QHttpNet()
@@ -17,6 +18,7 @@ QHttpNet::~QHttpNet()
     delete m_reply;
     delete m_file;
     delete m_timer;
+    delete m_list_cookie;
 }
 
 bool QHttpNet::CreateDownloadFile(QString filename)
@@ -167,6 +169,7 @@ void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
         break;
     case HTTP_NOT_FOUND:
         qDebug() << "Http 404错误";
+        return; //不进行处理
         break;
     default:
         break;
@@ -183,16 +186,30 @@ void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
     else {
         // 获取返回内容
         QByteArray bya = reply->readAll();
+        qDebug() << bya;
         QString str_reply = bya;// 所有回答的字符串
         QJsonObject json_;
         bool is_Convert = Utils::QStringToQJsonObject(str_reply,json_);
         if(!is_Convert)
         {
             qDebug() << "ERROR_JSON" ;
+            return ;
         }
         else
         {
-            qDebug() << "TRUE_JSON" ;
+          QJsonValue res_type = json_.value("request_type");
+          int type_ = res_type.toInt();
+          switch(type_){
+          case RES_LOGIN:
+              qDebug() << "登录信号";
+              break;
+          case RES_REGISTER:
+              qDebug() << "注册信号";
+              break;
+          default:
+              qDebug() << "其他信号，不进行处理";
+              break;
+          };
         }
     }
 }
@@ -217,11 +234,18 @@ bool QHttpNet::PostData(QString url_, QString datas)
 //测试Get功能
 bool QHttpNet::GetData(QString url_)
 {
-    QNetworkRequest request;
     QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_GetRequestFinished(QNetworkReply*)));
     Q_ASSERT(connRet);
 
-    request.setUrl(QUrl(url_));
-    m_reply = m_manager->get(request);
+    m_request.setUrl(QUrl(url_));
+    m_reply = m_manager->get(m_request);
     return true;
+}
+
+//设置Cookie
+void QHttpNet::SetCookie(QString cookies_str)
+{
+    QVariant var;
+    var.setValue(cookies_str); //设置Cookie
+    m_request.setHeader(QNetworkRequest::CookieHeader,var);
 }
