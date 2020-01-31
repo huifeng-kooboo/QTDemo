@@ -1,6 +1,5 @@
 #include "QHttpNet.h"
 
-
 QHttpNet::QHttpNet()
 {
     m_manager = new QNetworkAccessManager(this); //初始化
@@ -183,7 +182,18 @@ void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
     }
     else {
         // 获取返回内容
-        qDebug() << reply->readAll();
+        QByteArray bya = reply->readAll();
+        QString str_reply = bya;// 所有回答的字符串
+        QJsonObject json_;
+        bool is_Convert = Utils::QStringToQJsonObject(str_reply,json_);
+        if(!is_Convert)
+        {
+            qDebug() << "ERROR_JSON" ;
+        }
+        else
+        {
+            qDebug() << "TRUE_JSON" ;
+        }
     }
 }
 

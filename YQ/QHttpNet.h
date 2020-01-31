@@ -1,3 +1,4 @@
+
 //导入相关网络库
 // 封装基于QT的网络库
 #include <QObject>
@@ -7,6 +8,13 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QFile>
+#include "Utils.h"
+
+typedef struct{
+    QString file_name; //文件名
+    int file_size; //文件大小
+    QString file_md5; //文件md5值，用于验证文件是否下载正确
+} FILE_INFO;
 
 enum FILE_STATE{
   FILE_NONE, //未下载
@@ -20,12 +28,6 @@ enum SLOTS_STATE{
   SLOTS_UNCONNECTED, //未连接槽函数
 };
 
-//请求类型,用于处理服务端返回数据
-enum Request_Type{
-    USER_LOGIN = 100, //用户登录
-    USER_REGISTER, //用户注册
-    USER_DEEPIN,
-};
 
 // 状态码
 enum StatusCode{
@@ -34,16 +36,8 @@ enum StatusCode{
     HTTP_NOT_FOUND = 404, //没有找到地址
 };
 
-typedef struct{
-    QString file_name; //文件名
-    int file_size; //文件大小
-    QString file_md5; //文件md5值，用于验证文件是否下载正确
-} FILE_INFO;
-
-class QNetworkReply;
-class QNetworkRequest;
-class QNetworkAccessManager;
 class QHttpNet:public QObject{
+
     Q_OBJECT
 public:
     QHttpNet();

@@ -1,5 +1,5 @@
 #include "Utils.h"
-
+#include <QDebug>
 // 判断是否未纯数字
 bool Utils::isPureNums(QString num_)
 {
@@ -72,4 +72,14 @@ QString Utils::GetFileMd5(QString& file_name)
     file.close();
     QString md5_str = md5_val;
     return md5_str;
+}
+
+bool  Utils::QStringToQJsonObject(QString& str_,QJsonObject&json_)
+{
+      QJsonDocument jsonDocument = QJsonDocument::fromJson(str_.toLocal8Bit().data());
+      if( jsonDocument.isNull() ){
+          return false;
+      }
+      json_ = jsonDocument.object();
+      return true;
 }

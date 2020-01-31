@@ -1,9 +1,8 @@
 #include "YLogin.h"
 #include "ui_YLogin.h"
-#include "Utils.h"
 #include "GlobalData.h"
 #include <QTextCodec>
-
+#include "Utils.h"
 
 YLogin::YLogin(QWidget *parent)
     : QMainWindow(parent)
