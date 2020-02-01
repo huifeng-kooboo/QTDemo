@@ -35,6 +35,7 @@ enum SLOTS_STATE{
 enum StatusCode{
     HTTP_ERROR = 0, //访问失败
     HTTP_OK = 200, //正常获取请求
+    HTTP_CREATE = 201, // POST:201增加
     HTTP_NOT_FOUND = 404, //没有找到地址
 };
 

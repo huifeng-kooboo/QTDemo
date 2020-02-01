@@ -166,6 +166,9 @@ void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
     case HTTP_OK:
         qDebug() << "通信正常";
         break;
+    case HTTP_CREATE:
+        qDebug() << "通信Post增加";
+        break;
     case HTTP_NOT_FOUND:
         qDebug() << "Http 404错误";
         return; //不进行处理
