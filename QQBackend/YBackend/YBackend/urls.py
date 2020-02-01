@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from rest_framework.documentation import include_docs_urls
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('login/',include('apps.users.urls')),
-    path('admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('users/',include('users.urls')),
+    path('admin/', admin.site.urls), # 管理员入口
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'docs/',include_docs_urls(title='接口文档')) #自动生成api文档
 ]

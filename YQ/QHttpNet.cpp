@@ -155,8 +155,7 @@ void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
 {
     //1.获取http状态码
     QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute); // 获取Http协议请求
-    QVariant str_ResourceType = reply->attribute(QNetworkRequest::ResourceTypeAttribute);
-    qDebug() << str_ResourceType.toUrl();
+    QVariant str_ResourceType = reply->attribute(QNetworkRequest::ResourceTypeAttribute); //获取资源类型属性
     int status_code = statusCode.toInt(); //获取状态码
 
     switch(status_code){
@@ -187,7 +186,7 @@ void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
         // 获取返回内容
         QByteArray bya = reply->readAll();
         qDebug() << bya;
-        QString str_reply = bya;// 所有回答的字符串
+        QString str_reply = bya;// 所有响应的字符串
         QJsonObject json_;
         bool is_Convert = Utils::QStringToQJsonObject(str_reply,json_);
         if(!is_Convert)
