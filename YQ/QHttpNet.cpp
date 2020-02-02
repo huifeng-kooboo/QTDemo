@@ -144,10 +144,69 @@ void QHttpNet::Slots_DownloadFinish()
 }
 
 //处理Post请求完成响应
-void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply_)
+void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply)
 {
-    QByteArray qba =reply_->readAll();
-    QString str_ = qba;//QString //获取转换的数据
+    //1.获取http状态码
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute); // 获取Http协议请求
+    QVariant str_ResourceType = reply->attribute(QNetworkRequest::ResourceTypeAttribute); //获取资源类型属性
+    int status_code = statusCode.toInt(); //获取状态码
+
+    switch(status_code){
+    case HTTP_ERROR:
+        qDebug() << "通信失败";
+        return; //返回 不进行处理
+        break;
+    case HTTP_OK:
+        qDebug() << "通信正常";
+        break;
+    case HTTP_CREATE:
+        qDebug() << "通信Post增加";
+        break;
+    case HTTP_NOT_FOUND:
+        qDebug() << "Http 404错误";
+        return; //不进行处理
+        break;
+    default:
+        break;
+    };
+
+    QVariant reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toString();
+    if(reason.isValid())
+        qDebug() << "reason=" << reason.toString();
+
+    QNetworkReply::NetworkError err = reply->error();
+    if(err != QNetworkReply::NoError) {
+        qDebug() << "Failed: " << reply->errorString();
+    }
+    else {
+        // 获取返回内容
+        QByteArray bya = reply->readAll();
+        qDebug() << bya;
+        QString str_reply = bya;// 所有响应的字符串
+        QJsonObject json_;
+        bool is_Convert = Utils::QStringToQJsonObject(str_reply,json_);
+        if(!is_Convert)
+        {
+            qDebug() << "ERROR_JSON" ;
+            return ;
+        }
+        else
+        {
+          QJsonValue res_type = json_.value("request_type");
+          int type_ = res_type.toInt();
+          switch(type_){
+          case RES_LOGIN:
+              qDebug() << "登录信号";
+              break;
+          case RES_REGISTER:
+              qDebug() << "注册信号";
+              break;
+          default:
+              qDebug() << "其他信号，不进行处理";
+              break;
+          };
+        }
+    }
 }
 
 // 处理get请求
@@ -227,6 +286,7 @@ bool QHttpNet::PostData(QString url_, QString datas)
 {
     QNetworkRequest req;
     req.setUrl(url_); //设置URL访问
+    req.setHeader(QNetworkRequest::ContentTypeHeader,QVariant("application/json")); /*传递Json字符串*/
     // 绑定多个槽函数
     QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_PostRequestFinished(QNetworkReply*))); // 绑定结束的信号与槽
     m_manager->post(req,datas.toUtf8()); //发送post请求

@@ -305,7 +305,7 @@ void YLogin::Slots_LoginQQ()
     user_jsons.insert("username",account_);
     user_jsons.insert("password",password_);
     QString send_data = Utils::QJsonObjectToQString(user_jsons);
-    SendLoginReqToServer(send_data);
+    m_http->PostData(LOGIN_URL,send_data);
 }
 
 //最小化窗体
@@ -362,7 +362,6 @@ void YLogin::Slots_ShowLoginPage()
 void YLogin::Slots_ShowLoginQrcodePage()
 {
     // 设置Get请求
-    m_http->GetData(TEST_GET_URL);
 
     // 判断是否重复登录提示框去掉
     if(ui->lbl_Tips->isVisible())

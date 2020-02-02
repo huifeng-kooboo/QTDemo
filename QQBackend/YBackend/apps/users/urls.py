@@ -1,4 +1,5 @@
 from django.urls import path,include
+from django.conf.urls import url
 from . import views
 from rest_framework import routers
 from .views import UserViewSet,UserRegisterViewSet,UserLoginViewSet
@@ -7,9 +8,9 @@ from .views import UserViewSet,UserRegisterViewSet,UserLoginViewSet
 router = routers.DefaultRouter()
 router.register(r'users',UserViewSet)
 router.register(r'register',UserRegisterViewSet) #注册
-router.register(r'login',UserLoginViewSet)
 
 
 urlpatterns = [
-    path('',include(router.urls))
+    path('',include(router.urls)),
+    url(r'^login/',UserLoginViewSet.as_view(),name='login'),
 ]

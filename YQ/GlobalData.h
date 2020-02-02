@@ -14,3 +14,5 @@
 #define TEST_GET_URL "http://127.0.0.1:8000/login/login/"   //测试getdata功能
 
 #define GITHUB_URL  "http://github.com/"
+
+#define LOGIN_URL   "http://127.0.0.1:8000/users/login/"
