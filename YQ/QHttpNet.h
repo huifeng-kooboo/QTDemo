@@ -44,6 +44,12 @@ enum RequestType{
   RES_REGISTER,  //用户注册
 };
 
+enum LOGIN_ERROR{
+    LOGIN_SUCCESS = 1,//登录成功
+    LOGIN_ERROR_USERNAME, //用户名错误
+    LOGIN_ERROR_PASSWORD, //密码错误
+};
+
 class QHttpNet:public QObject{
 
     Q_OBJECT
