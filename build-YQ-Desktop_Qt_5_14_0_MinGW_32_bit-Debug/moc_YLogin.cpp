@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_YLogin_t {
-    QByteArrayData data[19];
-    char stringdata0[315];
+    QByteArrayData data[21];
+    char stringdata0[350];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,7 +50,9 @@ QT_MOC_LITERAL(14, 234, 8), // "str_link"
 QT_MOC_LITERAL(15, 243, 22), // "Slots_ShowAddQQAccount"
 QT_MOC_LITERAL(16, 266, 18), // "Slots_AddQQAccount"
 QT_MOC_LITERAL(17, 285, 17), // "Slots_SingleLogin"
-QT_MOC_LITERAL(18, 303, 11) // "Slots_Login"
+QT_MOC_LITERAL(18, 303, 11), // "Slots_Login"
+QT_MOC_LITERAL(19, 315, 22), // "Slots_UI_LoginResponse"
+QT_MOC_LITERAL(20, 338, 11) // "LOGIN_ERROR"
 
     },
     "YLogin\0Slots_CloseWindow\0\0Slots_LoginQQ\0"
@@ -60,7 +62,8 @@ QT_MOC_LITERAL(18, 303, 11) // "Slots_Login"
     "Slots_ShowLoginPage\0Slots_ShowUserTableView\0"
     "Slots_OpenLink\0str_link\0Slots_ShowAddQQAccount\0"
     "Slots_AddQQAccount\0Slots_SingleLogin\0"
-    "Slots_Login"
+    "Slots_Login\0Slots_UI_LoginResponse\0"
+    "LOGIN_ERROR"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,7 +73,7 @@ static const uint qt_meta_data_YLogin[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -78,20 +81,21 @@ static const uint qt_meta_data_YLogin[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   84,    2, 0x08 /* Private */,
-       3,    0,   85,    2, 0x08 /* Private */,
-       4,    0,   86,    2, 0x08 /* Private */,
-       5,    0,   87,    2, 0x08 /* Private */,
-       6,    1,   88,    2, 0x08 /* Private */,
-       9,    0,   91,    2, 0x08 /* Private */,
-      10,    0,   92,    2, 0x08 /* Private */,
-      11,    0,   93,    2, 0x08 /* Private */,
-      12,    0,   94,    2, 0x08 /* Private */,
-      13,    1,   95,    2, 0x08 /* Private */,
-      15,    0,   98,    2, 0x08 /* Private */,
-      16,    0,   99,    2, 0x08 /* Private */,
-      17,    0,  100,    2, 0x08 /* Private */,
-      18,    0,  101,    2, 0x08 /* Private */,
+       1,    0,   89,    2, 0x08 /* Private */,
+       3,    0,   90,    2, 0x08 /* Private */,
+       4,    0,   91,    2, 0x08 /* Private */,
+       5,    0,   92,    2, 0x08 /* Private */,
+       6,    1,   93,    2, 0x08 /* Private */,
+       9,    0,   96,    2, 0x08 /* Private */,
+      10,    0,   97,    2, 0x08 /* Private */,
+      11,    0,   98,    2, 0x08 /* Private */,
+      12,    0,   99,    2, 0x08 /* Private */,
+      13,    1,  100,    2, 0x08 /* Private */,
+      15,    0,  103,    2, 0x08 /* Private */,
+      16,    0,  104,    2, 0x08 /* Private */,
+      17,    0,  105,    2, 0x08 /* Private */,
+      18,    0,  106,    2, 0x08 /* Private */,
+      19,    1,  107,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -108,6 +112,7 @@ static const uint qt_meta_data_YLogin[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 20,    2,
 
        0        // eod
 };
@@ -132,6 +137,7 @@ void YLogin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 11: _t->Slots_AddQQAccount(); break;
         case 12: _t->Slots_SingleLogin(); break;
         case 13: _t->Slots_Login(); break;
+        case 14: _t->Slots_UI_LoginResponse((*reinterpret_cast< LOGIN_ERROR(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -166,13 +172,13 @@ int YLogin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 15)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }

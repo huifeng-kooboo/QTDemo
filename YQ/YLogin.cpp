@@ -82,7 +82,7 @@ void YLogin::Init()
     ui->btn_addaccount->setToolTip("多账号登录");
     ui->btn_qrcode->setToolTip("二维码登录");
     //测试下载功能
-    m_http = new QHttpNet(); //初始化
+    m_http = new QHttpNet(this); //初始化
     //按钮
     m_btn_AddAccount = nullptr; //设为空按钮
     //
@@ -151,6 +151,11 @@ void YLogin::InitSignalAndSlots()
     connect(ui->lbl_reg_num,SIGNAL(linkActivated(QString)), this, SLOT(Slots_OpenLink(QString)));
     connect(ui->lbl_find_password,SIGNAL(linkActivated(QString)), this, SLOT(Slots_OpenLink(QString)));
     connect(ui->btn_addaccount,SIGNAL(clicked()),this,SLOT(Slots_ShowAddQQAccount()));
+}
+
+void YLogin::Slots_UI_LoginResponse(LOGIN_ERROR state_)
+{
+    qDebug() << state_;
 }
 
 // 显示QQ添加账号界面
@@ -279,9 +284,10 @@ void YLogin::Slots_LoginQQ()
 {
 
     BasicInfoCheck();
+
     //1.判断用户名
     QString account_ = ui->lineEdit_Account->text(); //获取账号信息
-    ShowRepeatLoginTip(account_);
+    ShowRepeatLoginTip(account_); //显示重复登录提示框
     bool result_ = Utils::StringJudgeAccount(account_); //判断账号是否符合要求
     //匹配失败
     if(!result_)

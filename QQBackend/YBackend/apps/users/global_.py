@@ -7,6 +7,7 @@ class ResType(Enum):
     RES_REGISTER = 101
     RES_ERROR = 10000
 
+# 定义登录状态枚举类型
 class LoginState(Enum):
     LOGIN_SUCCESS = 1
     LOGIN_ERROR_USERNAME = 2

@@ -1,7 +1,8 @@
 #include "QHttpNet.h"
 
-QHttpNet::QHttpNet()
+QHttpNet::QHttpNet(QMainWindow *parent_)
 {
+    m_parent_window = parent_;
     m_manager = new QNetworkAccessManager(this); //初始化
     m_reply = nullptr;
     m_timer = nullptr;
@@ -10,6 +11,7 @@ QHttpNet::QHttpNet()
     m_progress_value = 0;
     m_timer_state = 0;
     m_list_cookie = nullptr;
+    connect(this,SIGNAL(LoginSignal(LOGIN_ERROR)),parent_,SLOT(Slots_UI_LoginResponse(LOGIN_ERROR)));
 }
 
 QHttpNet::~QHttpNet()
@@ -143,6 +145,30 @@ void QHttpNet::Slots_DownloadFinish()
 
 }
 
+void QHttpNet::Business_LoginResponse(const QJsonObject& json_)
+{
+    QJsonValue login_state_json = json_.value("login_state");
+    int state_ = login_state_json.toInt(); //转int
+    switch(state_)
+    {
+    case LOGIN_SUCCESS:
+        //传递给前端
+        qDebug() << "登录成功";
+        emit LoginSignal(LOGIN_SUCCESS);
+        break;
+    case LOGIN_ERROR_PASSWORD:
+        qDebug() << "密码错误";
+        emit LoginSignal(LOGIN_ERROR_PASSWORD);
+        break;
+    case LOGIN_ERROR_USERNAME:
+        qDebug() << "用户名错误" ;
+        emit LoginSignal(LOGIN_ERROR_USERNAME);
+        break;
+    default:
+        break;
+    }
+}
+
 //处理Post请求完成响应
 void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply)
 {
@@ -154,16 +180,18 @@ void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply)
     switch(status_code){
     case HTTP_ERROR:
         qDebug() << "通信失败";
+        emit LoginSignal(LOGIN_ERROR_HTTP);
         return; //返回 不进行处理
         break;
     case HTTP_OK:
         qDebug() << "通信正常";
         break;
     case HTTP_CREATE:
-        qDebug() << "通信Post增加";
+        qDebug() << "通信增加字段";
         break;
     case HTTP_NOT_FOUND:
         qDebug() << "Http 404错误";
+        emit LoginSignal(LOGIN_ERROR_HTTP);
         return; //不进行处理
         break;
     default:
@@ -192,11 +220,14 @@ void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply)
         }
         else
         {
+          // 解析响应数据
           QJsonValue res_type = json_.value("request_type");
           int type_ = res_type.toInt();
           switch(type_){
           case RES_LOGIN:
-              qDebug() << "登录信号";
+              qDebug() << "登录信号" ;
+              //交给业务方法中进行处理
+              Business_LoginResponse(json_);
               break;
           case RES_REGISTER:
               qDebug() << "注册信号";
@@ -284,12 +315,11 @@ int  QHttpNet::GetCurrentProgress()
 //测试Post功能
 bool QHttpNet::PostData(QString url_, QString datas)
 {
-    QNetworkRequest req;
-    req.setUrl(url_); //设置URL访问
-    req.setHeader(QNetworkRequest::ContentTypeHeader,QVariant("application/json")); /*传递Json字符串*/
+    m_request.setUrl(url_); //设置URL访问
+    m_request.setHeader(QNetworkRequest::ContentTypeHeader,QVariant("application/json")); /*传递Json字符串*/
     // 绑定多个槽函数
     QMetaObject::Connection connRet = QObject::connect(m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(Slots_PostRequestFinished(QNetworkReply*))); // 绑定结束的信号与槽
-    m_manager->post(req,datas.toUtf8()); //发送post请求
+    m_manager->post(m_request,datas.toUtf8()); //发送post请求
     return true;
 }
 

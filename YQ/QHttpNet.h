@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QFile>
+#include <QMainWindow>
 #include "Utils.h"
 
 typedef struct{
@@ -40,21 +41,22 @@ enum StatusCode{
 };
 
 enum RequestType{
-  RES_LOGIN=100, //用户登录
-  RES_REGISTER,  //用户注册
+  RES_LOGIN = 100, //用户登录
+  RES_REGISTER = 101,  //用户注册
 };
 
 enum LOGIN_ERROR{
     LOGIN_SUCCESS = 1,//登录成功
-    LOGIN_ERROR_USERNAME, //用户名错误
-    LOGIN_ERROR_PASSWORD, //密码错误
+    LOGIN_ERROR_USERNAME = 2, //用户名错误
+    LOGIN_ERROR_PASSWORD = 3, //密码错误
+    LOGIN_ERROR_HTTP = 4, //网络故障
 };
 
 class QHttpNet:public QObject{
 
     Q_OBJECT
 public:
-    QHttpNet();
+    QHttpNet(QMainWindow *parent_);
     ~QHttpNet();
 
     //
@@ -65,6 +67,13 @@ public:
     bool DownloadFile(QString url_,QString file_name); //下载文件
     bool CreateDownloadFile(QString filename); //创建下载的文件名，用于写入
     int  GetCurrentProgress(); //获取当前的下载进度0-100
+
+signals:
+    void LoginSignal(LOGIN_ERROR login_state_);//登录信号
+
+private:
+    //处理业务逻辑事件在这进行处理
+    void Business_LoginResponse(const QJsonObject& json_);
 
 private slots:
     virtual void Slots_Reply();    //设置为可继承重载
@@ -90,4 +99,5 @@ private:
     int  m_progress_value; //下载进度
     QTimer* m_timer; // 定时器下载
     QNetworkRequest m_request;
+    QMainWindow * m_parent_window;
 };

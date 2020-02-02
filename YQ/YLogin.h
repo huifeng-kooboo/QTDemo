@@ -102,6 +102,8 @@ private slots:
     void Slots_SingleLogin(); //单账号登录
     void Slots_Login();  //登录
 
+    void Slots_UI_LoginResponse(LOGIN_ERROR);
+
 protected:
     //重写方法 设置去掉标题栏可移动
     void mousePressEvent(QMouseEvent *e); //鼠标单击事件
@@ -110,6 +112,8 @@ protected:
     void paintEvent(QPaintEvent* event);
     //重写事件过滤方法
     bool eventFilter(QObject* watched,QEvent * event);
+
+
 
 private:
     Ui::YLogin *ui;
