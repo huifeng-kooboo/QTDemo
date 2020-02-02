@@ -12,3 +12,4 @@ class LoginState(Enum):
     LOGIN_SUCCESS = 1
     LOGIN_ERROR_USERNAME = 2
     LOGIN_ERROR_PASSWORD = 3
+    LOGIN_ERROR_HTTP = 4
