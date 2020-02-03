@@ -38,6 +38,7 @@ class UserLoginViewSet(APIView):
             json_ = json.loads(json_Result)
             json_.update({'login_state': LoginState.LOGIN_ERROR_USERNAME.value})
             return Response(json_, status=status.HTTP_200_OK)  # 由前端做数据处理
+        # 对比数据库 获取是否有该登录名
         userdata = QQUsers.objects.filter(username=username_str)
         if len(userdata) < 1:
             json_ = json.loads(json_Result)

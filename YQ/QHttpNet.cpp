@@ -231,6 +231,7 @@ void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply)
               break;
           case RES_REGISTER:
               qDebug() << "注册信号";
+              //处理注册
               break;
           default:
               qDebug() << "其他信号，不进行处理";

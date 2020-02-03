@@ -155,7 +155,34 @@ void YLogin::InitSignalAndSlots()
 
 void YLogin::Slots_UI_LoginResponse(LOGIN_ERROR state_)
 {
-    qDebug() << state_;
+    switch (state_) {
+    case LOGIN_SUCCESS:
+    {
+        qDebug() << "QQ登录成功";
+        break;
+    }
+    case LOGIN_ERROR_USERNAME:
+    {
+        qDebug() << "QQ用户名错误";
+        QPoint cur_account_pos  = this->mapToGlobal(ui->lineEdit_Account->pos());
+        ShowPromptTip(cur_account_pos,"账号错误");
+        break;
+    }
+    case LOGIN_ERROR_PASSWORD:
+    {
+        qDebug() << "QQ密码错误";
+        QPoint cur_password_pos  = this->mapToGlobal(ui->lineEdit_Password->pos());
+        ShowPromptTip(cur_password_pos,"密码错误");
+        break;
+    }
+    case LOGIN_ERROR_HTTP:
+    {
+        qDebug() << "HTTP错误";
+        break;
+    }
+    default:
+        break;
+    }
 }
 
 // 显示QQ添加账号界面
@@ -282,12 +309,9 @@ void YLogin::Slots_CloseWindow()
 //登录QQ功能
 void YLogin::Slots_LoginQQ()
 {
-
-    BasicInfoCheck();
-
     //1.判断用户名
     QString account_ = ui->lineEdit_Account->text(); //获取账号信息
-    ShowRepeatLoginTip(account_); //显示重复登录提示框
+    //ShowRepeatLoginTip(account_); //显示重复登录提示框
     bool result_ = Utils::StringJudgeAccount(account_); //判断账号是否符合要求
     //匹配失败
     if(!result_)
@@ -311,7 +335,7 @@ void YLogin::Slots_LoginQQ()
     user_jsons.insert("username",account_);
     user_jsons.insert("password",password_);
     QString send_data = Utils::QJsonObjectToQString(user_jsons);
-    m_http->PostData(LOGIN_URL,send_data);
+    m_http->PostData(LOGIN_URL,send_data); //发送登录请求
 }
 
 //最小化窗体
