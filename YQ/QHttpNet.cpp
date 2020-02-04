@@ -12,6 +12,7 @@ QHttpNet::QHttpNet(QMainWindow *parent_)
     m_timer_state = 0;
     m_list_cookie = nullptr;
     connect(this,SIGNAL(LoginSignal(LOGIN_ERROR)),parent_,SLOT(Slots_UI_LoginResponse(LOGIN_ERROR)));
+    connect(this,SIGNAL(DownloadFileSignal(QString)),parent_,SLOT(Slots_HandleURL(QString)));
 }
 
 QHttpNet::~QHttpNet()
@@ -38,6 +39,9 @@ bool QHttpNet::CreateDownloadFile(QString filename)
 
 bool QHttpNet::DownloadFile(QString url_, QString file_name)
 {
+    //添加到url_和file_name到集合中
+    m_vec_download_url.append(url_); //添加到下载集合中
+    m_vec_file_name.append(file_name); //添加到用户名集合中
     if(!m_timer)
     {
         m_timer = new QTimer(this);  // 初始化定时器
@@ -45,9 +49,7 @@ bool QHttpNet::DownloadFile(QString url_, QString file_name)
         m_timer->start(2000);//设置两秒后开始
         connect(m_timer,SIGNAL(timeout()),this,SLOT(Slots_TimerCheckRes())); //触发下载资源
     }
-    //添加到url_和file_name到集合中
-    m_vec_download_url.append(url_); //添加到下载集合中
-    m_vec_file_name.append(file_name); //添加到用户名集合中
+
     return true;
 }
 
@@ -69,8 +71,9 @@ void QHttpNet::Slots_TimerCheckRes()
            QString down_filename = m_vec_file_name[i];
            CreateDownloadFile(down_filename);
            QUrl url_ = QUrl(down_url);
+           m_request.setUrl(url_);
            //下载请求
-           m_reply = m_manager->get(QNetworkRequest(url_));
+           m_reply = m_manager->get(m_request);
            // 第一次需要绑定信号与槽
            connect(m_reply,SIGNAL(readyRead()),this,SLOT(Slots_WriteFile()));//数据写入
            connect(m_reply,SIGNAL(finished()),this,SLOT(Slots_DownloadFinish()));//下载完成
@@ -140,9 +143,18 @@ void QHttpNet::Slots_DownloadFinish()
     m_file->close();
     m_file = nullptr;
     m_timer->stop(); //停止
-    QMessageBox::about(NULL,"文件下载完成","文件");
-    //下载完成:清空下载
+    QUrl download_url_ = m_request.url(); //获取下载链接
+    QString url_str_ = download_url_.toString();
+    Business_HandleDownloadUrl(url_str_);
+}
 
+void QHttpNet::Business_HandleDownloadUrl(QString& url_)
+{
+    if (url_ == FILE_VERSION_URL)
+    {
+        qDebug() << "文件版本下载到本地完成" ;
+        emit DownloadFileSignal(url_);
+    }
 }
 
 void QHttpNet::Business_LoginResponse(const QJsonObject& json_)

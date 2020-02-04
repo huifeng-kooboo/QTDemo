@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QMainWindow>
 #include "Utils.h"
+#include "GlobalData.h"
 
 typedef struct{
     QString file_name; //文件名
@@ -70,10 +71,12 @@ public:
 
 signals:
     void LoginSignal(LOGIN_ERROR login_state_);//登录信号
+    void DownloadFileSignal(QString file_url); //下载文件信号
 
 private:
     //处理业务逻辑事件在这进行处理
     void Business_LoginResponse(const QJsonObject& json_);
+    void Business_HandleDownloadUrl(QString& url_); //处理下载链接
 
 private slots:
     virtual void Slots_Reply();    //设置为可继承重载

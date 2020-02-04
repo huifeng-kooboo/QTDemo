@@ -83,3 +83,16 @@ bool  Utils::QStringToQJsonObject(QString& str_,QJsonObject&json_)
       json_ = jsonDocument.object();
       return true;
 }
+
+// 创建文件夹
+bool Utils::CreateDirectory_(QString& folder_path)
+{
+    QDir dir;
+    return true;
+}
+
+// 创建文件
+bool Utils::CreateFile_(QString& file_name)
+{
+    return true;
+}

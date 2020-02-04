@@ -14,3 +14,7 @@
 #define GITHUB_URL  "http://github.com/"
 
 #define LOGIN_URL   "http://127.0.0.1:8000/users/login/"      //登录URL
+
+#define FILE_VERSION_URL "http://127.0.0.1:8000/media/configs/QQVersion.ini"  //文件版本URL
+
+#define FILE_VERSION_NAME "QQVesion.ini"  //版本文件名

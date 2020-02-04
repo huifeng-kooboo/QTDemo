@@ -6,6 +6,7 @@
 #include <qcryptographichash.h>
 #include <iostream>
 #include <string>
+#include <QDir>
 
 // 公共方法存放
 namespace Utils {
@@ -20,6 +21,8 @@ bool  QStringToQJsonObject(QString& str_,QJsonObject&json_); //QString转QJsonOb
 //2.文件处理部分
 QString GetFileMd5(QString &file_name); //获取文件md5值
 bool IsFileExist(QString filename);//判断是否文件存在
+bool CreateDirectory_(QString& folder_path); //创建文件夹
+bool CreateFile_(QString& file_name); // 创建文件
 
 //3.
 }

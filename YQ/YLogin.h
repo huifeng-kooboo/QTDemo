@@ -85,6 +85,9 @@ public:
     //@params:tips_:提示内容
     void ShowPromptTip(const QPoint & pos,QString tips_);
 
+    //
+    QString GetCurrentVersionNum();//获取当前文件版本号
+
 private slots:
     //相关槽函数存放在这
     void Slots_CloseWindow();  //关闭窗体
@@ -103,6 +106,7 @@ private slots:
     void Slots_Login();  //登录
 
     void Slots_UI_LoginResponse(LOGIN_ERROR);
+    void Slots_HandleURL(QString); //处理下载信息信号
 
 protected:
     //重写方法 设置去掉标题栏可移动
@@ -142,5 +146,8 @@ private:
     QPushButton * m_btn_AddAccount; //添加账号按钮
     QPushButton * m_btn_SingleLogin; //单账号登录按钮
     QPushButton * m_btn_loginQQ; //登录按钮
+
+    //
+    QString m_version_num; //当前QQ版本号
  };
 #endif // YLOGIN_H

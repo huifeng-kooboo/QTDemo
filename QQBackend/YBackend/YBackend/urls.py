@@ -27,4 +27,4 @@ urlpatterns = [
     path('admin/', admin.site.urls), # 管理员入口
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'docs/',include_docs_urls(title='接口文档')) #自动生成api文档
-] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) # 作用，提供客户端可以访问进行下载到本地

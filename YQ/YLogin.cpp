@@ -17,8 +17,8 @@ YLogin::YLogin(QWidget *parent)
 
     Init();
     InitTrayMenu();
-    InitServerConfig();
     InitSignalAndSlots();
+    InitServerConfig();
     setAttribute(Qt::WA_TranslucentBackground, true); //不绘制界面 通过QPainter重绘
 }
 
@@ -45,6 +45,8 @@ YLogin::~YLogin()
 void YLogin::InitServerConfig()
 {
     //向服务器请求配置信息
+    //获取当前版本
+    m_http->DownloadFile(FILE_VERSION_URL,FILE_VERSION_NAME);
 
 }
 
@@ -496,5 +498,26 @@ void YLogin::Slots_ShowUserTableView()
         m_show_state = 0;
         m_AccountView->hide();
         m_AccountView->setVisible(false); //不显示
+    }
+}
+
+QString YLogin::GetCurrentVersionNum()
+{
+    QFile file(FILE_VERSION_NAME);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QByteArray t_ = file.readAll();
+    QString version_str = QString(t_);
+    QStringList ver_list =version_str.split("= ");
+    m_version_num = ver_list[1]; // 获取当前版本号
+    qDebug() << m_version_num;
+    return m_version_num;
+}
+
+void YLogin::Slots_HandleURL(QString url_)
+{
+    if(url_ == FILE_VERSION_URL)
+    {
+        GetCurrentVersionNum();
+        qDebug() << "客户端接收成功" ;
     }
 }
