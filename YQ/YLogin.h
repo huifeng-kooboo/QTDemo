@@ -63,8 +63,6 @@ class YLogin : public QMainWindow
     Q_OBJECT
 
 public:
-
-
     YLogin(QWidget *parent = nullptr);
     ~YLogin();
 

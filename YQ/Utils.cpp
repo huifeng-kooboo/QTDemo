@@ -100,5 +100,19 @@ bool Utils::CreateDirectory_(QString& folder_path)
 // 创建文件
 bool Utils::CreateFile_(QString& file_name)
 {
-    return true;
+    if(Utils::IsFileExist(file_name))
+    {
+        qDebug() << "该文件已存在";
+        return false;
+    }
+    QFile *m_file = new QFile(file_name);
+    if(m_file->open(QIODevice::WriteOnly))
+    {
+        m_file->close();
+        return true;
+    }
+    qDebug() << "文件创建失败" ;
+    delete m_file;
+    m_file = nullptr;
+    return false;
 }
