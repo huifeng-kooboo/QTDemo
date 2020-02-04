@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from rest_framework.documentation import include_docs_urls
+from django.conf.urls.static import static
+from django.conf import settings
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -25,4 +27,4 @@ urlpatterns = [
     path('admin/', admin.site.urls), # 管理员入口
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'docs/',include_docs_urls(title='接口文档')) #自动生成api文档
-]
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -143,3 +143,7 @@ STATIC_URL = '/static/'
 
 # 重载User Model
 AUTH_USER_MODEL = 'users.QQUsers'
+
+# 配置Media
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
