@@ -88,6 +88,12 @@ bool  Utils::QStringToQJsonObject(QString& str_,QJsonObject&json_)
 bool Utils::CreateDirectory_(QString& folder_path)
 {
     QDir dir;
+    if(dir.exists(folder_path))
+    {
+        qDebug() << "当前文件夹已存在" ;
+        return false;
+    }
+    dir.mkpath(folder_path);
     return true;
 }
 

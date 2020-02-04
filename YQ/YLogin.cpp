@@ -510,6 +510,7 @@ QString YLogin::GetCurrentVersionNum()
     QStringList ver_list =version_str.split("= ");
     m_version_num = ver_list[1]; // 获取当前版本号
     qDebug() << m_version_num;
+    file.close();//需要关闭 防止内存泄露
     return m_version_num;
 }
 

@@ -17,4 +17,5 @@
 
 #define FILE_VERSION_URL "http://127.0.0.1:8000/media/configs/QQVersion.ini"  //文件版本URL
 
+//文件名部分
 #define FILE_VERSION_NAME "QQVesion.ini"  //版本文件名

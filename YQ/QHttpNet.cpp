@@ -11,6 +11,9 @@ QHttpNet::QHttpNet(QMainWindow *parent_)
     m_progress_value = 0;
     m_timer_state = 0;
     m_list_cookie = nullptr;
+    QUrl url_;
+    url_.setUrl("");
+    m_request.setUrl(url_); //初始化设为空;
     connect(this,SIGNAL(LoginSignal(LOGIN_ERROR)),parent_,SLOT(Slots_UI_LoginResponse(LOGIN_ERROR)));
     connect(this,SIGNAL(DownloadFileSignal(QString)),parent_,SLOT(Slots_HandleURL(QString)));
 }
@@ -80,6 +83,7 @@ void QHttpNet::Slots_TimerCheckRes()
            connect(m_reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(Slots_ShowProgress(qint64,qint64))); //获取下载进度
            m_vec_file_name.remove(0); //移除
            m_vec_download_url.remove(0); //移除
+           return;
         }
         m_timer_state = 1;
         return;
@@ -96,10 +100,19 @@ void QHttpNet::Slots_TimerCheckRes()
     {
        QString down_url = m_vec_download_url[i];
        QString down_filename = m_vec_file_name[i];
-       CreateDownloadFile(down_filename);
-       QUrl url_ = QUrl(down_url);
-       //下载请求
-       m_reply = m_manager->get(QNetworkRequest(url_));
+       //下载请求：判断是否有东西正在下载
+       QString cur_url_str = m_request.url().toString();
+       // 说明暂时没有下载任务
+       if(cur_url_str.size() == 0)
+       {
+           CreateDownloadFile(down_filename);
+           QUrl url_ = QUrl(down_url);
+           m_request.setUrl(url_);
+           m_reply = m_manager->get(m_request);
+           m_vec_file_name.remove(0); //移除
+           m_vec_download_url.remove(0); //移除
+       }
+       return;
     }
 }
 
@@ -146,6 +159,7 @@ void QHttpNet::Slots_DownloadFinish()
     QUrl download_url_ = m_request.url(); //获取下载链接
     QString url_str_ = download_url_.toString();
     Business_HandleDownloadUrl(url_str_);
+    m_request.setUrl(QUrl("")); //设置为空URL :以便可以执行多次下载
 }
 
 void QHttpNet::Business_HandleDownloadUrl(QString& url_)
