@@ -116,3 +116,30 @@ bool Utils::CreateFile_(QString& file_name)
     m_file = nullptr;
     return false;
 }
+
+bool Utils::DeleteDirectory_(QString& folder_path)
+{
+    if (folder_path.isEmpty()){
+        return false;
+    }
+    QDir dir(folder_path);
+    if(!dir.exists()){
+        qDebug() << "文件夹为空";
+        return true;
+    }
+    dir.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot); //设置过滤
+    QFileInfoList fileList = dir.entryInfoList(); // 获取所有的文件信息
+    foreach (QFileInfo file, fileList){ //遍历文件信息
+        if (file.isFile()){ // 是文件，删除
+            file.dir().remove(file.fileName());
+        }else{ // 递归删除
+           dir.remove(file.absoluteFilePath());
+        }
+    }
+    return dir.rmpath(dir.absolutePath()); // 删除文件夹
+}
+
+bool Utils::DeleteFile_(QString& file_name)
+{
+    return QFile::remove(file_name);
+}

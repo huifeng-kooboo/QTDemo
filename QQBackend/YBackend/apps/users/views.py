@@ -53,5 +53,4 @@ class UserLoginViewSet(APIView):
             return Response(json_, status=status.HTTP_200_OK)
         json_ = json.loads(json_Result)
         json_.update({'login_state': LoginState.LOGIN_SUCCESS.value})
-        return Response(json_, status=status.HTTP_200_OK)  # 由前端做数据处理 userdata.values[0]会直接转成json格式
-
+        return Response(json_, status=status.HTTP_200_OK)  # 由前端做数据处理 userdata.values[0]会直接转成json格
