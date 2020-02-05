@@ -84,7 +84,8 @@ public:
     void ShowPromptTip(const QPoint & pos,QString tips_);
 
     //
-    QString GetCurrentVersionNum();//获取当前文件版本号
+    QString GetCurrentVersionNum();   //获取当前文件版本号
+    QString GetUserIcon();            //获取用户头像
 
 private slots:
     //相关槽函数存放在这
@@ -105,6 +106,7 @@ private slots:
 
     void Slots_UI_LoginResponse(LOGIN_ERROR);
     void Slots_HandleURL(QString); //处理下载信息信号
+    void Slots_HandleUserIcon(QString);
 
 protected:
     //重写方法 设置去掉标题栏可移动
@@ -147,5 +149,6 @@ private:
 
     //
     QString m_version_num; //当前QQ版本号
+    QString m_icon_url;  // 用户头像url
  };
 #endif // YLOGIN_H

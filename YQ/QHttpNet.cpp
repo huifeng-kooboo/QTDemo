@@ -16,6 +16,7 @@ QHttpNet::QHttpNet(QMainWindow *parent_)
     m_request.setUrl(url_); //初始化设为空;
     connect(this,SIGNAL(LoginSignal(LOGIN_ERROR)),parent_,SLOT(Slots_UI_LoginResponse(LOGIN_ERROR)));
     connect(this,SIGNAL(DownloadFileSignal(QString)),parent_,SLOT(Slots_HandleURL(QString)));
+    connect(this,SIGNAL(UserIconSignal(QString)),parent_,SLOT(Slots_HandleUserIcon(QString)));
 }
 
 QHttpNet::~QHttpNet()
@@ -251,17 +252,29 @@ void QHttpNet::Slots_PostRequestFinished(QNetworkReply* reply)
           int type_ = res_type.toInt();
           switch(type_){
           case RES_LOGIN:
+          {
               qDebug() << "登录信号" ;
               //交给业务方法中进行处理
               Business_LoginResponse(json_);
               break;
+          }
           case RES_REGISTER:
+          {
               qDebug() << "注册信号";
               //处理注册
               break;
+          }
+          case RES_USERICON:
+          {
+              qDebug() << "获取用户头像信号";
+              Business_IconResponse(json_);
+              break;
+          }
           default:
+          {
               qDebug() << "其他信号，不进行处理";
               break;
+          }
           };
         }
     }
@@ -325,6 +338,9 @@ void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
           case RES_REGISTER:
               qDebug() << "注册信号";
               break;
+          case RES_USERICON:
+              qDebug() << "获取用户头像信号";
+              break;
           default:
               qDebug() << "其他信号，不进行处理";
               break;
@@ -367,4 +383,34 @@ void QHttpNet::SetCookie(QString cookies_str)
     QVariant var;
     var.setValue(cookies_str); //设置Cookie
     m_request.setHeader(QNetworkRequest::CookieHeader,var);
+}
+
+void QHttpNet::Business_IconResponse(const QJsonObject &json_)
+{
+    QJsonValue icon_state_json = json_.value("icon_state");
+    int state_ = icon_state_json.toInt(); //转int
+    switch(state_)
+    {
+    case ICON_STATE_NOICON:
+    {
+        qDebug() << "获取头像失败,没有头像";
+        break;
+    }
+    case ICON_STATE_NOUSERNAME:
+    {
+        qDebug() << "获取头像失败,没有用户名";
+        break;
+    }
+    case ICON_STATE_NORMAL:
+    {
+        qDebug() << "获取头像正常" ;
+        QString icon_url_ = BASE_URL + json_.value("icon_url").toString(); //头像地址
+        emit UserIconSignal(icon_url_); //发射用户头像信号
+        break;
+    }
+    default:
+    {
+        break;
+    }
+    }
 }

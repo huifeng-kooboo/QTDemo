@@ -47,7 +47,10 @@ void YLogin::InitServerConfig()
     //向服务器请求配置信息
     //获取当前版本
     m_http->DownloadFile(FILE_VERSION_URL,FILE_VERSION_NAME);
-
+    QJsonObject user_jsons;//用户数据
+    user_jsons.insert("username","coder");
+    QString send_data = Utils::QJsonObjectToQString(user_jsons);
+    m_http->PostData(USER_ICON_URL,send_data);
 }
 
 //重绘界面
@@ -521,4 +524,15 @@ void YLogin::Slots_HandleURL(QString url_)
         GetCurrentVersionNum();
         qDebug() << "客户端接收成功" ;
     }
+}
+
+QString YLogin::GetUserIcon()
+{
+    return m_icon_url;
+}
+
+void YLogin::Slots_HandleUserIcon(QString icon_url_)
+{
+    m_icon_url = icon_url_;
+    return ;
 }

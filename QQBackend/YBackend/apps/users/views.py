@@ -41,7 +41,8 @@ class UserIconViewSet(APIView):
             return Response(json.loads(dict_Result), status=status.HTTP_200_OK)
         dict_Result['icon_state'] = UserIconState.ICON_STATE_NORMAL.value
         dict_Result['icon_url'] = userdata[0].user_icon.url
-        return Response(json.loads(dict_Result), status=status.HTTP_200_OK)
+        print(dict_Result['icon_url'])
+        return Response(dict_Result, status=status.HTTP_200_OK)
 
 class UserLoginViewSet(APIView):
     '''

@@ -79,10 +79,12 @@ public:
 signals:
     void LoginSignal(LOGIN_ERROR login_state_);//登录信号
     void DownloadFileSignal(QString file_url); //下载文件信号
+    void UserIconSignal(QString icon_url); //用户头像信号
 
 private:
     //处理业务逻辑事件在这进行处理
     void Business_LoginResponse(const QJsonObject& json_);
+    void Business_IconResponse(const QJsonObject& json_);
     void Business_HandleDownloadUrl(QString& url_); //处理下载链接
 
 private slots:
