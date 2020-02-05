@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import QQUsers
 from rest_framework import viewsets,mixins,status
-from .serializers import UserSerializer
+from .serializers import UserSerializer,UserIconSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .utils import *
@@ -17,6 +17,31 @@ class UserRegisterViewSet(viewsets.GenericViewSet,mixins.CreateModelMixin):
     '''
     queryset = QQUsers.objects.all()
     serializer_class = UserSerializer
+
+class UserIconViewSet(APIView):
+    '''
+    获取用户头像功能
+    '''
+    def post(self,request,*args,**kwargs):
+        '''
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        '''
+        username_str = request.data.get('username')
+        userdata = QQUsers.objects.filter(username=username_str)
+        dict_Result = {}
+        dict_Result['request_type'] = ResType.RES_USERICON.value
+        if len(userdata) < 1:
+            '''
+            用户数据
+            '''
+            dict_Result['icon_state'] = UserIconState.ICON_STATE_NOUSERNAME.value
+            return Response(json.loads(dict_Result), status=status.HTTP_200_OK)
+        dict_Result['icon_state'] = UserIconState.ICON_STATE_NORMAL.value
+        dict_Result['icon_url'] = userdata[0].user_icon.url
+        return Response(json.loads(dict_Result), status=status.HTTP_200_OK)
 
 class UserLoginViewSet(APIView):
     '''

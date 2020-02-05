@@ -15,9 +15,12 @@
 
 #define LOGIN_URL   "http://127.0.0.1:8000/users/login/"      //登录URL
 
+#define REGISTER_URL "http://127.0.0.1:8000/users/register/"  //注册URL
+
 //文件版本
 #define FILE_VERSION_URL "http://127.0.0.1:8000/media/configs/QQVersion.ini"  //文件版本URL
 
 #define FILE_VERSION_NAME "QQVesion.ini"  //版本文件名
 
-//
+//获取用户头像
+#define USER_ICON_URL  "http://127.0.0.1:8000/users/usericon/"

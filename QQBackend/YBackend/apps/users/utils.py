@@ -7,7 +7,7 @@
 import json
 from django.contrib.auth.hashers import make_password,check_password
 from django.contrib.auth import authenticate
-from .global_ import ResType,LoginState
+from .global_ import ResType,LoginState,UserIconState
 
 
 def checkUserLoginInfo(username,password):

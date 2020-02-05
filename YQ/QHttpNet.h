@@ -44,6 +44,13 @@ enum StatusCode{
 enum RequestType{
   RES_LOGIN = 100, //用户登录
   RES_REGISTER = 101,  //用户注册
+  RES_USERICON = 102, //用户头像
+};
+
+enum UserIconState{
+    ICON_STATE_NOUSERNAME = 1, //没有用户头像
+    ICON_STATE_NOICON = 2, //没有图标
+    ICON_STATE_NORMAL = 3, //正常头像
 };
 
 enum LOGIN_ERROR{

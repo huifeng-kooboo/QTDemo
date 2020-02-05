@@ -8,3 +8,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = QQUsers
         fields = ['username','password']
+
+class UserIconSerializer(serializers.HyperlinkedModelSerializer):
+    '''
+    用户头像序列化
+    '''
+    class Meta:
+        model = QQUsers
+        fields = ['username','user_icon']
