@@ -66,6 +66,7 @@ public:
     YLogin(QWidget *parent = nullptr);
     ~YLogin();
 
+    void InitUserConfig();   //初始化用户信息配置
     void InitServerConfig(); //向服务器请求初始化配置信息
     void InitSignalAndSlots(); //初始化信号与槽
     bool BasicInfoCheck();
@@ -86,6 +87,9 @@ public:
     //
     QString GetCurrentVersionNum();   //获取当前文件版本号
     QString GetUserIcon();            //获取用户头像
+private:
+    void WriteToLocalConfig(QString json_config); //将相应信息写入本地配置文件中
+    void ReadLocalConfig(QString local_config);
 
 private slots:
     //相关槽函数存放在这
@@ -150,5 +154,8 @@ private:
     //
     QString m_version_num; //当前QQ版本号
     QString m_icon_url;  // 用户头像url
+
+    // 本地配置目录
+    QString m_local_config_path;
  };
 #endif // YLOGIN_H

@@ -304,6 +304,7 @@ void QHttpNet::Slots_GetRequestFinished(QNetworkReply* reply)
         return; //不进行处理
         break;
     default:
+        return; //默认情况
         break;
     };
 

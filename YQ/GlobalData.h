@@ -28,3 +28,7 @@
 
 //获取用户头像
 #define USER_ICON_URL  "http://127.0.0.1:8000/users/usericon/"
+
+//用户本地配置
+#define LOCAL_CONFIG_FOLDER "configs/"
+#define LOCAL_CONFIG_FILE "configs/user.ini"

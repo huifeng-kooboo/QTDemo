@@ -19,6 +19,7 @@ YLogin::YLogin(QWidget *parent)
     InitTrayMenu();
     InitSignalAndSlots();
     InitServerConfig();
+    InitUserConfig(); //初始化用户信息配置
     setAttribute(Qt::WA_TranslucentBackground, true); //不绘制界面 通过QPainter重绘
 }
 
@@ -535,4 +536,25 @@ void YLogin::Slots_HandleUserIcon(QString icon_url_)
 {
     m_icon_url = icon_url_;
     return ;
+}
+
+void YLogin::InitUserConfig()
+{
+    // 1.创建configs的文件夹
+    QString config_path = LOCAL_CONFIG_FOLDER;
+    Utils::CreateDirectory_(config_path);
+    // 2.创建user.ini文件
+    QString user_ini_path = LOCAL_CONFIG_FILE;
+    Utils::CreateFile_(user_ini_path);
+    m_local_config_path = user_ini_path;
+}
+
+void YLogin::ReadLocalConfig(QString local_config)
+{
+
+}
+
+void YLogin::WriteToLocalConfig(QString json_config)
+{
+
 }
