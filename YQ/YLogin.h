@@ -89,6 +89,7 @@ public:
     QString GetUserIcon();            //获取用户头像
 private:
     void WriteToLocalConfig(QString json_config); //将相应信息写入本地配置文件中
+    void WriteToLocalConfig(QString key_,QString value_);
     void ReadLocalConfig(QString local_config);
 
 private slots:
@@ -157,5 +158,6 @@ private:
 
     // 本地配置目录
     QString m_local_config_path;
+    QFile * m_ini_config_file;  // 配置文件写入
  };
 #endif // YLOGIN_H

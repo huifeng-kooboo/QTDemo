@@ -40,6 +40,8 @@ YLogin::~YLogin()
     delete m_btn_loginQQ;
     delete m_btn_SingleLogin;
     delete m_widget_register_account;
+    m_ini_config_file->close();
+    delete m_ini_config_file;
     delete ui;
 }
 
@@ -47,6 +49,9 @@ void YLogin::InitServerConfig()
 {
     //向服务器请求配置信息
     //获取当前版本
+
+    // 服务器打开时 再取消注释 不然容易崩溃
+
     m_http->DownloadFile(FILE_VERSION_URL,FILE_VERSION_NAME);
     QJsonObject user_jsons;//用户数据
     user_jsons.insert("username","coder");
@@ -95,6 +100,8 @@ void YLogin::Init()
     m_widget_register_account = nullptr;
     m_btn_SingleLogin = nullptr;
     m_btn_loginQQ = nullptr;
+    //
+    m_ini_config_file = nullptr;
 }
 
 void YLogin::InitTrayMenu()
@@ -547,6 +554,8 @@ void YLogin::InitUserConfig()
     QString user_ini_path = LOCAL_CONFIG_FILE;
     Utils::CreateFile_(user_ini_path);
     m_local_config_path = user_ini_path;
+    WriteToLocalConfig("TEST","DEMO");
+    WriteToLocalConfig("TEST111","DEMO");
 }
 
 void YLogin::ReadLocalConfig(QString local_config)
@@ -554,7 +563,42 @@ void YLogin::ReadLocalConfig(QString local_config)
 
 }
 
-void YLogin::WriteToLocalConfig(QString json_config)
+void YLogin::WriteToLocalConfig(QString config_)
 {
+    QString worth_ = config_+ "\n"; //拼接字符串 //需要加入换行符
+    if(!m_ini_config_file)
+    {
+        // 判断是否文件创建
+        m_ini_config_file = new QFile(m_local_config_path);
+        m_ini_config_file->open(QIODevice::ReadWrite);
+        QTextStream stream(m_ini_config_file);
+        stream.seek(m_ini_config_file->size());
+        stream << worth_.toUtf8();
+    }
+    else{
+          m_ini_config_file->open(QIODevice::ReadWrite);
+          QTextStream stream(m_ini_config_file);
+          stream.seek(m_ini_config_file->size());
+          stream << worth_.toUtf8();
+    }
+}
 
+void YLogin::WriteToLocalConfig(QString key_, QString value_)
+{
+    QString worth_ = key_ + "=" + value_ + "\n"; //拼接字符串 //需要加入换行符
+    if(!m_ini_config_file)
+    {
+        // 判断是否文件创建
+        m_ini_config_file = new QFile(m_local_config_path);
+        m_ini_config_file->open(QIODevice::ReadWrite);
+        QTextStream stream(m_ini_config_file);
+        stream.seek(m_ini_config_file->size());
+        stream << worth_.toUtf8();
+    }
+    else{
+          m_ini_config_file->open(QIODevice::ReadWrite);
+          QTextStream stream(m_ini_config_file);
+          stream.seek(m_ini_config_file->size());
+          stream << worth_.toUtf8();
+    }
 }

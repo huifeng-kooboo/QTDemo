@@ -17,6 +17,8 @@ bool StringJudgePassword(QString string_); //字符串判断用户密码
 bool isPureNums(QString num_); // 判断是否为纯数字
 QString QJsonObjectToQString(QJsonObject& json_object); //QJsonObject转QString
 bool  QStringToQJsonObject(QString& str_,QJsonObject&json_); //QString转QJsonObject
+QByteArray QStringToQByteArray(QString str_); // QString 转 QByteArray
+QString QByteArrayToQString(QByteArray array_); //QByteArray 转 QString
 
 //2.文件处理部分
 QString GetFileMd5(QString &file_name); //获取文件md5值

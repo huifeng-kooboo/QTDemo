@@ -143,3 +143,14 @@ bool Utils::DeleteFile_(QString& file_name)
 {
     return QFile::remove(file_name);
 }
+
+QByteArray Utils::QStringToQByteArray(QString str_)
+{
+    return str_.toUtf8(); // 转成UTF-8格式的 可以避免乱码
+}
+
+QString Utils::QByteArrayToQString(QByteArray array_)
+{
+    QString str_ = array_;
+    return str_;
+}
