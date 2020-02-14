@@ -32,3 +32,11 @@
 //用户本地配置
 #define LOCAL_CONFIG_FOLDER "configs/"
 #define LOCAL_CONFIG_FILE "configs/user.ini"
+
+// 本地配置相关常量存放 ：全都保存在ini文件中
+#define CUR_ACCOUNT "cur_account"  // 当前账号
+#define CUR_PASSWORD "cur_password"  //当前密码
+#define CUR_USERICON_URL "cur_usericon" //当前头像URL:方式加载
+#define IS_REMEMBER_PASSWORD "is_remember_password" // 是否记住密码
+#define IS_AUTO_LOGIN "is_auto_login" //是否自动登录
+

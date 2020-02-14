@@ -343,7 +343,10 @@ void YLogin::Slots_LoginQQ()
         return;
     }
 
-    //3.发送登录请求(采用异步方式/传递Json数据)
+    //3.先记录相关配置信息
+    RecordLoginConfig();
+
+    //4.发送登录请求(采用异步方式/传递Json数据)
     QJsonObject user_jsons;//用户数据
     user_jsons.insert("username",account_);
     user_jsons.insert("password",password_);
@@ -601,4 +604,10 @@ void YLogin::WriteToLocalConfig(QString key_, QString value_)
           stream.seek(m_ini_config_file->size());
           stream << worth_.toUtf8();
     }
+}
+
+// 记录登录配置相关信息
+void YLogin::RecordLoginConfig()
+{
+
 }

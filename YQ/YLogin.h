@@ -91,6 +91,7 @@ private:
     void WriteToLocalConfig(QString json_config); //将相应信息写入本地配置文件中
     void WriteToLocalConfig(QString key_,QString value_);
     void ReadLocalConfig(QString local_config);
+    void RecordLoginConfig(); //记录登录的用户配置信息：以便于下次重新读取
 
 private slots:
     //相关槽函数存放在这
