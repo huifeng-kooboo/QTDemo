@@ -28,5 +28,7 @@ bool CreateFile_(QString& file_name); // 创建文件
 bool DeleteDirectory_(QString& folder_path);  // 删除文件夹
 bool DeleteFile_(QString& file_name); //删除文件
 
-//3.
+//3.密码加密
+QString Md5Code(QString str_); //Md5加密
+
 }

@@ -557,8 +557,6 @@ void YLogin::InitUserConfig()
     QString user_ini_path = LOCAL_CONFIG_FILE;
     Utils::CreateFile_(user_ini_path);
     m_local_config_path = user_ini_path;
-    WriteToLocalConfig("TEST","DEMO");
-    WriteToLocalConfig("TEST111","DEMO");
 }
 
 void YLogin::ReadLocalConfig(QString local_config)
@@ -593,21 +591,43 @@ void YLogin::WriteToLocalConfig(QString key_, QString value_)
     {
         // 判断是否文件创建
         m_ini_config_file = new QFile(m_local_config_path);
-        m_ini_config_file->open(QIODevice::ReadWrite);
+        m_ini_config_file->open(QIODevice::ReadWrite|QFile::Truncate); //Truncate表示覆盖重写
         QTextStream stream(m_ini_config_file);
         stream.seek(m_ini_config_file->size());
         stream << worth_.toUtf8();
     }
     else{
-          m_ini_config_file->open(QIODevice::ReadWrite);
-          QTextStream stream(m_ini_config_file);
-          stream.seek(m_ini_config_file->size());
-          stream << worth_.toUtf8();
+             QTextStream stream(m_ini_config_file);
+             stream.seek(m_ini_config_file->size());
+             stream << worth_.toUtf8();
     }
 }
 
 // 记录登录配置相关信息
 void YLogin::RecordLoginConfig()
 {
+    // 1. 获取当前账号和密码,并且记录
+    QString cur_account = ui->lineEdit_Account->text();
+    QString cur_password = ui->lineEdit_Password->text();
+    QString md5_password = Utils::Md5Code(cur_password); //加密
+    WriteToLocalConfig(CUR_ACCOUNT,cur_account);
+    WriteToLocalConfig(CUR_PASSWORD,md5_password);
 
+    // 2. 获取是否记住密码等信息
+    Qt::CheckState is_RecordPassword = ui->cb_pwd->checkState(); // 获取是否记住密码选项
+    Qt::CheckState is_AutoLogin = ui->cb_autologin->checkState(); // 获取是否自动登录选项
+    if(is_RecordPassword == Qt::CheckState::Checked)
+    {
+        WriteToLocalConfig(IS_REMEMBER_PASSWORD,"True");
+    }
+    else{
+         WriteToLocalConfig(IS_REMEMBER_PASSWORD,"False");
+    }
+    if(is_AutoLogin == Qt::CheckState::Checked)
+    {
+        WriteToLocalConfig(IS_AUTO_LOGIN,"True");
+    }
+    else{
+        WriteToLocalConfig(IS_AUTO_LOGIN,"False");
+    }
 }

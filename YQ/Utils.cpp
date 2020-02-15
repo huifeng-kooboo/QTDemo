@@ -1,5 +1,7 @@
 #include "Utils.h"
 #include <QDebug>
+#include <QCryptographicHash>
+
 // 判断是否未纯数字
 bool Utils::isPureNums(QString num_)
 {
@@ -153,4 +155,12 @@ QString Utils::QByteArrayToQString(QByteArray array_)
 {
     QString str_ = array_;
     return str_;
+}
+
+QString Utils::Md5Code(QString str_)
+{
+    QByteArray bytePwd = str_.toLatin1();
+    QByteArray bytePwdMd5 = QCryptographicHash::hash(bytePwd, QCryptographicHash::Md5);
+    QString strPwdMd5 = bytePwdMd5.toHex();
+    return strPwdMd5;
 }
