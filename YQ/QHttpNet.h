@@ -1,4 +1,3 @@
-
 //导入相关网络库
 // 封装基于QT的网络库
 #include <QObject>

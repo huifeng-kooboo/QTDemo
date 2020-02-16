@@ -39,4 +39,3 @@
 #define CUR_USERICON_URL "cur_usericon" //当前头像URL:方式加载
 #define IS_REMEMBER_PASSWORD "is_remember_password" // 是否记住密码
 #define IS_AUTO_LOGIN "is_auto_login" //是否自动登录
-

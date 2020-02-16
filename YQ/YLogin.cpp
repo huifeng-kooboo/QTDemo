@@ -20,6 +20,7 @@ YLogin::YLogin(QWidget *parent)
     InitSignalAndSlots();
     InitServerConfig();
     InitUserConfig(); //初始化用户信息配置
+    ReadUserLocalInfo(); // 进行读取到UI操作
     setAttribute(Qt::WA_TranslucentBackground, true); //不绘制界面 通过QPainter重绘
 }
 
@@ -586,7 +587,15 @@ void YLogin::WriteToLocalConfig(QString config_)
 
 void YLogin::WriteToLocalConfig(QString key_, QString value_)
 {
-    QString worth_ = key_ + "=" + value_ + "\n"; //拼接字符串 //需要加入换行符
+    QString worth_ = "";
+    if (key_ != IS_AUTO_LOGIN)
+    {
+        worth_ = key_ + "=" + value_ + "\n"; //拼接字符串 //需要加入换行符
+    }
+    else{
+        worth_ = key_ + "=" + value_;
+    }
+
     if(!m_ini_config_file)
     {
         // 判断是否文件创建
@@ -597,9 +606,9 @@ void YLogin::WriteToLocalConfig(QString key_, QString value_)
         stream << worth_.toUtf8();
     }
     else{
-             QTextStream stream(m_ini_config_file);
-             stream.seek(m_ini_config_file->size());
-             stream << worth_.toUtf8();
+         QTextStream stream(m_ini_config_file);
+         stream.seek(m_ini_config_file->size());
+         stream << worth_.toUtf8();
     }
 }
 
@@ -612,6 +621,9 @@ void YLogin::RecordLoginConfig()
     QString md5_password = Utils::Md5Code(cur_password); //加密
     WriteToLocalConfig(CUR_ACCOUNT,cur_account);
     WriteToLocalConfig(CUR_PASSWORD,md5_password);
+    // 相关配置记录到Map中
+    m_user_config_map[CUR_ACCOUNT] = cur_account;
+    m_user_config_map[CUR_PASSWORD] = md5_password;
 
     // 2. 获取是否记住密码等信息
     Qt::CheckState is_RecordPassword = ui->cb_pwd->checkState(); // 获取是否记住密码选项
@@ -619,15 +631,72 @@ void YLogin::RecordLoginConfig()
     if(is_RecordPassword == Qt::CheckState::Checked)
     {
         WriteToLocalConfig(IS_REMEMBER_PASSWORD,"True");
+        m_user_config_map[IS_REMEMBER_PASSWORD] = "True";
     }
     else{
-         WriteToLocalConfig(IS_REMEMBER_PASSWORD,"False");
+        WriteToLocalConfig(IS_REMEMBER_PASSWORD,"False");
+        m_user_config_map[IS_REMEMBER_PASSWORD] = "False";
     }
     if(is_AutoLogin == Qt::CheckState::Checked)
     {
         WriteToLocalConfig(IS_AUTO_LOGIN,"True");
+        m_user_config_map[IS_AUTO_LOGIN] = "True";
     }
     else{
         WriteToLocalConfig(IS_AUTO_LOGIN,"False");
+        m_user_config_map[IS_AUTO_LOGIN] = "False";
     }
+}
+
+bool YLogin::ReadUserLocalInfo()
+{
+    //1. 读取本地配置
+    QFile * p_File = new QFile(m_local_config_path); // 读取本地配置文件
+    // 判断是否读取成功
+    if(p_File)
+    {
+        p_File->open(QIODevice::ReadOnly); //设置只读方式
+        int cur_count = 0;
+        while (!p_File->atEnd())
+        {
+            //按行读取
+            QByteArray line_array = p_File->readLine(); //按行读取
+            QString line_str = Utils::QByteArrayToQString(line_array);//
+            QStringList line_list = line_str.split("=");
+            if(line_list.size() == 2)
+            {
+                cur_count++;
+                //2. 记录到用户Map当中
+                m_user_config_map[line_list[0]] = line_list[1];
+            }
+        }
+
+        //释放内存
+        p_File->close();
+        delete p_File;
+
+        // 说明有记录 然后进行显示到前端中
+        if(cur_count > 3)
+        {
+            //映射到UI中
+            ui->lineEdit_Account->setText(m_user_config_map.value(CUR_ACCOUNT));
+            ui->lineEdit_Password->setText(m_user_config_map.value(CUR_PASSWORD));
+            if(m_user_config_map[IS_AUTO_LOGIN] == "False")
+            {
+                ui->cb_autologin->setCheckState(Qt::CheckState::Unchecked);
+            }
+            else{
+                ui->cb_autologin->setCheckState(Qt::CheckState::Checked);
+            }
+            if(m_user_config_map[IS_REMEMBER_PASSWORD] == "False")
+            {
+                ui->cb_pwd->setCheckState(Qt::CheckState::Unchecked);
+            }
+            else{
+                ui->cb_pwd->setCheckState(Qt::CheckState::Checked);
+            }
+        }
+        // 否则 不进行处理 即显示为空
+    }
+   return true;
 }

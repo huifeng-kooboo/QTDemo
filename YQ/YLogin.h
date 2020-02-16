@@ -6,6 +6,7 @@
 #include <QPoint>
 #include <QMouseEvent>
 #include <QMessageBox>
+#include <QMap>
 
 //QJson引用相关库
 #include <QJsonDocument>
@@ -92,6 +93,7 @@ private:
     void WriteToLocalConfig(QString key_,QString value_);
     void ReadLocalConfig(QString local_config);
     void RecordLoginConfig(); //记录登录的用户配置信息：以便于下次重新读取
+    bool ReadUserLocalInfo(); // 读取用户本地配置信息
 
 private slots:
     //相关槽函数存放在这
@@ -160,5 +162,7 @@ private:
     // 本地配置目录
     QString m_local_config_path;
     QFile * m_ini_config_file;  // 配置文件写入
+    QMap<QString,QString> m_user_config_map; //用户信息配置Map
+
  };
 #endif // YLOGIN_H
