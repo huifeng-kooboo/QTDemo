@@ -533,12 +533,13 @@ void YLogin::Slots_HandleURL(QString url_)
         GetCurrentVersionNum();
         qDebug() << "客户端接收成功" ;
     }
-    if(url_ == DEFAULT_USER_ICON_URL)
+    if(url_ == m_icon_url)
     {
         // 替换
         qDebug() << "显示用户头像：：" << endl;
         QPixmap icon_pixmap(DEFAULT_USER_ICON_ADDRESS);
         ui->lbl_avator->setPixmap(icon_pixmap);
+        ui->lbl_avator->setScaledContents(true); // 设置图片自适应效果： 使用这个效果最好
         ui->lbl_avator->show();
     }
 }
