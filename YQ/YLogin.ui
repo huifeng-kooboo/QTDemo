@@ -295,9 +295,10 @@ QLineEdit#lineEdit_Password:hover
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel#lbl_avator{
+     <string notr="true">/*QLabel#lbl_avator{
 image: url(&quot;:/login/src/styles/avatar.png&quot;);
-}</string>
+}
+*/</string>
     </property>
     <property name="text">
      <string/>

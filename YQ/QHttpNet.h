@@ -110,5 +110,5 @@ private:
     int  m_progress_value; //下载进度
     QTimer* m_timer; // 定时器下载
     QNetworkRequest m_request;
-    QMainWindow * m_parent_window;
+    QMainWindow * m_parent_window; // 用于绑定父窗口
 };

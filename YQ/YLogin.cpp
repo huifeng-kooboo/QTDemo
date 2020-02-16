@@ -50,12 +50,9 @@ void YLogin::InitServerConfig()
 {
     //向服务器请求配置信息
     //获取当前版本
-
-    // 服务器打开时 再取消注释 不然容易崩溃
-
     m_http->DownloadFile(FILE_VERSION_URL,FILE_VERSION_NAME);
     QJsonObject user_jsons;//用户数据
-    user_jsons.insert("username","coder");
+    user_jsons.insert("username","coder"); // 测试获取Url
     QString send_data = Utils::QJsonObjectToQString(user_jsons);
     m_http->PostData(USER_ICON_URL,send_data);
 }
@@ -536,6 +533,14 @@ void YLogin::Slots_HandleURL(QString url_)
         GetCurrentVersionNum();
         qDebug() << "客户端接收成功" ;
     }
+    if(url_ == DEFAULT_USER_ICON_URL)
+    {
+        // 替换
+        qDebug() << "显示用户头像：：" << endl;
+        QPixmap icon_pixmap(DEFAULT_USER_ICON_ADDRESS);
+        ui->lbl_avator->setPixmap(icon_pixmap);
+        ui->lbl_avator->show();
+    }
 }
 
 QString YLogin::GetUserIcon()
@@ -546,6 +551,8 @@ QString YLogin::GetUserIcon()
 void YLogin::Slots_HandleUserIcon(QString icon_url_)
 {
     m_icon_url = icon_url_;
+    qDebug() << "图片的Url为：" << m_icon_url << endl;
+    m_http->DownloadFile(m_icon_url,DEFAULT_USER_ICON_ADDRESS); //下载到本地图片
     return ;
 }
 

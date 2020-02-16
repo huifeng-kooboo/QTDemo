@@ -50,7 +50,7 @@ bool QHttpNet::DownloadFile(QString url_, QString file_name)
     {
         m_timer = new QTimer(this);  // 初始化定时器
         m_timer->setSingleShot(false); //false:多次触发,true:单次触发
-        m_timer->start(2000);//设置两秒后开始
+        m_timer->start(1000);//设置两秒后开始
         connect(m_timer,SIGNAL(timeout()),this,SLOT(Slots_TimerCheckRes())); //触发下载资源
     }
 
@@ -69,6 +69,7 @@ void QHttpNet::Slots_TimerCheckRes()
             return ;
         }
         // 进行下载
+        qDebug() << "需要下载的Url" << m_vec_download_url[0] << endl;
         for(int i = 0; i < need_count ; i++)
         {
            QString down_url = m_vec_download_url[i];
@@ -82,6 +83,8 @@ void QHttpNet::Slots_TimerCheckRes()
            connect(m_reply,SIGNAL(readyRead()),this,SLOT(Slots_WriteFile()));//数据写入
            connect(m_reply,SIGNAL(finished()),this,SLOT(Slots_DownloadFinish()));//下载完成
            connect(m_reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(Slots_ShowProgress(qint64,qint64))); //获取下载进度
+           qDebug() << "准备去除的文件名为：" << m_vec_file_name[0] << endl;
+           qDebug() << "准备去除的Url为：" << m_vec_file_name[0] << endl;
            m_vec_file_name.remove(0); //移除
            m_vec_download_url.remove(0); //移除
            return;
@@ -101,6 +104,7 @@ void QHttpNet::Slots_TimerCheckRes()
     {
        QString down_url = m_vec_download_url[i];
        QString down_filename = m_vec_file_name[i];
+       qDebug() << "需要下载的Url" << down_url << endl;
        //下载请求：判断是否有东西正在下载
        QString cur_url_str = m_request.url().toString();
        // 说明暂时没有下载任务
@@ -156,7 +160,7 @@ void QHttpNet::Slots_DownloadFinish()
     m_file->flush();
     m_file->close();
     m_file = nullptr;
-    m_timer->stop(); //停止
+    //m_timer->stop(); //停止
     QUrl download_url_ = m_request.url(); //获取下载链接
     QString url_str_ = download_url_.toString();
     Business_HandleDownloadUrl(url_str_);
@@ -165,11 +169,8 @@ void QHttpNet::Slots_DownloadFinish()
 
 void QHttpNet::Business_HandleDownloadUrl(QString& url_)
 {
-    if (url_ == FILE_VERSION_URL)
-    {
-        qDebug() << "文件版本下载到本地完成" ;
-        emit DownloadFileSignal(url_);
-    }
+    qDebug() << "文件下载到本地完成:" << url_ ;
+    emit DownloadFileSignal(url_);
 }
 
 void QHttpNet::Business_LoginResponse(const QJsonObject& json_)

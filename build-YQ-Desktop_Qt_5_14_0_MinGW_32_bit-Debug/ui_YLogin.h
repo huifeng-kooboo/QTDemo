@@ -196,9 +196,10 @@ public:
         lbl_avator = new QLabel(centralwidget);
         lbl_avator->setObjectName(QString::fromUtf8("lbl_avator"));
         lbl_avator->setGeometry(QRect(20, 195, 86, 88));
-        lbl_avator->setStyleSheet(QString::fromUtf8("QLabel#lbl_avator{\n"
+        lbl_avator->setStyleSheet(QString::fromUtf8("/*QLabel#lbl_avator{\n"
 "image: url(\":/login/src/styles/avatar.png\");\n"
-"}"));
+"}\n"
+"*/"));
         btn_Min = new QPushButton(centralwidget);
         btn_Min->setObjectName(QString::fromUtf8("btn_Min"));
         btn_Min->setGeometry(QRect(370, 0, 25, 29));

@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 #include <QMap>
+#include <QPixmap>
 
 //QJson引用相关库
 #include <QJsonDocument>
