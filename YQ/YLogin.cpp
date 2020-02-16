@@ -14,13 +14,14 @@ YLogin::YLogin(QWidget *parent)
     ui->lbl_Tips->setVisible(false);
     ui->btn_pull->setVisible(false);
     ui->lbl_warning_ico->setVisible(false);
-
+    //先显示系统自带的头像部分
+    SetUILoginUserIcon(SYSTEM_ICON_ADDRESS);
     Init();
     InitTrayMenu();
     InitSignalAndSlots();
-    InitServerConfig();
     InitUserConfig(); //初始化用户信息配置
     ReadUserLocalInfo(); // 进行读取到UI操作
+    InitServerConfig();
     setAttribute(Qt::WA_TranslucentBackground, true); //不绘制界面 通过QPainter重绘
 }
 
@@ -52,9 +53,12 @@ void YLogin::InitServerConfig()
     //获取当前版本
     m_http->DownloadFile(FILE_VERSION_URL,FILE_VERSION_NAME);
     QJsonObject user_jsons;//用户数据
-    user_jsons.insert("username","coder"); // 测试获取Url
-    QString send_data = Utils::QJsonObjectToQString(user_jsons);
-    m_http->PostData(USER_ICON_URL,send_data);
+    if(m_user_config_map[CUR_ACCOUNT] != "")
+    {
+        user_jsons.insert("username",m_user_config_map.value(CUR_ACCOUNT)); //获取用户头像
+        QString send_data = Utils::QJsonObjectToQString(user_jsons);
+        m_http->PostData(USER_ICON_URL,send_data);
+    }
 }
 
 //重绘界面
@@ -526,6 +530,14 @@ QString YLogin::GetCurrentVersionNum()
     return m_version_num;
 }
 
+bool YLogin::SetUILoginUserIcon(QString icon_path)
+{
+    QPixmap icon_pixmap(icon_path);
+    ui->lbl_avator->setPixmap(icon_pixmap);
+    ui->lbl_avator->setScaledContents(true); // 设置图片自适应效果： 使用这个效果最好
+    ui->lbl_avator->show();
+}
+
 void YLogin::Slots_HandleURL(QString url_)
 {
     if(url_ == FILE_VERSION_URL)
@@ -536,11 +548,7 @@ void YLogin::Slots_HandleURL(QString url_)
     if(url_ == m_icon_url)
     {
         // 替换
-        qDebug() << "显示用户头像：：" << endl;
-        QPixmap icon_pixmap(DEFAULT_USER_ICON_ADDRESS);
-        ui->lbl_avator->setPixmap(icon_pixmap);
-        ui->lbl_avator->setScaledContents(true); // 设置图片自适应效果： 使用这个效果最好
-        ui->lbl_avator->show();
+        SetUILoginUserIcon(DEFAULT_USER_ICON_ADDRESS); //设置用户头像
     }
 }
 
@@ -705,6 +713,13 @@ bool YLogin::ReadUserLocalInfo()
             }
         }
         // 否则 不进行处理 即显示为空
+        else{
+            // 全部置为空
+            m_user_config_map[IS_AUTO_LOGIN] = "False";
+            m_user_config_map[IS_REMEMBER_PASSWORD] = "False";
+            m_user_config_map[CUR_ACCOUNT] = "";
+            m_user_config_map[CUR_PASSWORD]= "";
+        }
     }
    return true;
 }

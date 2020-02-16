@@ -95,6 +95,7 @@ private:
     void ReadLocalConfig(QString local_config);
     void RecordLoginConfig(); //记录登录的用户配置信息：以便于下次重新读取
     bool ReadUserLocalInfo(); // 读取用户本地配置信息
+    bool SetUILoginUserIcon(QString icon_path); // 设置用户登录头像部分
 
 private slots:
     //相关槽函数存放在这

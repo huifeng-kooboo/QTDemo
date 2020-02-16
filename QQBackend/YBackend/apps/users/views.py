@@ -30,15 +30,17 @@ class UserIconViewSet(APIView):
         :return:
         '''
         username_str = request.data.get('username')
+        print(username_str)
         userdata = QQUsers.objects.filter(username=username_str)
         dict_Result = {}
         dict_Result['request_type'] = ResType.RES_USERICON.value
+        print(len(userdata))
         if len(userdata) < 1:
             '''
             用户数据
             '''
             dict_Result['icon_state'] = UserIconState.ICON_STATE_NOUSERNAME.value
-            return Response(json.loads(dict_Result), status=status.HTTP_200_OK)
+            return Response(dict_Result, status=status.HTTP_200_OK)
         dict_Result['icon_state'] = UserIconState.ICON_STATE_NORMAL.value
         dict_Result['icon_url'] = userdata[0].user_icon.url
         print(dict_Result['icon_url'])

@@ -30,6 +30,7 @@
 #define USER_ICON_URL  "http://127.0.0.1:8000/users/usericon/"
 #define DEFAULT_USER_ICON_ADDRESS "./configs/default_usericon.png"
 #define DEFAULT_USER_ICON_URL "http://127.0.0.1:8000/media/default_img/user_icon.png"
+#define SYSTEM_ICON_ADDRESS "./configs/default.png"
 
 //用户本地配置
 #define LOCAL_CONFIG_FOLDER "configs/"
