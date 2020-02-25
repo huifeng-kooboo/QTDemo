@@ -53,6 +53,7 @@ void YLogin::InitServerConfig()
     //获取当前版本
     m_http->DownloadFile(FILE_VERSION_URL,FILE_VERSION_NAME);
     QJsonObject user_jsons;//用户数据
+    // 判断是否需要获取默认配置中的头像
     if(m_user_config_map[CUR_ACCOUNT] != "")
     {
         user_jsons.insert("username",m_user_config_map.value(CUR_ACCOUNT)); //获取用户头像
@@ -695,8 +696,8 @@ bool YLogin::ReadUserLocalInfo()
         if(cur_count > 3)
         {
             //映射到UI中
-            ui->lineEdit_Account->setText(m_user_config_map.value(CUR_ACCOUNT));
-            ui->lineEdit_Password->setText(m_user_config_map.value(CUR_PASSWORD));
+            ui->lineEdit_Account->setText(m_user_config_map.value(CUR_ACCOUNT).chopped(1));
+             qDebug() <<m_user_config_map.value(CUR_ACCOUNT);
             if(m_user_config_map[IS_AUTO_LOGIN] == "False")
             {
                 ui->cb_autologin->setCheckState(Qt::CheckState::Unchecked);
@@ -704,12 +705,14 @@ bool YLogin::ReadUserLocalInfo()
             else{
                 ui->cb_autologin->setCheckState(Qt::CheckState::Checked);
             }
-            if(m_user_config_map[IS_REMEMBER_PASSWORD] == "False")
+            if(m_user_config_map[IS_REMEMBER_PASSWORD] == "False\n")
             {
                 ui->cb_pwd->setCheckState(Qt::CheckState::Unchecked);
+
             }
             else{
                 ui->cb_pwd->setCheckState(Qt::CheckState::Checked);
+                ui->lineEdit_Password->setText(m_user_config_map.value(CUR_PASSWORD));
             }
         }
         // 否则 不进行处理 即显示为空
