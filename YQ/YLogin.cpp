@@ -175,6 +175,7 @@ void YLogin::Slots_UI_LoginResponse(LOGIN_ERROR state_)
     case LOGIN_SUCCESS:
     {
         qDebug() << "QQ登录成功";
+        // 此处关闭自身进程 打开QQMain.exe
         break;
     }
     case LOGIN_ERROR_USERNAME:
@@ -697,7 +698,7 @@ bool YLogin::ReadUserLocalInfo()
         {
             //映射到UI中
             ui->lineEdit_Account->setText(m_user_config_map.value(CUR_ACCOUNT).chopped(1));
-             qDebug() <<m_user_config_map.value(CUR_ACCOUNT);
+            qDebug() << m_user_config_map.value(CUR_ACCOUNT);
             if(m_user_config_map[IS_AUTO_LOGIN] == "False")
             {
                 ui->cb_autologin->setCheckState(Qt::CheckState::Unchecked);
