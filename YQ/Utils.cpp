@@ -1,6 +1,7 @@
 #include "Utils.h"
 #include <QDebug>
 #include <QCryptographicHash>
+#include <QDate>
 
 // 判断是否未纯数字
 bool Utils::isPureNums(QString num_)
@@ -163,4 +164,12 @@ QString Utils::Md5Code(QString str_)
     QByteArray bytePwdMd5 = QCryptographicHash::hash(bytePwd, QCryptographicHash::Md5);
     QString strPwdMd5 = bytePwdMd5.toHex();
     return strPwdMd5;
+}
+
+// format like: 2020_03_21
+QString Utils::GetCurrentDay()
+{
+    QDate cur_day = QDate::currentDate();
+    QString str_day = QString::number(cur_day.year())+"_" +QString::number(cur_day.month())+"_" +QString::number(cur_day.day());
+    return str_day;
 }

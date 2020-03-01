@@ -20,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     QHttpNet.cpp \
+    QLog.cpp \
     Utils.cpp \
     main.cpp \
     YLogin.cpp
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     GlobalData.h \
     QHttpNet.h \
+    QLog.h \
     Utils.h \
     YLogin.h
 

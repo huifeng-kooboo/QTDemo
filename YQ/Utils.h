@@ -31,4 +31,7 @@ bool DeleteFile_(QString& file_name); //删除文件
 //3.密码加密
 QString Md5Code(QString str_); //Md5加密
 
+//4.时间相关
+QString GetCurrentDay(); //获取当前日期，返回数据：yyyy_month_day
+
 }
