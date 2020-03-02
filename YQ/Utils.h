@@ -33,5 +33,9 @@ QString Md5Code(QString str_); //Md5加密
 
 //4.时间相关
 QString GetCurrentDay(); //获取当前日期，返回数据：yyyy_month_day
+QString GetCurrentDateTime(); //获取当前时间 返回数据格式 yyyy_month_day_h_min_s
+
+//5.创建桌面快捷方式
+bool CreateDesktopShortcut(QString file_name,QString lnk_name);
 
 }

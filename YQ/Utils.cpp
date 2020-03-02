@@ -2,6 +2,8 @@
 #include <QDebug>
 #include <QCryptographicHash>
 #include <QDate>
+#include <QDateTime>
+#include <QStandardPaths>
 
 // 判断是否未纯数字
 bool Utils::isPureNums(QString num_)
@@ -172,4 +174,19 @@ QString Utils::GetCurrentDay()
     QDate cur_day = QDate::currentDate();
     QString str_day = QString::number(cur_day.year())+"_" +QString::number(cur_day.month())+"_" +QString::number(cur_day.day());
     return str_day;
+}
+
+bool Utils::CreateDesktopShortcut(QString file_name,QString lnk_name)
+{
+    QFile::link(file_name, QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).append("/").append(lnk_name));
+}
+
+QString Utils::GetCurrentDateTime()
+{
+    QString str_date;
+    QString str_Format = "yyyy_MM_dd_hh_mm_ss";
+    QDateTime date_ = QDateTime::currentDateTime();
+    str_date = date_.toString(str_Format);
+    qDebug() << str_date;
+    return str_date;
 }

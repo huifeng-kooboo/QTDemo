@@ -3,7 +3,6 @@
 
 #endif // GLOBALDATA_H
 
-
 //全局变量区
 #define GET_REPEAT_LOGIN_STR(s) QString("    您已登录"+s+",不能重复登录.")  //获取重复登录提示
 
@@ -42,3 +41,9 @@
 #define CUR_USERICON_URL "cur_usericon" //当前头像URL:方式加载
 #define IS_REMEMBER_PASSWORD "is_remember_password" // 是否记住密码
 #define IS_AUTO_LOGIN "is_auto_login" //是否自动登录
+
+// 日志相关
+#define LOG_NAME "debug.log" // 主要指的是log日志，方便用户查看
+
+//桌面快捷方式
+#define LOGIN_ICON_LNK "YQTim.lnk"

@@ -4,10 +4,12 @@
 #include <QTextCodec>
 #include "Utils.h"
 
+
 YLogin::YLogin(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::YLogin)
 {
+    Utils::GetCurrentDateTime();
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf-8")); //设置编码格式 处理乱码情况
     ui->setupUi(this);
     ui->widget_qrcode->setVisible(false);
